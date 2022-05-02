@@ -1,0 +1,42 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+staticfiles/
+modelmedia/
+
+# Dev Files
+*/migrations/*
+migrations/*
+db.sqlite3
+
+# Special Files #
+*_key.json
+
+# Dev Testing Files #
+.coverage
+.coveragerc
+
+# Backup files #
+*.bak
+
+# Python #
+*.py[cod]
+*$py.class
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+
+# Mac
+.DS_Store
+
+#Environment Variables
+.env
