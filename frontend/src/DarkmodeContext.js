@@ -13,7 +13,7 @@ export function useDarkmodeUpdate() {
 
 export function DarkmodeChannel({ children }){
   
-  const [darkmode, setDarkmode] = useState(true);
+  const [darkmode, setDarkmode] = useState(false);
 
   function toggleDarkmode() {
     console.log("calling darkmode context toggleDarkmode")

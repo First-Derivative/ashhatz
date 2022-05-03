@@ -8,8 +8,8 @@ function GlobalStyle({children}) {
 
   const GlobalStyles = createGlobalStyle`
   body {
-    background: ${ darkmode ? lightTheme.body : darkTheme.body };
-    color: ${ darkmode ? lightTheme.text : darkTheme.text};
+    background: ${ darkmode ? darkTheme.body : lightTheme.body };
+    color: ${ darkmode ? darkTheme.text : lightTheme.text};
     transition: all 350ms linear;
     
   }`
