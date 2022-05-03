@@ -27,7 +27,7 @@ function DarkmodeSwitch() {
           {darkmode ?  <ToggleOn /> : < ToggleOff />}
         </ToggleStyle>
         <div className='p my-auto ms-3'>
-          - Light Mode
+          { darkmode ? '- Dark mode' : '- Light mode'}
         </div>
       </div>
     </ContainerStyle>
