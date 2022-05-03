@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import Homepage from './pages/Homepage';
-import ThemeSwitch from './components/ThemeSwitch';
+import DarkmodeSwitch from './components/DarkmodeSwitch';
+import { DarkmodeChannel } from './DarkmodeContext';
 
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './utils/theme';
-import { GlobalStyles } from './utils/GlobalStyles';
+
+import GlobalStyles from './utils/GlobalStyles';
 import icon_link from './assets/favicon.ico';
 import mobile_icon_link from './assets/logo192.png';
 // import manifest_link from './assets/manifest.json';
@@ -13,16 +13,6 @@ import './App.css';
 
 function App() {
 
-  const [theme, setTheme] = useState('light');
-  
-  const toggleTheme = () => {
-    if (theme === 'dark') {
-      setTheme('light');
-      return;
-    } 
-    setTheme('dark')
-  }
-  
   // Set Icons & Manifest
   useEffect(() => {
     const favicon = document.getElementById('favicon');
@@ -36,13 +26,15 @@ function App() {
 
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <DarkmodeChannel>
+
     <GlobalStyles />
       <div className="container-fluid vh-100" id="app-container">
-        <ThemeSwitch handleClick={toggleTheme} />
+        <DarkmodeSwitch />
       <Homepage/>
     </div>
-    </ThemeProvider>
+
+    </DarkmodeChannel>
   );
 }
 
