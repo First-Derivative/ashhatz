@@ -36,18 +36,6 @@ function App() {
     return cookieValue;
   }
   
-
-  useEffect( ()=> {
-    console.log("getting fetch")
-    fetch('http://127.0.0.1:8000/users/getcsrf/').then( response => { 
-      console.log(response); 
-      setcsrf(getCookie('csrftoken'));
-      console.log("document cookies:", document.cookie);
-      console.log("csrf state:", csrf)
-      return response.json()})
-   .catch( err => console.log(err));
-  }, [])
-
   // Set Icons & Manifest
   useEffect(() => {
     const favicon = document.getElementById('favicon');
@@ -57,6 +45,15 @@ function App() {
     favicon.setAttribute('href', icon_link);
     mobile_icon.setAttribute('href', mobile_icon_link)
     manifest.setAttribute('href', manifest_link)
+
+    fetch(`${process.env.REACT_APP_BACKEND_URL}users/getcsrf/`).then( response => { 
+      console.log(response); 
+      setcsrf(getCookie('csrftoken'));
+      console.log("document cookies:", document.cookie);
+      console.log("csrf state:", csrf)
+      console.log(response)})
+   .catch( err => console.log(err));
+   
   }, []);
 
 
