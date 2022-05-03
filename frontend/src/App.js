@@ -3,38 +3,9 @@ import icon_link from './assets/favicon.ico';
 import mobile_icon_link from './assets/logo192.png';
 import manifest_link from './assets/manifest.json';
 import './App.css';
+import Homepage from './pages/Homepage';
 
 function App() {
-
-  const [name, setName] = useState('Ashraff Hatz');
-  const [btnalert, setBtnalert] = useState(false);
-  const [csrf, setcsrf] = useState('');
-
-  const handleClick = (e) => {
-    
-    if (name === 'Ash') {
-      return setBtnalert(true);
-    }
-    return setName('Ash');
-  }
-
-  const getCookie = (name) => {
-    console.log("getting cookie from document.cookie", document.cookie)
-    let cookieValue = null;
-    console.log(cookieValue)
-    if (document.cookie && document.cookie !== '') {
-      console.log("trying to get document.cookie")
-      let cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
-        }
-      }
-    }
-    return cookieValue;
-  }
   
   // Set Icons & Manifest
   useEffect(() => {
@@ -45,43 +16,12 @@ function App() {
     favicon.setAttribute('href', icon_link);
     mobile_icon.setAttribute('href', mobile_icon_link)
     manifest.setAttribute('href', manifest_link)
-    
-    const url = process.env.REACT_APP_BACKEND_URL // Get BACKEND_URL from .env unless in deployment
-    fetch(`${url ? url : '/'}users/getcsrf/`).then( response => { 
-      console.log(response); 
-      setcsrf(getCookie('csrftoken'));
-      console.log("document cookies:", document.cookie);
-      console.log("csrf state:", csrf)
-      console.log(response)})
-   .catch( err => console.log(err));
-   
   }, []);
 
 
   return (
-    <div className="container-fluid p-5" id="app-container">
-      <div className="row">
-
-        <div className="col-12 col-sm-6 text-start px-5" id="profile-container" >
-          <div className="h1" id="name">{name}</div>
-          <button 
-          className="btn btn-highlight-fill fst-italic my-3" 
-          id="name-button"
-          onClick={handleClick}
-          >
-            Call me Ash -it's easier.
-          </button>
-          { btnalert ?  
-            <div className='d-inline ms-3' id="button-alert">
-              - There's no going back, it's Ash forever.
-            </div> 
-          : '' }
-          <div className="p my-5">
-            Developer. Dungeon Delver. <br/> Pokemon Master
-          </div>
-        </div> 
-
-      </div>
+    <div className="container-fluid vh-100" id="app-container">
+      <Homepage />
     </div>
   );
 }
