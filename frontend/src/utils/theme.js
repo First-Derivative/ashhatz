@@ -11,5 +11,5 @@ export const darkTheme = {
   body: '#191919',
   text: '#fff',
   toggleBorder: '#6B8096',
-  gradient: 'linear-gradient(#091236, #1E215D)',
+  // gradient: 'linear-gradient(#091236, #1E215D)',
 }
