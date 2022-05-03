@@ -37,6 +37,5 @@ jobs:
         with:
           type: now
           message: 'Merge staging -> master: ${{github.event.head_commit.message}}'
-          from_branch: staging
           target_branch: master
           github_token: ${{ github.token }}
