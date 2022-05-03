@@ -45,8 +45,9 @@ function App() {
     favicon.setAttribute('href', icon_link);
     mobile_icon.setAttribute('href', mobile_icon_link)
     manifest.setAttribute('href', manifest_link)
-
-    fetch(`${process.env.REACT_APP_BACKEND_URL}users/getcsrf/`).then( response => { 
+    
+    const url = process.env.REACT_APP_BACKEND_URL // Get BACKEND_URL from .env unless in deployment
+    fetch(`${url ? url : '/'}users/getcsrf/`).then( response => { 
       console.log(response); 
       setcsrf(getCookie('csrftoken'));
       console.log("document cookies:", document.cookie);
