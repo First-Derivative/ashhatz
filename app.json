@@ -8,7 +8,7 @@
     "django"
   ],
   "scripts": {
-    "heroku-prebuild": "cd frontend && npm install",
-    "heroku-postbuild": "npm run build"
+    "heroku-prebuild": "echo 'installing npm' && cd frontend && npm install",
+    "heroku-postbuild": "echo 'building react' cd frontend && npm run build"
   }
 }
