@@ -27,15 +27,18 @@ jobs:
       run: |
         python manage.py collectstatic --no-input
         python manage.py test
-  merge: 
-      needs: [build]
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@master
-      - name: Merge staging -> master
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          message: 'Merge staging -> master: ${{github.event.head_commit.message}}'
-          target_branch: master
-          github_token: ${{ github.token }}
+  merge-branch:
+    name: Merge `master` back into `develop`
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: merge `master` to `develop`
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        target_branch: master
+        github_token:  ${{ github.token }}
