@@ -1,0 +1,13 @@
+{
+  "name": "Ash Hatz.com",
+  "description": "My digital home on the net",
+  "keywords": [
+    "productivity",
+    "HTML5",
+    "react",
+    "django"
+  ],
+  "scripts": {
+    "postinstall": "cd frontend && npm install"
+  }
+}
