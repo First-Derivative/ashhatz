@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "npm --cwd frontend --production=false install",
-    "build": "npm --cwd frontend build"
+    "postinstall": "cd frontend && npm --production=false install",
+    "build": "cd frontend && npm run build"
   }
 }
