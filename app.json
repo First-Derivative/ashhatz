@@ -6,9 +6,5 @@
     "HTML5",
     "react",
     "django"
-  ],
-  "scripts": {
-    "heroku-prebuild": "cd frontend && npm install",
-    "heroku-postbuild": "cd frontend && npm run build"
-  }
+  ]
 }
