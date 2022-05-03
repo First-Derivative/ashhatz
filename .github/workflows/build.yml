@@ -26,8 +26,8 @@ jobs:
         python manage.py collectstatic --no-input
         python manage.py test
   merge:
-    needs: [build]
     if: github.event.pull_request.merged == true
+    needs: [build]
     timeout-minutes: 2
     runs-on: ubuntu-latest
     steps:
