@@ -22,10 +22,7 @@ function DarkmodeSwitch() {
   return (
     <ContainerStyle>
       <div className="d-inline-flex px-3 px-sm-5 mt-3 mt-sm-5">
-        {/* <ToggleStyle> */}
           {darkmode ?  <ToggleOn style={iconStyle} onClick={handleClick}/> : < ToggleOff style={iconStyle} onClick={handleClick} />}
-          
-        {/* </ToggleStyle> */}
         <div className='p my-auto ms-3'>
           { darkmode ? '- Dark mode' : '- Light mode'}
         </div>
