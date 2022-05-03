@@ -2,9 +2,7 @@ name: build_testing
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches: [staging]
 
 jobs:
   build:
@@ -27,3 +25,16 @@ jobs:
       run: |
         python manage.py collectstatic --no-input
         python manage.py test
+  merge: 
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Merge staging -> master
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        message: 'Merge staging -> master: ${{github.event.head_commit.message}}'
+        from_branch: staging
+        target_branch: master
+        github_token: ${{ github.token }}

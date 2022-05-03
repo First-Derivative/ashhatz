@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("django-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get("debug") == "1" else False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['www.ashhatz.com', 'ashhatz.com','ashhatz.herokuapp.com','127.0.0.1']
 
 
 # Application definition
