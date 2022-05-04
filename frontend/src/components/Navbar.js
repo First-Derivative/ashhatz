@@ -2,8 +2,9 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div className="row text-center justify-content-evenly">
-      <div className="col px-3">
+    <div className="row gy-4 gy-sm-5 text-center justify-content-evenly">
+      
+      <div className="col-6 col-sm-3 px-3">
         
         <div className="h5 my-auto py-4 border border-primary">
           Stats
@@ -11,7 +12,7 @@ function Navbar() {
       
       </div>
 
-      <div className="col px-3">
+      <div className="col-6 col-sm-3 px-3">
         
         <div className="h5 my-auto py-4 border border-primary">
           Profile
@@ -19,7 +20,7 @@ function Navbar() {
       
       </div>
 
-      <div className="col px-3">
+      <div className="col-6 col-sm-3 px-3">
         
         <div className="h5 my-auto py-4 border border-primary">
           Literature
@@ -27,7 +28,7 @@ function Navbar() {
       
       </div>
 
-      <div className="col px-3">
+      <div className="col-6 col-sm-3 px-3">
         
         <div className="h5 my-auto py-4 border border-primary">
           Movies
