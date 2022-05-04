@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 
 import Homepage from './pages/Homepage';
-import DarkmodeSwitch from './components/DarkmodeSwitch';
 import { DarkmodeChannel } from './DarkmodeContext';
 
-
-import GlobalStyles from './utils/GlobalStyles';
+import GlobalStyle from './utils/GlobalStyles';
 import icon_link from './assets/favicon.ico';
 import mobile_icon_link from './assets/logo192.png';
 // import manifest_link from './assets/manifest.json';
@@ -28,12 +26,11 @@ function App() {
   return (
     <DarkmodeChannel>
 
-    <GlobalStyles />
-      <div className="container-fluid vh-100" id="app-container">
-        <DarkmodeSwitch />
-      <Homepage/>
-    </div>
+    <GlobalStyle />
 
+      <div className="container-fluid vh-100" id="app-container">
+        <Homepage/>
+      </div>
     </DarkmodeChannel>
   );
 }
