@@ -13,14 +13,14 @@ function SideBar() {
   }
   return (
 
-      <div className="col-3 vh-100 " id='sidebar-container'>
-        <div className='d-flex flex-column min-vh-100 justify-content-between align-items-center'>
+      <div className="col-12 col-sm-3" id='sidebar-container'>
+        <div className='d-flex flex-column justify-content-between align-items-center' id="sidebar-content">
           <DarkmodeSwitch />
-          <div className='my-auto mx-0 mx-sm-5' style={darkStyle}>
-            <div className="h1 mt-5">
+          <div className='text-center my-0 mb-5 my-sm-auto mx-0 mx-sm-5' style={darkStyle}>
+            <div className="h1 mt-0 mt-sm-5">
               Ashraff Hatz
             </div>
-            <div className="p mt-5 ">
+            <div className="p mt-0 mt-sm-5 mx-5 ">
               Developer.
               Dungeon Delver.
               Pokemon Master.
@@ -28,7 +28,7 @@ function SideBar() {
           </div>
   
           <div className=''>
-            <img src={space_small} alt="The Final Frontier" className="img-fluid" />
+            <img src={space_small} alt="The Final Frontier" className="img-fluid" id="space-banner" />
           </div>
         </div>
       </div>

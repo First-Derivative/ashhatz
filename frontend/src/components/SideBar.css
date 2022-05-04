@@ -8,3 +8,31 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+#sidebar-content {
+  min-height: 100vh;
+}
+
+@media (max-width: 500px) {
+
+  #space-banner {
+    display: none;
+  }
+
+  #sidebar-content {
+    background-image: url('../assets/space.png');
+    /* background-size: 239.5px 213px ; */
+    /* background-position: 50% 350%; */
+    background-size: 316.14px 281.16px  ;
+    background-position: 50% -450%; 
+    background-repeat: no-repeat;
+  }
+
+  #sidebar-container, #sidebar-container > * {
+    max-height: 30vh;
+  }
+
+  #sidebar-content {
+    min-height: 30vh;
+  }
+}

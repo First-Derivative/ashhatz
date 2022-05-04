@@ -1,4 +1,4 @@
-import React, { useState, useContext  } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 
 const DarkmodeContext = React.createContext();
 const DarkmodeUpdateContext = React.createContext();
@@ -13,10 +13,20 @@ export function useDarkmodeUpdate() {
 
 export function DarkmodeChannel({ children }){
   
-  const [darkmode, setDarkmode] = useState(false);
+  const [darkmode, setDarkmode] = useState( () => {
+    let read = localStorage.getItem('darkmode')
+    read = JSON.parse(read)
+    if( read === true || read === false ) {
+      return read;
+    }
+    return false;
+  });
+
+  useEffect( ()=> {
+    localStorage.setItem('darkmode', darkmode)
+  }, [darkmode])
 
   function toggleDarkmode() {
-    console.log("calling darkmode context toggleDarkmode")
     setDarkmode( mode => !mode)
   }
 
