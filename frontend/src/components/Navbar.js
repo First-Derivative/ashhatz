@@ -6,7 +6,7 @@ function Navbar() {
       
       <div className="col-6 col-sm-3 px-3">
         
-        <div className="h5 my-auto py-4 border border-primary">
+        <div className="h5 my-auto py-4 border border-light">
           Stats
         </div>
       
@@ -14,7 +14,7 @@ function Navbar() {
 
       <div className="col-6 col-sm-3 px-3">
         
-        <div className="h5 my-auto py-4 border border-primary">
+        <div className="h5 my-auto py-4 border border-light">
           Profile
         </div>
       
@@ -22,7 +22,7 @@ function Navbar() {
 
       <div className="col-6 col-sm-3 px-3">
         
-        <div className="h5 my-auto py-4 border border-primary">
+        <div className="h5 my-auto py-4 border border-light">
           Literature
         </div>
       
@@ -30,7 +30,7 @@ function Navbar() {
 
       <div className="col-6 col-sm-3 px-3">
         
-        <div className="h5 my-auto py-4 border border-primary">
+        <div className="h5 my-auto py-4 border border-light">
           Movies
         </div>
       
