@@ -26,6 +26,13 @@ function GlobalStyle({children}) {
     cursor: pointer
   }
 
+  .invisible {
+    visibility: hidden;
+  }
+
+  .visibile {
+    visibility: visible;
+  }
   `
 
   return (
