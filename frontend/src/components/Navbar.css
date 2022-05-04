@@ -1,5 +1,5 @@
 .btn-nav {
-  border-color: #191919;
+  border-color: #0a0a0a;
   border-radius: 0;
   position: relative;
   overflow: hidden;
@@ -18,7 +18,7 @@
           transform: translateX(-50%);
   width: 0;
   height: 100%;
-  background: #191919;
+  background: #0a0a0a;
   z-index: -1;
   -webkit-transition: width 250ms ease-in-out;
   transition: width 250ms ease-in-out;
@@ -36,7 +36,7 @@
 }
 
 .dark-btn-nav:hover {
-  color: #191919;
+  color: #0a0a0a;
 }
 
 .dark-btn-nav:after {
