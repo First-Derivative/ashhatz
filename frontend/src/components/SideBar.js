@@ -20,7 +20,7 @@ function SideBar() {
             <div className="h1 mt-0 mt-sm-5">
               Ashraff Hatz
             </div>
-            <div className="p mt-0 mt-sm-5 mx-5 ">
+            <div className="p mt-0 mt-sm-5 mx-5 fw-light">
               Developer.
               Dungeon Delver.
               Pokemon Master.
