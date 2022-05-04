@@ -1,9 +1,11 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 function AppContent() {
   return (
-    <div className="col-9 mt-5 p-5">
-      <div className="col">
+    <div className="col-9 p-5">
+      <Navbar />
+      <div className="row  mt-5 ">
         <div className="h2"> Portfolio </div>
       </div>
     </div>
