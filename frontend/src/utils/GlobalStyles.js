@@ -25,6 +25,10 @@ function GlobalStyle({children}) {
     }
   }
 
+  .target {
+    cursor: pointer
+  }
+
   `
 
   return (

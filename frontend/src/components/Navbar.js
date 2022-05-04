@@ -42,7 +42,7 @@ function Navbar() {
       <div className="col-6 col-sm-3 px-3">
         
         <div className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}>
-          Movies
+          Media
         </div>
       
       </div>
