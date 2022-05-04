@@ -28,6 +28,10 @@
     background-repeat: no-repeat;
   }
 
+  #sidebar-main-content {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
   #sidebar-container, #sidebar-container > * {
     max-height: 30vh;
   }
