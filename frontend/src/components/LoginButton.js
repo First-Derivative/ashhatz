@@ -17,10 +17,7 @@ function LoginButton() {
   const icon = {
     width : '16px',
     height : '16px',
-    filter : `${ darkmode ?
-      'invert(7%) sepia(1%) saturate(1043%) hue-rotate(314deg) brightness(98%) contrast(94%)' :
-      'none'
-    }`
+    filter : 'invert(0%) sepia(2%) saturate(4%) hue-rotate(179deg) brightness(94%) contrast(92%)'
   }
 
   return (
