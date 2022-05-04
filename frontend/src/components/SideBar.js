@@ -7,10 +7,9 @@ import { useDarkmode } from '../DarkmodeContext'
 
 function SideBar() {
   const darkmode = useDarkmode();
-  const renderedColor = darkmode ? '#7A6E6E' : 'white'
 
   const darkStyle = {
-    color: renderedColor
+    color: 'white'
   }
   return (
 

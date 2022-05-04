@@ -15,14 +15,11 @@ function GlobalStyle({children}) {
   }
   
   .p {
-    color: ${ darkmode ? '#7A6E6E' : 'white'};
+    color: white;
   }
 
   svg {
-    filter: ${ darkmode ?
-      'invert(50%) sepia(2%) saturate(2305%) hue-rotate(314deg) brightness(85%) contrast(81%)' :
-      'invert(100%) sepia(100%) saturate(0%) hue-rotate(100deg) brightness(104%) contrast(103%)'
-    }
+    filter: invert(100%) sepia(96%) saturate(17%) hue-rotate(293deg) brightness(104%) contrast(106%)
   }
 
   .target {

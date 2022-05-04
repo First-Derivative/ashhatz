@@ -24,7 +24,7 @@
     /* background-size: 239.5px 213px ; */
     /* background-position: 50% 350%; */
     background-size: 316.14px 281.16px  ;
-    background-position: 50% -450%; 
+    background-position: 50% -170%; 
     background-repeat: no-repeat;
   }
 
@@ -33,10 +33,17 @@
   }
 
   #sidebar-container, #sidebar-container > * {
-    max-height: 30vh;
+    max-height: 25vh;
   }
 
   #sidebar-content {
-    min-height: 30vh;
+    min-height: 25vh;
+  }
+}
+
+@media (max-width: 375px) {
+
+  #sidebar-content {
+    background-position: 50% -65%; 
   }
 }

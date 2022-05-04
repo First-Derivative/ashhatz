@@ -32,7 +32,7 @@
 
 
 .dark-btn-nav {
-  border-color: #7A6E6E;
+  border-color: white;
 }
 
 .dark-btn-nav:hover {
@@ -40,5 +40,5 @@
 }
 
 .dark-btn-nav:after {
-  background: #7A6E6E;
+  background: white;
 }
