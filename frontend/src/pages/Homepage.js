@@ -6,7 +6,7 @@ function Homepage() {
   return (
       <div className="row">
         <SideBar />
-        <AppContent />
+        <AppContent title={'Portfolio'}/>
       </div>
   )
 }

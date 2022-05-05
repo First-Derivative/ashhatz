@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import Homepage from './pages/Homepage';
+import Profile from './pages/Profile';
 import { DarkmodeChannel } from './DarkmodeContext';
 import { Routes, Route, Navigate} from 'react-router-dom';
 import GlobalStyle from './utils/GlobalStyles';
@@ -28,6 +29,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route exact path="/" element={<Homepage/>} />
+        <Route exact path="/profile" element={<Profile/>} />
         <Route
         path="*"
         element={<Navigate to="/" replace />}
