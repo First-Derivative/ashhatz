@@ -22,6 +22,13 @@ function Navbar() {
     navigate('/profile');
   }
 
+  const handleLiterature = () => {
+    navigate('/literature')
+  }
+
+  const handleMedia = () => {
+    navigate('/media')
+  }
   return (
     <div className="row gy-4 gy-sm-5 text-center justify-content-evenly">
       
@@ -50,7 +57,10 @@ function Navbar() {
 
       <div className="col-6 col-sm-3 px-3">
         
-        <div className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}>
+        <div 
+        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}
+        onClick={handleLiterature}
+        >
           Literature
         </div>
       
@@ -58,7 +68,9 @@ function Navbar() {
 
       <div className="col-6 col-sm-3 px-3">
         
-        <div className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}>
+        <div className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}
+          onClick={handleMedia}
+        >
           Media
         </div>
       
