@@ -4,10 +4,10 @@ import AppContent from '../components/AppContent'
 
 function Homepage() {
   return (
-    <div className="row">
-      <SideBar />
-      <AppContent />
-    </div>
+      <div className="row">
+        <SideBar />
+        <AppContent />
+      </div>
   )
 }
 
