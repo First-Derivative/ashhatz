@@ -3,10 +3,8 @@ import DarkmodeSwitch from './DarkmodeSwitch'
 import LoginButton from './LoginButton'
 import './SideBar.css'
 import space_small from '../assets/space.png'
-import { useDarkmode } from '../DarkmodeContext'
 
 function SideBar() {
-  const darkmode = useDarkmode();
 
   const darkStyle = {
     color: 'white'

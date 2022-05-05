@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import Homepage from './pages/Homepage';
 import { DarkmodeChannel } from './DarkmodeContext';
-
+import { Routes, Route, Navigate} from 'react-router-dom';
 import GlobalStyle from './utils/GlobalStyles';
 import icon_link from './assets/favicon.ico';
 import mobile_icon_link from './assets/logo192.png';
@@ -22,15 +22,17 @@ function App() {
     // manifest.setAttribute('href', manifest)
   }, []);
 
-
   return (
+
     <DarkmodeChannel>
-
-    <GlobalStyle />
-
-      <div className="container-fluid vh-100" id="app-container">
-        <Homepage/>
-      </div>
+      <GlobalStyle />
+      <Routes>
+        <Route exact path="/" element={<Homepage/>} />
+        <Route
+        path="*"
+        element={<Navigate to="/" replace />}
+        />
+      </Routes>
     </DarkmodeChannel>
   );
 }
