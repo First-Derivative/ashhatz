@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ash Hatz -Where?</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+  }
+  .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0a0a0a;
+    border-radius: 1rem;
+    padding: 4rem;
+    color: white;
+    text-align: center;
+    font-size: 150%;
+
+  }
+
+  a {
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  @media (max-width: 400px) {
+    .container{
+      font-size: 75;
+      padding: 2rem;
+    }
+  }
+</style>
+<body>
+  <div class="container">
+
+    <h1>
+      Didn't find shit
+    </h1>
+    <a href="{% url 'home' %}">
+      Go back home
+    </a>
+</div>
+
+</body>
+</html>
