@@ -33,6 +33,12 @@ function GlobalStyle({children}) {
   .visibile {
     visibility: visible;
   }
+
+  .active {
+    color: ${darkmode ? darkTheme.body : lightTheme.body};
+    background-color: ${darkmode ? darkTheme.text : lightTheme.text}
+  }
+
   `
 
   return (

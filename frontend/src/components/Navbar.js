@@ -1,17 +1,14 @@
 import React from 'react'
 import './Navbar.css'
-import { darkTheme, lightTheme} from '../utils/theme' 
 import { useDarkmode } from '../DarkmodeContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function Navbar() {
   const navigate = useNavigate();
   const darkmode = useDarkmode();
 
-  const active = {
-    color: `${darkmode ? darkTheme.body : lightTheme.body}`,
-    backgroundColor: `${darkmode ? darkTheme.text : lightTheme.text}`
-  }
+  const {pathname} = useLocation();
+  console.log(pathname);
 
   const handleHomepage = () => {
     navigate('/');
@@ -35,8 +32,9 @@ function Navbar() {
       <div className="col-6 col-sm-3 px-3 ">
         
         <div 
-        style={active}  
-        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? "dark-btn-nav" : "" }`}
+        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target 
+        ${ pathname === '/' ? 'active' : ''}
+        ${ darkmode ? "dark-btn-nav" : "" }`}
         onClick={handleHomepage}
         >
           Stats
@@ -47,7 +45,9 @@ function Navbar() {
       <div className="col-6 col-sm-3 px-3">
         
         <div 
-        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}
+        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target
+        ${ pathname === '/profile' ? 'active' : ''}
+        ${ darkmode ? 'dark-btn-nav' : '' }`}
         onClick={handleProfile}
         >
           Profile
@@ -58,7 +58,9 @@ function Navbar() {
       <div className="col-6 col-sm-3 px-3">
         
         <div 
-        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}
+        className={`h5 my-auto mx-auto py-3 w-75 btn-nav target
+        ${ pathname === '/literature' ? 'active' : ''}
+        ${ darkmode ? 'dark-btn-nav' : '' }`}
         onClick={handleLiterature}
         >
           Literature
@@ -68,7 +70,9 @@ function Navbar() {
 
       <div className="col-6 col-sm-3 px-3">
         
-        <div className={`h5 my-auto mx-auto py-3 w-75 btn-nav target ${ darkmode ? 'dark-btn-nav' : '' }`}
+        <div className={`h5 my-auto mx-auto py-3 w-75 btn-nav target
+        ${ pathname === '/media' ? 'active' : ''}
+        ${ darkmode ? 'dark-btn-nav' : '' }`}
           onClick={handleMedia}
         >
           Media
