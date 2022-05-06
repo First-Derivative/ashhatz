@@ -8,7 +8,6 @@ function Navbar() {
   const darkmode = useDarkmode();
 
   const {pathname} = useLocation();
-  console.log(pathname);
 
   const handleHomepage = () => {
     navigate('/');
