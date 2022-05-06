@@ -26,10 +26,6 @@ function GlobalStyle({children}) {
     cursor: pointer
   }
 
-  .invisible {
-    visibility: hidden;
-  }
-
   .visibile {
     visibility: visible;
   }
@@ -37,6 +33,16 @@ function GlobalStyle({children}) {
   .active {
     color: ${darkmode ? darkTheme.body : lightTheme.body};
     background-color: ${darkmode ? darkTheme.text : lightTheme.text}
+  }
+
+  #darkmode-text {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+  }
+
+  #darkmode-container:hover > #darkmode-text {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
   }
 
   `
