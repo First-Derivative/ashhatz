@@ -27,7 +27,6 @@ class CheckAuth(APIView):
 
     try: 
       user = request.user
-      print(user)
       if(user.is_authenticated):
         serialized = UserSerializer(user)
         return Response(serialized.data, status=200)
