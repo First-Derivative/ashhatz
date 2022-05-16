@@ -8,15 +8,16 @@ import { lightTheme, darkTheme } from '../utils/theme'
 
 function LoginModal({open, openHandler}) {
   
-  const handleKeyEscape = (e) => {
-    if(e.key === 'Escape') {
-      openHandler()
-    }
-  }
-
   useEffect( () => {
-    document.addEventListener("keyup", handleKeyEscape);
-  }, [])
+    if (!open) return
+  
+    function handleEscape(e) {
+      if(e.key === 'Escape') openHandler()
+    }
+    window.addEventListener("keyup", handleEscape);
+    return () => window.removeEventListener("keyup", handleEscape);
+
+  }, [open])
   
   const darkmode = useDarkmode()
   const [formData, setFormData] = useState({
