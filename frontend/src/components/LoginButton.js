@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ReactComponent as LockLoginIcon } from '../assets/lock.svg'
 import { ReactComponent as UnlockLoginIcon } from '../assets/unlock.svg'
 import { useDarkmode } from '../DarkmodeContext'
