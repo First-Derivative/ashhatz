@@ -5,6 +5,7 @@ import { ReactComponent as UnlockIcon } from '../assets/unlock.svg'
 import { ReactComponent as CloseIcon } from '../assets/remove.svg'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
+import CSRFToken from './CSRFToken'
 
 function LoginModal({open, openHandler}) {
   
@@ -64,6 +65,8 @@ function LoginModal({open, openHandler}) {
     [e.target.name] : e.target.value
   })
 
+
+
   return ReactDOM.createPortal(
     // tabIndex="1" onKeyDown={(e) => handleKeyEscape(e)}
     <>
@@ -92,6 +95,8 @@ function LoginModal({open, openHandler}) {
             {/* Form */}
             <div className="col-12 mx-auto my-auto">
               
+              {/* CSRF Token */}
+              <CSRFToken />
               {/* Email */}
               <div className="form-group row justify-content-center">
                   <label htmlFor="email" className="col-1 px-0 text-center align-self-center"><UserIcon style={iconStyle}/></label>
@@ -125,7 +130,7 @@ function LoginModal({open, openHandler}) {
             </div>
 
             {/* Login Button */}
-            <button className={`col-3 mx-auto my-3 btn ${darkmode ? 'btn-outline-light' : 'btn-outline-dark'}`}>
+            <button className={`col-2 mx-auto my-3 btn ${darkmode ? 'btn-outline-light' : 'btn-outline-dark'}`}>
               login
             </button>
 
