@@ -3,8 +3,11 @@ import DarkmodeSwitch from './DarkmodeSwitch'
 import LoginButton from './LoginButton'
 import './SideBar.css'
 import space_small from '../assets/space.png'
+import { useAuth } from '../AuthContext'
 
 function SideBar() {
+
+  const [isAuth, credentials] = useAuth();
 
   const darkStyle = {
     color: 'white'
@@ -17,7 +20,7 @@ function SideBar() {
           <DarkmodeSwitch />
           <div className='text-center my-0 mb-5 my-sm-auto mx-0 mx-sm-5' style={darkStyle} id="sidebar-main-content">
             <div className="h1 mt-0 mt-sm-5">
-              Ashraff Hatz
+              { isAuth ? `Imperator ${credentials["name"]}` : 'Ashraff Hatz'}
             </div>
             <div className="p mt-0 mt-sm-5 mx-5 fw-light">
               Developer.
