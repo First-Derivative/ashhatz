@@ -6,10 +6,10 @@ __pycache__
 staticfiles/
 modelmedia/
 
-# Dev Files
-*/migrations/*
-migrations/*
-db.sqlite3
+# Dev Files : Subsequent lines commented for deployment with static database
+# */migrations/*
+# migrations/*
+# db.sqlite3
 
 # Special Files #
 *_key.json
