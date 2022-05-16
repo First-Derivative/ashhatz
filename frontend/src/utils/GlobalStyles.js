@@ -70,7 +70,13 @@ function GlobalStyle({children}) {
     transition: opacity 300ms ease-in;
   }
 
-  // ===== LoginButton.js Styling =====
+  // ===== Login Styling =====
+
+  @media (max-width: 500px) {
+    #login-container {
+      width: 80vw !important;
+    }
+  }
 
   #btn-admin-access {
     transition: all 200ms ease-in;
