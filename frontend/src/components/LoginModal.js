@@ -88,7 +88,7 @@ function LoginModal({open, openHandler}) {
   return ReactDOM.createPortal(
     <>
     <div style={overlayStyle} >
-      <div className="rounded" style={containerStyle}>
+      <div className="rounded" id="login-container" style={containerStyle}>
 
         <div className="container">
 
@@ -112,7 +112,7 @@ function LoginModal({open, openHandler}) {
 
             {/* ErrorAlert */}
             {error.length > 0 ? ( 
-              <ErrorAlert styling={"col-5 my-3 mx-auto text-center"} message={error} />
+              <ErrorAlert styling={"col-10 col-sm-5 my-3 mx-auto text-center"} message={error} />
             ) : null}  
             
             {/* Form */}
@@ -153,7 +153,7 @@ function LoginModal({open, openHandler}) {
             </div>
 
             {/* Login Button */}
-            <button className={`col-2 mx-auto my-3 btn ${darkmode ? 'btn-outline-light' : 'btn-outline-dark'}`}
+            <button className={`col-4 col-sm-2 mx-auto my-3 btn ${darkmode ? 'btn-outline-light' : 'btn-outline-dark'}`}
             onClick={(e) => handleLogin(e)}>
               login
             </button>
