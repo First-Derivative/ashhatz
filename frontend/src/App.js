@@ -5,6 +5,7 @@ import Profile from './pages/Profile';
 import Media from './pages/Media';
 import Literature from './pages/Literature';
 import { DarkmodeChannel } from './DarkmodeContext';
+import AuthChannel from './AuthContext';
 import { Routes, Route, Navigate} from 'react-router-dom';
 import GlobalStyle from './utils/GlobalStyles';
 import icon_link from './assets/favicon.ico';
@@ -26,20 +27,21 @@ function App() {
   }, []);
 
   return (
-
-    <DarkmodeChannel>
-      <GlobalStyle />
-      <Routes>
-        <Route exact path="/" element={<Homepage/>} />
-        <Route exact path="/profile" element={<Profile/>} />
-        <Route exact path="/literature" element={<Literature/>} />
-        <Route exact path="/media" element={<Media/>} />
-        <Route
-        path="*"
-        element={<Navigate to="/" replace />}
-        />
-      </Routes>
-    </DarkmodeChannel>
+    <AuthChannel> 
+      <DarkmodeChannel>
+        <GlobalStyle />
+        <Routes>
+          <Route exact path="/" element={<Homepage/>} />
+          <Route exact path="/profile" element={<Profile/>} />
+          <Route exact path="/literature" element={<Literature/>} />
+          <Route exact path="/media" element={<Media/>} />
+          <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+          />
+        </Routes>
+      </DarkmodeChannel>
+    </AuthChannel>
   );
 }
 
