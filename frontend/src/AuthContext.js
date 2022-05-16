@@ -33,13 +33,20 @@ function AuthChannel({ children }) {
     setIsAuth(value)
   }
 
+  function updateCredentials(object) {
+    if( !("name" in object ) || !("email" in object) ){
+      throw new Error("Invalid Credentials object")
+    }
+    setCredentials(object)
+  }
+
   useEffect( ()=> {
     checkAuth()
   }, [])
 
   return (
     <AuthContext.Provider value={ [isAuth, credentials] }>
-      <AuthUpdateContext.Provider value={updateAuth} >
+      <AuthUpdateContext.Provider value={ [updateAuth, updateCredentials] } >
         {children}
       </AuthUpdateContext.Provider>
     </AuthContext.Provider> 
