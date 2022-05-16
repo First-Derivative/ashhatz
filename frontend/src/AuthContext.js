@@ -20,10 +20,9 @@ function AuthChannel({ children }) {
   const checkAuth = () => {
     axiosInstance.get('users/checkAuth').then( (res) => {
       setIsAuth(true)
-      console.log(res)
+      setCredentials(res.data)
     }).catch( (err) => {
       setIsAuth(false)
-      console.log(err)
     })
   }
 
