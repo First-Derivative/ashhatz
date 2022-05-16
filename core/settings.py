@@ -156,3 +156,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://www.ashhatz.com",
     "http://ashhatz.com"
 ]
+
+SECURE_SSL_REDIRECT = True
