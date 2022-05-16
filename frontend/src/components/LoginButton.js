@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ReactComponent as LockLoginIcon } from '../assets/lock.svg'
 import { ReactComponent as UnlockLoginIcon } from '../assets/unlock.svg'
 import { useDarkmode } from '../DarkmodeContext'
 import { darkTheme, lightTheme } from '../utils/theme'
+import LoginModal from './LoginModal'
 
 function LoginButton() {
 
   const darkmode = useDarkmode();
   const [isHover, setIsHover] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
 
   const container = {
     position: 'absolute',
@@ -26,22 +28,31 @@ function LoginButton() {
     setIsHover(input)
   }
 
+  const updateModal = (input) => {
+    setModalOpen(input)
+  }
+
   return (
-    <div 
-    style={container} 
-    className="py-2 px-3 rounded-pill d-flex flex-row justify-content-between target" 
-    id="btn-admin-access"
-    onMouseEnter={() => updateHover(true)}
-    onMouseLeave={() => updateHover(false)}>
-
-      { isHover ? ( <UnlockLoginIcon style={icon} className="my-auto"/> ) : 
-      ( <LockLoginIcon style={icon} className="my-auto"/>) }
-
-      <div className='ps-2'>
-        Admin Access
+    <>
+      <div 
+      style={container} 
+      className="py-2 px-3 rounded-pill d-flex flex-row justify-content-between target" 
+      id="btn-admin-access"
+      onMouseEnter={() => updateHover(true)}
+      onMouseLeave={() => updateHover(false)}
+      onClick={() => updateModal(true)}
+      >
+  
+        { isHover ? ( <UnlockLoginIcon style={icon} className="my-auto"/> ) : 
+        ( <LockLoginIcon style={icon} className="my-auto"/>) }
+  
+        <div className='ps-2'>
+          Admin Access
+        </div>
+  
       </div>
-
-    </div>
+      <LoginModal open={modalOpen} openHandler={() => updateModal(false)} />
+    </>
   )
 }
 
