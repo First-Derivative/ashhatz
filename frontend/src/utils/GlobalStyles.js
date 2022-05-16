@@ -45,6 +45,18 @@ function GlobalStyle({children}) {
     transition: opacity 300ms ease-in;
   }
 
+  // ===== LoginButton.js Styling =====
+
+  #btn-admin-access {
+    transition: all 200ms ease-in;
+  }
+
+  #btn-admin-access:hover {
+    bottom: 5.5% !important;
+    background-color: hsl(0, 0%, 95%) !important;
+    transition: all 200ms ease-in;
+  }
+
   `
 
   return (
