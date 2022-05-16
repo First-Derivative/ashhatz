@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { ReactComponent as LockLoginIcon } from '../assets/lock.svg'
 import { ReactComponent as UnlockLoginIcon } from '../assets/unlock.svg'
+import { useAuth } from '../AuthContext'
 import { useDarkmode } from '../DarkmodeContext'
 import { darkTheme, lightTheme } from '../utils/theme'
 import LoginModal from './LoginModal'
 
 function LoginButton() {
-
+  const [isAuth, credentials] = useAuth()
   const darkmode = useDarkmode();
   const [isHover, setIsHover] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
@@ -19,8 +20,8 @@ function LoginButton() {
   }
 
   const icon = {
-    width : '16px',
-    height : '16px',
+    width : '20px',
+    aspectRatio: '1/1',
     filter : 'invert(0%) sepia(2%) saturate(4%) hue-rotate(179deg) brightness(94%) contrast(92%)'
   }
 
@@ -29,6 +30,9 @@ function LoginButton() {
   }
 
   const updateModal = (input) => {
+    if(input && isAuth) {
+      return
+    }
     setModalOpen(input)
   }
 
