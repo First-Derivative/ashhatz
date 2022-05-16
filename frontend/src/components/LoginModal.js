@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
+import { useAuthUpdate } from '../AuthContext'
 import { ReactComponent as UserIcon } from '../assets/user-circle.svg'
 import { ReactComponent as UnlockIcon } from '../assets/unlock.svg'
 import { ReactComponent as CloseIcon } from '../assets/remove.svg'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
 import CSRFToken from './CSRFToken'
+import axiosInstance from '../utils/axios'
+import ErrorAlert from './ErrorAlert'
 
 function LoginModal({open, openHandler}) {
   
@@ -21,10 +24,12 @@ function LoginModal({open, openHandler}) {
   }, [open])
   
   const darkmode = useDarkmode()
+  const [updateAuth, updateCredentials] = useAuthUpdate()
   const [formData, setFormData] = useState({
     'email' : '',
     'password' : ''
   })
+  const [error, setError] = useState([])
 
   if (!open) return null
 
@@ -57,7 +62,7 @@ function LoginModal({open, openHandler}) {
     transform: 'translate(-50%, -50%)',
     backgroundColor: darkmode ? darkTheme.body : lightTheme.body ,
     zIndex: '2000',
-    width: 'auto'
+    width: '37.206rem'
   }
 
   const handleInput = (e) => setFormData({
@@ -65,15 +70,28 @@ function LoginModal({open, openHandler}) {
     [e.target.name] : e.target.value
   })
 
+  const handleLogin = (e) => {
+    e.preventDefault()
+    setError([]) // Reset error state to remove alert on login click
 
+    axiosInstance.post("users/auth/login", formData).then( (res) => {
+      openHandler()
+      updateAuth(true)
+      updateCredentials(res.data)
+    }).catch( (err) => {
+      setError([
+        err.response.data.error
+      ])
+    })
+  }
 
   return ReactDOM.createPortal(
-    // tabIndex="1" onKeyDown={(e) => handleKeyEscape(e)}
     <>
     <div style={overlayStyle} >
       <div className="rounded" style={containerStyle}>
 
         <div className="container">
+
           {/* Closing BUtton */}
           <div className="row pe-3 pt-3 justify-content-end">
             <div className="col-1 px-0 text-end">
@@ -88,9 +106,14 @@ function LoginModal({open, openHandler}) {
           {/* Main Content */}
           <div className="row pt-0 mb-4">
             {/* Title  */}
-            <div className="col-12 mb-5 text-center">
+            <div className={`col-12 ${error.length > 0 ? '' : 'mb-5'} text-center`}>
               <div className="h1"> Admin Login </div>
             </div>
+
+            {/* ErrorAlert */}
+            {error.length > 0 ? ( 
+              <ErrorAlert styling={"col-5 my-3 mx-auto text-center"} message={error} />
+            ) : null}  
             
             {/* Form */}
             <div className="col-12 mx-auto my-auto">
@@ -130,7 +153,8 @@ function LoginModal({open, openHandler}) {
             </div>
 
             {/* Login Button */}
-            <button className={`col-2 mx-auto my-3 btn ${darkmode ? 'btn-outline-light' : 'btn-outline-dark'}`}>
+            <button className={`col-2 mx-auto my-3 btn ${darkmode ? 'btn-outline-light' : 'btn-outline-dark'}`}
+            onClick={(e) => handleLogin(e)}>
               login
             </button>
 
