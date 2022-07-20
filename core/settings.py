@@ -15,6 +15,8 @@ from re import T
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load and configure Environment Variables 
 from dotenv import load_dotenv
 import os
 
@@ -44,7 +46,8 @@ INSTALLED_APPS = [
     "corsheaders",
     'rest_framework',
     
-    'users'
+    'users',
+    'portfolio'
 ]
 
 MIDDLEWARE = [
