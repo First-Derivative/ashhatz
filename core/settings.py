@@ -20,6 +20,8 @@ import os
 
 load_dotenv()
 
+dev_mode = True if os.environ.get("debug") == "1" else False
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -27,7 +29,7 @@ load_dotenv()
 SECRET_KEY = os.environ.get("django-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get("debug") == "1" else False
+DEBUG = dev_mode
 
 ALLOWED_HOSTS = ['www.ashhatz.com', 'ashhatz.com','ashhatz.herokuapp.com','127.0.0.1']
 
@@ -157,6 +159,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://ashhatz.com"
 ]
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = not dev_mode
+SESSION_COOKIE_SECURE = not dev_mode
+CSRF_COOKIE_SECURE = not dev_mode
