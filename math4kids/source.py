@@ -41,7 +41,7 @@ class Test:
       q = Question(a, b, "div", answer)
       self.questions.append(q)
 
-  def getScore(self):
+  def get_score(self):
     score = 0
     for q in self.questions:
       if(q.marked == 1):
@@ -50,7 +50,7 @@ class Test:
     self.score = score
     return score
 
-  def getGrade(self):
+  def get_grade(self):
     total = self.no_total
     score = self.score
 
@@ -69,8 +69,24 @@ class Test:
     elif( (score/total) <= .40 ):
       self.grade = "F"
 
-    return grade
+    return self.grade
 
+  def jsonify(self):
+    
+    # instansiate test dictionary
+    test = {
+      "questions": [],
+      "no_mult" : self.no_mult,
+      "no_div" : self.no_div,
+      "no_total" : self.no_total
+    }
+
+    # fill questions array
+    for q in self.questions:
+      q_json = q.jsonify()
+      test["questions"].append(q_json)
+
+    return test
 
 class Question:
   
@@ -100,7 +116,7 @@ class Question:
     self.marked = 0
     return
 
-  def getMark(self):
+  def get_mark(self):
     '''
       Returns a boolean value based on class property marked. 
       edge-case marking (such as question unmarked [neither true nor false]) return a -1 value
@@ -110,3 +126,13 @@ class Question:
     elif( self.marked == 0):
       return False
     return -1
+
+  def jsonify(self):
+    question = {
+      "a" : self.a,
+      "b" : self.b,
+      "operator": self.operator,
+      "answer": self.answer
+    }
+
+    return question
