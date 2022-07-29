@@ -20,6 +20,8 @@ import os
 
 load_dotenv()
 
+ssl_mode = True if os.environ.get("ssl") == "1" else False
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -157,6 +159,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://ashhatz.com"
 ]
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = ssl_mode
+SESSION_COOKIE_SECURE = ssl_mode
+CSRF_COOKIE_SECURE = ssl_mode
