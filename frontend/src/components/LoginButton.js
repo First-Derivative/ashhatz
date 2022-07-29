@@ -51,7 +51,7 @@ function LoginButton() {
         ( <LockLoginIcon style={icon} className="my-auto"/>) }
   
         <div className='ps-2'>
-          Admin Access
+          { isAuth ? 'Sign Out' : 'Admin Access' }
         </div>
   
       </div>
