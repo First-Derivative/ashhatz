@@ -10,7 +10,7 @@ import CSRFToken from './CSRFToken'
 import axiosInstance from '../utils/axios'
 import ErrorAlert from './ErrorAlert'
 
-function LoginModal({open, openHandler}) {
+function LoginModal({open, openHandler, updateLoginHandler}) {
   
   useEffect( () => {
     if (!open) return
@@ -92,6 +92,7 @@ function LoginModal({open, openHandler}) {
       openHandler()
       updateAuth(true)
       updateCredentials(res.data)
+      updateLoginHandler()
     }).catch( (err) => {
       setError([
         err.response.data.error

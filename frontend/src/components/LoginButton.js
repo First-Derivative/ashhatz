@@ -13,7 +13,7 @@ function LoginButton() {
   const darkmode = useDarkmode();
   const [isHover, setIsHover] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
-  const [signOut, setSignOut] = useState(false)
+  const [login, setLogin] = useState(false)
 
   const container = {
     position: 'absolute',
@@ -29,14 +29,14 @@ function LoginButton() {
   }
 
   useEffect(() => {
-    if( signOut === true ){
+    if( login === true ){
       setTimeout(() => {
-        setSignOut(false)
+        setLogin(false)
         clearTimeout(this);  
-      }, 3000);
+      }, 2500);
     }
     return
-  }, [signOut]);
+  }, [login]);
 
   const updateHover = (input) => {
     setIsHover(input)
@@ -45,7 +45,7 @@ function LoginButton() {
   const handleSignout = () => {
 
     axiosInstance.post("users/auth/logout").then( (res) => {
-      setSignOut(true)
+      setLogin(true)
       updateAuth(false)
     }).catch( (err) => {
       console.log(err.response.data.error)
@@ -63,9 +63,9 @@ function LoginButton() {
   return (
     <>
 
-      { signOut && <div className="position-absolute" style={{ 'bottom': '5rem' }} >
+      { login && <div className="position-absolute" style={{ 'bottom': '5rem' }} >
         <div class="alert alert-success" role="alert">
-          Sign out success!
+          {isAuth ? 'Login Success!' : 'Sign Out Success'}
         </div> 
       </div> }
 
@@ -86,7 +86,7 @@ function LoginButton() {
         </div>
 
       </div>
-      <LoginModal open={modalOpen} openHandler={() => updateModal(false)} />
+      <LoginModal open={modalOpen} openHandler={() => updateModal(false)} updateLoginHandler={ () => setLogin(true) } />
     </>
   )
 }
