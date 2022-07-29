@@ -29,7 +29,6 @@ function LoginButton() {
   }
 
   useEffect(() => {
-    console.log("signout state: ", signOut)
     if( signOut === true ){
       setTimeout(() => {
         setSignOut(false)

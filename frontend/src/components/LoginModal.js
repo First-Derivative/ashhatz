@@ -70,6 +70,20 @@ function LoginModal({open, openHandler}) {
     [e.target.name] : e.target.value
   })
 
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      let email_input = document.getElementById('email')
+      let password_input = document.getElementById('password')
+      if(e.target === email_input ){
+        password_input.focus()
+      }
+      else {
+        handleLogin(e)
+      }
+    }
+  }
+
   const handleLogin = (e) => {
     e.preventDefault()
     setError([]) // Reset error state to remove alert on login click
@@ -131,7 +145,9 @@ function LoginModal({open, openHandler}) {
                     placeholder="email"
                     name="email"
                     defaultValue={formData.email}
-                    onChange={e => handleInput(e)}/>
+                    onChange={e => handleInput(e)}
+                    onKeyDown={e => handleEnter(e)}
+                    />
                   </div>
                 </div>
               
@@ -146,7 +162,9 @@ function LoginModal({open, openHandler}) {
                   placeholder="password"
                   name="password"
                   defaultValue={formData.password}
-                  onChange={e => handleInput(e)}/>
+                  onChange={e => handleInput(e)}
+                  onKeyDown={e => handleEnter(e)}
+                  />
                 </div>
               </div>
 
