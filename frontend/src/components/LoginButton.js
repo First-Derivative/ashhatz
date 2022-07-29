@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ReactComponent as LockLoginIcon } from '../assets/lock.svg'
 import { ReactComponent as UnlockLoginIcon } from '../assets/unlock.svg'
-import { useAuth } from '../AuthContext'
+import { useAuth, useAuthUpdate } from '../AuthContext'
 import { useDarkmode } from '../DarkmodeContext'
 import { darkTheme, lightTheme } from '../utils/theme'
+import axiosInstance from '../utils/axios'
 import LoginModal from './LoginModal'
 
 function LoginButton() {
   const [isAuth, credentials] = useAuth()
+  const [updateAuth, updateCredentials] = useAuthUpdate()
   const darkmode = useDarkmode();
   const [isHover, setIsHover] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
+  const [signOut, setSignOut] = useState(false)
 
   const container = {
     position: 'absolute',
@@ -25,12 +28,34 @@ function LoginButton() {
     filter : 'invert(0%) sepia(2%) saturate(4%) hue-rotate(179deg) brightness(94%) contrast(92%)'
   }
 
+  useEffect(() => {
+    console.log("signout state: ", signOut)
+    if( signOut === true ){
+      setTimeout(() => {
+        setSignOut(false)
+        clearTimeout(this);  
+      }, 3000);
+    }
+    return
+  }, [signOut]);
+
   const updateHover = (input) => {
     setIsHover(input)
   }
 
+  const handleSignout = () => {
+
+    axiosInstance.post("users/auth/logout").then( (res) => {
+      setSignOut(true)
+      updateAuth(false)
+    }).catch( (err) => {
+      console.log(err.response.data.error)
+    })
+  }
+
   const updateModal = (input) => {
     if(input && isAuth) {
+      handleSignout()
       return
     }
     setModalOpen(input)
@@ -38,6 +63,13 @@ function LoginButton() {
 
   return (
     <>
+
+      { signOut && <div className="position-absolute" style={{ 'bottom': '5rem' }} >
+        <div class="alert alert-success" role="alert">
+          Sign out success!
+        </div> 
+      </div> }
+
       <div 
       style={container} 
       className="py-2 px-3 rounded-pill d-flex flex-row justify-content-between target" 
@@ -53,7 +85,7 @@ function LoginButton() {
         <div className='ps-2'>
           { isAuth ? 'Sign Out' : 'Admin Access' }
         </div>
-  
+
       </div>
       <LoginModal open={modalOpen} openHandler={() => updateModal(false)} />
     </>
