@@ -11,7 +11,7 @@ def validate_data(data):
 
   for field in fields:
     if(field not in data.keys()):
-      return False
+      return ErrorResponse(message="Server Error: Missing {} field".format(field))
   return True
 
 @api_view(['POST'])
@@ -19,11 +19,11 @@ def validate_data(data):
 def createTest(request):
 
   data = request.data
+  valid_data = validate_data(data)
 
   # Validate POST Data
-  if(not validate_data(data)):
-    error = ErrorResponse(message="Form error, please refresh the page")
-    return Response(error.message, status=error.status)
+  if(type(valid_data) == ErrorResponse):
+    return Response(valid_data.message, status=valid_data.status)
 
   new_test = Test(data["no_mult"], data["no_div"], data["bound_lower"], data["bound_upper"])
   data = new_test.jsonify()
