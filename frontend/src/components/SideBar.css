@@ -12,38 +12,3 @@
 #sidebar-content {
   min-height: 100vh;
 }
-
-@media (max-width: 500px) {
-
-  #space-banner {
-    display: none;
-  }
-
-  #sidebar-content {
-    background-image: url('../assets/space.png');
-    /* background-size: 239.5px 213px ; */
-    /* background-position: 50% 350%; */
-    background-size: 316.14px 281.16px  ;
-    background-position: 50% -170%; 
-    background-repeat: no-repeat;
-  }
-
-  #sidebar-main-content {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  }
-
-  #sidebar-container, #sidebar-container > * {
-    max-height: 25vh;
-  }
-
-  #sidebar-content {
-    min-height: 25vh;
-  }
-}
-
-@media (max-width: 375px) {
-
-  #sidebar-content {
-    background-position: 50% -65%; 
-  }
-}
