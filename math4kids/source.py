@@ -22,29 +22,32 @@ class Test:
       Generaters x no. of multiplication questions and y no. of division questions.
       x and y correspond to initial values no_mult and no_div respectively.
     '''
+    id = 0
 
     # Generate mult questions
     for i in range(self.no_mult):
+      id += 1
       a = randint(self.bound_lower, self.bound_upper)
       b = randint(self.bound_lower, self.bound_upper)
       answer = a * b
 
-      q = Question(a, b, "mult", answer)
+      q = Question(id, a, b, "mult", answer)
       self.questions.append(q)
 
     # Generate div questions
     for i in range(self.no_mult):
+      id += 1
       b = randint(self.bound_lower, self.bound_upper)
       a = b * randint(self.bound_lower, self.bound_upper) # ensures only whole numbers questions
       answer = a / b
 
-      q = Question(a, b, "div", answer)
+      q = Question(i, a, b, "div", answer)
       self.questions.append(q)
 
   def get_score(self):
     score = 0
     for q in self.questions:
-      if(q.marked == 1):
+      if(q.mark == 1):
         score += 1
 
     self.score = score
@@ -90,7 +93,7 @@ class Test:
 
 class Question:
   
-  def __init__(self, a , b, operator, answer):
+  def __init__(self, id, a , b, operator, answer):
     '''
       Initialize the Question object.
       a refers to the first term in the question (e.g 3 * 7, a = 3)
@@ -98,11 +101,12 @@ class Question:
       operator refers to either division or multiplication (values are mult or div)
       answer refers to the answer to the equestion (e.g 3 * 7 = 21, answer = 21)
     '''
+    self.id = id
     self.a = int(a)
     self.b = int(b)
     self.operator = operator
     self.answer = int(answer)
-    self.marked = -1
+    self.mark = -1
 
   def markQuestion(self, user_answer):
     '''
@@ -110,10 +114,10 @@ class Question:
       All other answers result in erroneous mark int(0)
     '''
     if( int(user_answer) == self.answer):
-      self.marked = 1
+      self.mark = 1
       return
 
-    self.marked = 0
+    self.mark = 0
     return
 
   def get_mark(self):
@@ -121,18 +125,20 @@ class Question:
       Returns a boolean value based on class property marked. 
       edge-case marking (such as question unmarked [neither true nor false]) return a -1 value
     '''
-    if(self.marked == 1):
+    if(self.mark == 1):
       return True
-    elif( self.marked == 0):
+    elif( self.mark == 0):
       return False
     return -1
 
   def jsonify(self):
     question = {
+      "id" : self.id,
       "a" : self.a,
       "b" : self.b,
       "operator": self.operator,
-      "answer": self.answer
+      "answer": self.answer,
+      "mark": self.mark
     }
 
     return question
