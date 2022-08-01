@@ -41,7 +41,7 @@ class Test:
       a = b * randint(self.bound_lower, self.bound_upper) # ensures only whole numbers questions
       answer = a / b
 
-      q = Question(i, a, b, "div", answer)
+      q = Question(id, a, b, "div", answer)
       self.questions.append(q)
 
   def get_score(self):
