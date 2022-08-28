@@ -8,7 +8,7 @@ class Project(models.Model):
   media = models.CharField(max_length=100, null=True, blank=True)
 
   # Relationships
-  codebase = models.ManyToManyField('Codebase')
+  ProjectTag = models.ManyToManyField('ProjectTag')
   link = models.ForeignKey('Link', on_delete=models.CASCADE, null=True, blank=True)
 
   # Instance metadata
@@ -18,7 +18,7 @@ class Project(models.Model):
   def __str__(self):
     return self.name
 
-class Codebase(models.Model):
+class ProjectTag(models.Model):
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
   media = models.CharField(max_length=100, null=True, blank=True)

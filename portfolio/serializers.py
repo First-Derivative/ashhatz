@@ -7,10 +7,10 @@ class ProjectSerializer(serializers.ModelSerializer):
     model = Project
     fields = '__all__'
 
-class CodebaseSerializer(serializers.ModelSerializer):
+class ProjectTagSerializer(serializers.ModelSerializer):
 
   class Meta:
-    model = Codebase
+    model = ProjectTag
     fields = '__all__'
 
 class LinkSerializer(serializers.ModelSerializer):
