@@ -23,8 +23,14 @@ class ProjectTag(models.Model):
   name = models.CharField(max_length=50)
   media = models.CharField(max_length=100, null=True, blank=True)
 
+  def __str__(self):
+    return self.name
+
 class Link(models.Model):
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
   url = models.CharField(max_length=50)
   media = models.CharField(max_length=100)
+
+  def __str__(self):
+    return "{}:{}".format(self.name, self.url)
