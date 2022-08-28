@@ -8,7 +8,7 @@ class Project(models.Model):
   media = models.CharField(max_length=100, null=True, blank=True)
 
   # Relationships
-  ProjectTag = models.ManyToManyField('ProjectTag')
+  tags = models.ManyToManyField('ProjectTag')
   link = models.ForeignKey('Link', on_delete=models.CASCADE, null=True, blank=True)
 
   # Instance metadata
