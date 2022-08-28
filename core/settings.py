@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from re import T
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load and configure Environment Variables 
 from dotenv import load_dotenv
 import os
 
@@ -46,7 +48,8 @@ INSTALLED_APPS = [
     "corsheaders",
     'rest_framework',
     
-    'users'
+    'users',
+    'portfolio'
 ]
 
 MIDDLEWARE = [
@@ -87,10 +90,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+TESTING = sys.argv[1:2] == ['test']
+if (TESTING==False):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get("db_name"),
+            'USER': os.environ.get("db_user"),
+            'PASSWORD': os.environ.get("db_pass"),
+            'HOST': os.environ.get("db_host"),
+            'PORT': os.environ.get("db_port"),
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'test_db.sqlite3',
     }
 }
 
