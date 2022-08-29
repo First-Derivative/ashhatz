@@ -3,6 +3,7 @@ import DarkmodeSwitch from './DarkmodeSwitch'
 import LoginButton from './LoginButton'
 import './SideBar.css'
 import space_small from '../assets/space.png'
+import { ReactComponent as EmailIcon } from '../assets/email.svg'
 import { ReactComponent as GithubIcon } from '../assets/github.svg'
 import { ReactComponent as InstagramIcon } from '../assets/instagram.svg'
 import { useAuth } from '../AuthContext'
@@ -45,8 +46,13 @@ function SideBar() {
               { isAuth ? `Imperator ${credentials["name"]}` : 'Ashraff Hatz'}
             </div>
 
-            <div className=''>
-              <small id="sidebar-email"> ashraff.hatz@gmail.com </small>
+            <div className='target d-inline text-center sidebar-email-container'
+            onClick={() => {
+              window.location.href = "mailto:ashraff.hatz@gmail.com";
+            }}
+            >
+              <EmailIcon style={{width: '24px', height: '24px'}}/>
+              <small className="text-center" id="sidebar-email"> ashraff.hatz@gmail.com </small>
             </div>
 
             <div className="p fw-light mx-5 mx-sm-0 mt-3" style={{marginBottom: '5rem'}}>

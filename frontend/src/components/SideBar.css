@@ -13,6 +13,21 @@
   min-height: 100vh;
 }
 
+#sidebar-email {
+  opacity: 0.8;
+  transition: all 300ms ease-in-out;
+}
+
+.sidebar-email-container:hover > #sidebar-email {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+#sidebar-email:hover {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
 #sidebar-icon-container {
   column-gap: 1.5rem;
 }
