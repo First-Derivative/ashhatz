@@ -9,11 +9,12 @@ from utils.ErrorResponse import ErrorResponse
 # Custom API to handle GET request
 class GetProject(APIView):
 
+  permission_classes = [AllowAny]
+
   def get(self, request, id, format=None):
-  
     try:
       project = Project.objects.get(id=id)
-      serialized = ProjectSerializer(project, many=True)
+      serialized = ProjectSerializer(project, many=False)
       return Response(serialized.data, status=200)
     except:
       error = ErrorResponse('Cant find project with id {id}'.format(id=id))
