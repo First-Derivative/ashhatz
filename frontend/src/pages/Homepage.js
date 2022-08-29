@@ -10,6 +10,7 @@ function Homepage() {
 
   const [projects, setProjects] = useState([])
   const [error, setError] = useState([])
+  const [loading, setLoading] = useState(true)
   
   const getProjects = async () => {
     setError([])
@@ -17,12 +18,14 @@ function Homepage() {
     await axiosInstance.get(`portfolio/api/get/projects/`).then(
       (res) => {
         setProjects(res.data)
+        setLoading(false)
       }
     ).catch(
       (err) => {
         setError([
           err.message
         ])
+        setLoading(false)
       }
     )
   }
@@ -39,6 +42,9 @@ function Homepage() {
           <PortfolioContent
           projects={projects}
           />
+          { loading && <div class="mx-auto ms-2 ms-sm-4">
+            Getting Data from backend Database...
+          </div>}
         </AppContent>
 
       </div>
