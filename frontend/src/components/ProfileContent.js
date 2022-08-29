@@ -15,8 +15,8 @@ function ProfileContent() {
   const svgStyle = {
     height: '24px',
     width: '24px',
-    position: 'relative',
-    filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
+    position: 'relative'
+    // filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
   }
 
   const handleCVLink = () => {

@@ -136,6 +136,14 @@ function GlobalStyle({children}) {
     transition: all 150ms linear;
   }
 
+  #profile-cv-icon {
+    filter: ${darkmode ? darkTheme.svg_filter : lightTheme.svg_filter};
+  }
+
+  .profile-button:hover #profile-cv-icon {
+    filter: ${darkmode ? lightTheme.svg_filter : darkTheme.svg_filter};
+  }
+
   `
 
   return (
