@@ -52,7 +52,7 @@ function SideBar() {
             }}
             >
               <EmailIcon style={{width: '24px', height: '24px'}}/>
-              <small className="text-center" id="sidebar-email"> ashraff.hatz@gmail.com </small>
+              <small className="text-center ps-2" id="sidebar-email"> ashraff.hatz@gmail.com </small>
             </div>
 
             <div className="p fw-light mx-auto mx-sm-0 mt-3 " id="sidebar-summary">
