@@ -29,10 +29,14 @@ class GetProjectTag(APIView):
   pass
 
 class GetProjectTags(ListAPIView):
-  pass
+  permission_classes = [AllowAny]
+  queryset = ProjectTag.objects.all()
+  serializer_class = ProjectTagSerializer
 
 class GetProjectLink(APIView):
   pass
 
 class GetProjectLinks(ListAPIView):
-  pass
+  permission_classes = [AllowAny]
+  queryset = ProjectLink.objects.all()
+  serializer_class = ProjectLinkSerializer
