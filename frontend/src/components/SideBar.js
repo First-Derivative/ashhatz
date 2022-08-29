@@ -40,8 +40,11 @@ function SideBar() {
           
           <DarkmodeSwitch />
           <div className='text-center my-0 mb-5 my-sm-auto mx-0 mx-sm-5' style={darkStyle} id="sidebar-main-content">
-            <div className="h1 mt-0 mt-sm-5 mb-5">
+            <div className="h1 mt-0 mt-sm-5">
               { isAuth ? `Imperator ${credentials["name"]}` : 'Ashraff Hatz'}
+            </div>
+            <div className='mb-0 mb-sm-5'>
+              <small> ashraff.hatz@gmail.com </small>
             </div>
 
             <div className="d-flex justify-content-center mt-5" id="sidebar-icon-container">
@@ -90,7 +93,7 @@ function SideBar() {
               </div>
             </div>
 
-            <div className="p mt-0 mt-sm-1 mx-5 fw-light">
+            <div className="p mt-0 mt-sm-3 mx-5 fw-light">
               Developer.
               Dungeon Delver.
               Pokemon Master.
