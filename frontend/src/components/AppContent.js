@@ -8,7 +8,15 @@ function AppContent({title, children}) {
 
       <div className="row mt-5 ">
         <div className="col-12 text-start px-3">
-            <div className="h2 mx-auto ms-2 ms-sm-4"> {title} </div>
+            <div className="h2 mx-auto ms-2 ms-sm-4"> {title === "Imago" ? (
+              <a 
+              href="https://en.wiktionary.org/wiki/imago#Latin"
+              target="_blank"
+              rel="noreferrer">
+                {title}
+              </a>
+
+            ) : title} </div>
         </div>
       </div>
 
