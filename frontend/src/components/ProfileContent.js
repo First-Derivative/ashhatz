@@ -36,8 +36,12 @@ function ProfileContent() {
         {/* Profile CV Link */}
         <div className="row">
           <div className="col-12">
-            <figure className="figure rounded target text-center mt-4 p-3"
-            id="cv-icon">
+            <figure 
+            className="figure rounded target text-center mt-4 p-3"
+            id="cv-icon"
+            onClick={() => {
+              window.open("https://drive.google.com/file/d/1mF6Zke-Bn_pKfAYe2NM31Jkms0e71nYO/view?usp=sharing" + "_blank")
+            }}>
               <FileIcon />
               <figcaption 
               className="figure-caption text-end mt-3 fw-light"
