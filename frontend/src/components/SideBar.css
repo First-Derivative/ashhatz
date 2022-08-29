@@ -29,25 +29,32 @@
 }
 
 #sidebar-icon-container {
-  column-gap: 1.5rem;
-}
-
-/* Mobile Media Query  */
-@media screen and (max-width: 768px) {
-  .sidebar-icon-caption {
-    visibility: visible !important;
-  }
-  
-  #sidebar-summary {
-    width: 55%;
-  }
-}
-
-.sidebar-icon-caption{
-  visibility: hidden;
+  column-gap: 2rem;
 }
 
 .sidebar-icon {
   height: 32px;
   width: 32px;
+}
+
+.sidebar-icon-container:hover > .sidebar-icon-caption {
+  opacity: 1;
+  transition: all 250ms ease-in-out;
+}
+
+.sidebar-icon-caption {
+  opacity: 0;
+  transition: all 250ms ease-in-out;
+}
+
+/* Mobile Media Query  */
+@media screen and (max-width: 768px) {
+  .sidebar-icon-caption {
+    opacity: 1 !important;
+    transition: none;
+  }
+  
+  #sidebar-summary {
+    width: 55%;
+  }
 }
