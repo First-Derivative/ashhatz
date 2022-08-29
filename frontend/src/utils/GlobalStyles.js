@@ -88,6 +88,18 @@ function GlobalStyle({children}) {
     transition: all 200ms ease-in;
   }
 
+  .project-card {
+    width: 16rem;
+
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .project-card {
+      width: 20rem;
+    }
+  }
+
   `
 
   return (
