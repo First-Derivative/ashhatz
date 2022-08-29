@@ -9,7 +9,7 @@ class Project(models.Model):
 
   # Relationships
   tags = models.ManyToManyField('ProjectTag')
-  # link = models.ForeignKey('Link', on_delete=models.CASCADE, null=True, blank=True)
+  links = models.ManyToManyField('ProjectLink')
 
   # Instance metadata
   created = models.DateTimeField(auto_now_add=True)

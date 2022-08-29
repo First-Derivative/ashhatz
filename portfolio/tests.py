@@ -20,11 +20,11 @@ class PortfolioModelTests(TestCase):
     # Attach model instances to project
     project.tags.add(tag1)
     project.tags.add(tag2)
-    project.link = link
+    project.links.add(link)
 
     # Validate attatchemnt tag and link count()
     self.assertEqual(project.tags.all().count(), 2)
-    self.assertEqual(project.link, link)
+    self.assertEqual(project.links.all().count(), 1)
 
   def test_portfolio_save(self):
     project = Project.objects.get(name="project_x")
