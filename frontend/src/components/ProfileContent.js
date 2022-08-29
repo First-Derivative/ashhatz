@@ -25,7 +25,7 @@ function ProfileContent() {
     <div class="row mt-3 mx-3">
       
       {/* Profile Content */}
-      <div className="col-8">
+      <div className="col-12 col-sm-8">
         
         <div className="row">
           <div className="p" id="profile-text" style={profileStyling}>
@@ -55,7 +55,7 @@ function ProfileContent() {
       </div>
 
       {/* Profile Image */}
-      <div className="col">
+      <div className="col-12 col-sm-4">
         <figure className="figure">
           <img 
           src={profileImg}

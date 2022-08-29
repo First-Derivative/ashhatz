@@ -122,10 +122,6 @@ function GlobalStyle({children}) {
 
   // ===== Portfolio Styling =====
 
-  #profile-text {
-    width: 90%;
-  }
-
   #cv-icon {
     transition: all 300ms ease-in;
   }
