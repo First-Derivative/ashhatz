@@ -70,7 +70,7 @@ function GlobalStyle({children}) {
 
   .active {
     color: ${darkmode ? darkTheme.body : lightTheme.body};
-    background-color: ${darkmode ? darkTheme.text : lightTheme.text}
+    background-color: ${darkmode ? darkTheme.text : lightTheme.text};
   }
 
   #darkmode-text {
@@ -122,14 +122,25 @@ function GlobalStyle({children}) {
 
   // ===== Portfolio Styling =====
 
-  #cv-icon {
-    transition: all 300ms ease-in;
+  #cv-icon, #email-icon {
+    color: ${ darkmode ? darkTheme.text : lightTheme.text};
+    background-color: ${ darkmode ? darkTheme.body : lightTheme.body};
+    transition: all 150ms linear;
+  }
+  
+  #cv-icon:hover, #email-icon:hover {
+    transform: scale(1.1);
+    color: ${ darkmode ? lightTheme.text : darkTheme.text} !important;
+    background-color: ${ darkmode ? lightTheme.body : darkTheme.body};
+    transition: all 150ms linear;
   }
 
-  #cv-icon:hover {
-    transform: scale(1.1);
-    background-color: #181818;
-    transition: all 300ms ease-in;
+  #email-icon {
+    border: 1px solid ${ darkmode ? darkTheme.text : lightTheme.text};
+  }
+
+  #cv-icon-svg:hover {
+    filter: ${darkmode ? lightTheme.svg_filter : darkTheme.svg_filter};
   }
 
   `
