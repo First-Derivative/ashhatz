@@ -9,13 +9,13 @@ function PortfolioContent({projects}) {
       Commercial Applications
     </div>
 
-    <div class="mx-auto ms-4 mt-3">
-      {projects.map((project, index) => (
-        <ProjectCard 
-        key={index}
-        project={project}
-        />
-      ))}
+    <div class="row row-cols-3 mx-auto ms-2 mt-3">
+        {projects.map((project, index) => (
+          <ProjectCard 
+          key={index}
+          project={project}
+          />
+        ))}
     </div>
     </>
   )
