@@ -9,7 +9,7 @@ class Project(models.Model):
 
   # Relationships
   tags = models.ManyToManyField('ProjectTag')
-  link = models.ForeignKey('Link', on_delete=models.CASCADE, null=True, blank=True)
+  # link = models.ForeignKey('Link', on_delete=models.CASCADE, null=True, blank=True)
 
   # Instance metadata
   created = models.DateTimeField(auto_now_add=True)
@@ -31,7 +31,7 @@ class ProjectTag(models.Model):
   def __str__(self):
     return self.name
 
-class Link(models.Model):
+class ProjectLink(models.Model):
   class Meta: 
     verbose_name = "Project Link"
     verbose_name_plural = "Project Links"

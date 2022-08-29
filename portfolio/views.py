@@ -24,3 +24,15 @@ class GetProjects(ListAPIView):
   permission_classes = [AllowAny]
   queryset = Project.objects.all()
   serializer_class = ProjectSerializer
+
+class GetProjectTag(APIView):
+  pass
+
+class GetProjectTags(ListAPIView):
+  pass
+
+class GetProjectLink(APIView):
+  pass
+
+class GetProjectLinks(ListAPIView):
+  pass

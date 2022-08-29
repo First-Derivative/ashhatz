@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Project, ProjectTag, Link
+from .models import Project, ProjectTag, ProjectLink
 
 class PortfolioModelTests(TestCase):
   
@@ -8,14 +8,14 @@ class PortfolioModelTests(TestCase):
     Project.objects.create(name="project_x", summary="1,2,3.", media="None")
     ProjectTag.objects.create(name="python")
     ProjectTag.objects.create(name="javascript")
-    Link.objects.create(name="app", url="www.project_x.com")
+    ProjectLink.objects.create(name="app", url="www.project_x.com")
 
   def test_portfolio_project_entity(self):
     # Get objects created in setUp()
     project = Project.objects.get(name="project_x")
     tag1 = ProjectTag.objects.get(name="python")
     tag2 = ProjectTag.objects.get(name="javascript")
-    link = Link.objects.get(name="app")
+    link = ProjectLink.objects.get(name="app")
 
     # Attach model instances to project
     project.tags.add(tag1)
@@ -30,7 +30,7 @@ class PortfolioModelTests(TestCase):
     project = Project.objects.get(name="project_x")
     tag1 = ProjectTag.objects.get(name="python")
     tag2 = ProjectTag.objects.get(name="javascript")
-    link = Link.objects.get(name="app")
+    link = ProjectLink.objects.get(name="app")
     link.save()
     tag1.save()
     tag2.save()

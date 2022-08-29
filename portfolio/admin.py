@@ -10,10 +10,10 @@ class ProjectTagAdmin(admin.ModelAdmin):
   list_display = ('id', 'name')
   search_fields = ('name', )
 
-class LinkAdmin(admin.ModelAdmin):
+class ProjectLinkAdmin(admin.ModelAdmin):
   list_display = ('id', 'name', 'url')
   search_fields = ('name', 'url')
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectTag, ProjectTagAdmin)
-admin.site.register(Link, LinkAdmin)
+admin.site.register(ProjectLink, ProjectLinkAdmin)
