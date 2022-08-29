@@ -1,5 +1,6 @@
 import React from 'react'
 import profileImg from '../assets/profile.jpg'
+import { ReactComponent as FileIcon } from '../assets/file.svg'
 import { useDarkmode } from '../DarkmodeContext'
 import {darkTheme, lightTheme} from '../utils/theme'
 
@@ -32,9 +33,18 @@ function ProfileContent() {
           </div>
         </div>
 
+        {/* Profile CV Link */}
         <div className="row">
           <div className="col-12">
-
+            <figure className="figure rounded target text-center mt-5 p-3"
+            id="cv-icon">
+              <FileIcon />
+              <figcaption 
+              className="figure-caption text-end mt-1 fw-light"
+              style={profileStyling}>
+                Curriculum Vitae
+              </figcaption>
+            </figure>
           </div>
         </div>
 

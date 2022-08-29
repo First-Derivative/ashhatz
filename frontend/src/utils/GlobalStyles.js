@@ -126,6 +126,16 @@ function GlobalStyle({children}) {
     width: 90%;
   }
 
+  #cv-icon {
+    transition: all 300ms ease-in;
+  }
+
+  #cv-icon:hover {
+    transform: scale(1.1);
+    background-color: #181818;
+    transition: all 300ms ease-in;
+  }
+
   `
 
   return (
