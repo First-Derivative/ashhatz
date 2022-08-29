@@ -36,11 +36,11 @@ function ProfileContent() {
         {/* Profile CV Link */}
         <div className="row">
           <div className="col-12">
-            <figure className="figure rounded target text-center mt-5 p-3"
+            <figure className="figure rounded target text-center mt-4 p-3"
             id="cv-icon">
               <FileIcon />
               <figcaption 
-              className="figure-caption text-end mt-1 fw-light"
+              className="figure-caption text-end mt-3 fw-light"
               style={profileStyling}>
                 Curriculum Vitae
               </figcaption>
