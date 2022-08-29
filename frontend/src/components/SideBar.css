@@ -40,7 +40,7 @@
 /* Mobile Media Query */
 @media screen and (max-width: 767px) {
   .sidebar-icon {
-    height: 48px;
-    width: 48px;
+    height: 32px;
+    width: 32px;
   }
 }

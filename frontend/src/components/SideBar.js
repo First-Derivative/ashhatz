@@ -47,7 +47,7 @@ function SideBar() {
               <small> ashraff.hatz@gmail.com </small>
             </div>
 
-            <div className="d-flex justify-content-center mt-5" id="sidebar-icon-container">
+            <div className="d-flex justify-content-center mt-3 mt-sm-5" id="sidebar-icon-container">
               
               <div className='d-inline-block target'
                 onMouseEnter={()=> toggleIconCaption("github-small")}
