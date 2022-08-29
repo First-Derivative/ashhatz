@@ -13,8 +13,8 @@ class ProjectTagSerializer(serializers.ModelSerializer):
     model = ProjectTag
     fields = '__all__'
 
-class LinkSerializer(serializers.ModelSerializer):
+class ProjectLinkSerializer(serializers.ModelSerializer):
 
   class Meta:
-    model = Link
+    model = ProjectLink
     fields = '__all__'

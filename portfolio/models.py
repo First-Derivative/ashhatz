@@ -9,7 +9,7 @@ class Project(models.Model):
 
   # Relationships
   tags = models.ManyToManyField('ProjectTag')
-  link = models.ForeignKey('Link', on_delete=models.CASCADE, null=True, blank=True)
+  links = models.ManyToManyField('ProjectLink')
 
   # Instance metadata
   created = models.DateTimeField(auto_now_add=True)
@@ -19,6 +19,11 @@ class Project(models.Model):
     return self.name
 
 class ProjectTag(models.Model):
+
+  class Meta: 
+    verbose_name = "Project Tags"
+    verbose_name_plural = "Project Tags"
+
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
   media = models.CharField(max_length=100, null=True, blank=True)
@@ -26,11 +31,15 @@ class ProjectTag(models.Model):
   def __str__(self):
     return self.name
 
-class Link(models.Model):
+class ProjectLink(models.Model):
+  class Meta: 
+    verbose_name = "Project Link"
+    verbose_name_plural = "Project Links"
+
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
   url = models.CharField(max_length=50)
-  media = models.CharField(max_length=100)
+  media = models.CharField(max_length=100, blank=True)
 
   def __str__(self):
     return "{}:{}".format(self.name, self.url)

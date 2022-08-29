@@ -3,6 +3,7 @@ import DarkmodeSwitch from './DarkmodeSwitch'
 import LoginButton from './LoginButton'
 import './SideBar.css'
 import space_small from '../assets/space.png'
+import { ReactComponent as EmailIcon } from '../assets/email.svg'
 import { ReactComponent as GithubIcon } from '../assets/github.svg'
 import { ReactComponent as InstagramIcon } from '../assets/instagram.svg'
 import { useAuth } from '../AuthContext'
@@ -40,14 +41,26 @@ function SideBar() {
           
           <DarkmodeSwitch />
           <div className='text-center my-0 mb-5 my-sm-auto mx-0 mx-sm-5' style={darkStyle} id="sidebar-main-content">
+            
             <div className="h1 mt-0 mt-sm-5">
               { isAuth ? `Imperator ${credentials["name"]}` : 'Ashraff Hatz'}
             </div>
-            <div className='mb-0 mb-sm-5'>
-              <small> ashraff.hatz@gmail.com </small>
+
+            <div className='target d-inline text-center sidebar-email-container'
+            onClick={() => {
+              window.location.href = "mailto:ashraff.hatz@gmail.com";
+            }}
+            >
+              <EmailIcon style={{width: '24px', height: '24px'}}/>
+              <small className="text-center" id="sidebar-email"> ashraff.hatz@gmail.com </small>
             </div>
 
-            <div className="d-flex justify-content-center mt-3 mt-sm-5" id="sidebar-icon-container">
+            <div className="p fw-light mx-auto mx-sm-0 mt-3 " id="sidebar-summary">
+              A Full Stack Engineer with a keen eye on the backend.
+              
+            </div>
+
+            <div className="d-flex justify-content-center mt-5" id="sidebar-icon-container">
               
               <div className='d-inline-block target'
                 onMouseEnter={()=> toggleIconCaption("github-small")}
@@ -63,7 +76,7 @@ function SideBar() {
 
                 <div>
                   <small 
-                    className="sidebar-icon-caption" 
+                    className="sidebar-icon-caption " 
                     style={{fontSize: '68%'}}
                     id="github-small"> 
                       First-Derivative 
@@ -93,11 +106,6 @@ function SideBar() {
               </div>
             </div>
 
-            <div className="p mt-0 mt-sm-3 mx-5 fw-light">
-              Developer.
-              Dungeon Delver.
-              Pokemon Master.
-            </div>
           </div>
   
           <div className=''>
