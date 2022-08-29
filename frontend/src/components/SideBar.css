@@ -17,9 +17,14 @@
   column-gap: 1.5rem;
 }
 
+@media screen and (max-width: 768px) {
+  .sidebar-icon-caption {
+    visibility: visible !important;
+  }
+}
+
 .sidebar-icon-caption{
   visibility: hidden;
-  transition: all 200ms ease-in;
 }
 
 .sidebar-icon {
