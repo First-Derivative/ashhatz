@@ -13,7 +13,15 @@ function ProfileContent() {
   }
 
   const svgStyle = {
+    height: '24px',
+    width: '24px',
+    position: 'relative',
     filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
+  }
+
+  const handleCVLink = () => {
+    const url = "https://drive.google.com/file/d/1mF6Zke-Bn_pKfAYe2NM31Jkms0e71nYO/view?usp=sharing"
+    window.open(url + "_blank")
   }
 
   return (
@@ -37,28 +45,25 @@ function ProfileContent() {
           </div>
         </div>
 
-        {/* Profile CV Link */}
+        {/* Profile Buttons */}
         <div className="row">
+
+          {/* CV Button */}
           <div className="col-7 col-sm-6">
-            <figure 
-            className="figure rounded target text-center mt-4 p-3"
-            id="cv-icon"
-            onClick={() => {
-              window.open("https://drive.google.com/file/d/1mF6Zke-Bn_pKfAYe2NM31Jkms0e71nYO/view?usp=sharing" + "_blank")
-            }}>
-              <FileIcon id="cv-icon-svg" style={svgStyle}/>
-              <figcaption 
-              className="figure-caption text-end mt-3 fw-light"
-              style={profileStyle}>
-                Curriculum Vitae
-              </figcaption>
-            </figure>
-          </div>
-        <div className="col">
             <button 
-            className="btn fw-light mt-3 mt-sm-5 p-3" 
+              className="btn fw-light mt-3 mt-sm-5 p-3 profile-button" 
+              type="button" 
+              style={profileStyle}>
+                <FileIcon className="pe-2 align-self-center" id="profile-cv-icon" style={svgStyle}/>
+                 Curriculum Vitae
+              </button>
+          </div>
+
+          {/* Email Button */}
+          <div className="col">
+            <button 
+            className="btn fw-light mt-3 mt-sm-5 p-3 profile-button" 
             type="button" 
-            id="email-icon"
             style={profileStyle}> Lazy to Email ?</button>
           </div>
         </div>

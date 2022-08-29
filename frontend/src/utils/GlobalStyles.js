@@ -122,25 +122,18 @@ function GlobalStyle({children}) {
 
   // ===== Portfolio Styling =====
 
-  #cv-icon, #email-icon {
+  .profile-button {
     color: ${ darkmode ? darkTheme.text : lightTheme.text};
     background-color: ${ darkmode ? darkTheme.body : lightTheme.body};
+    border: 1px solid ${ darkmode ? darkTheme.text : lightTheme.text};
     transition: all 150ms linear;
   }
   
-  #cv-icon:hover, #email-icon:hover {
+  .profile-button:hover {
     transform: scale(1.1);
     color: ${ darkmode ? lightTheme.text : darkTheme.text} !important;
     background-color: ${ darkmode ? lightTheme.body : darkTheme.body};
     transition: all 150ms linear;
-  }
-
-  #email-icon {
-    border: 1px solid ${ darkmode ? darkTheme.text : lightTheme.text};
-  }
-
-  #cv-icon-svg:hover {
-    filter: ${darkmode ? lightTheme.svg_filter : darkTheme.svg_filter};
   }
 
   `
