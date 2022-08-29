@@ -12,6 +12,10 @@ function ProfileContent() {
     color: darkmode ? darkTheme.text : lightTheme.text
   }
 
+  const svgStyle = {
+    filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter 
+  }
+
   return (
     <>
     {/* Subtitle */}
@@ -42,7 +46,7 @@ function ProfileContent() {
             onClick={() => {
               window.open("https://drive.google.com/file/d/1mF6Zke-Bn_pKfAYe2NM31Jkms0e71nYO/view?usp=sharing" + "_blank")
             }}>
-              <FileIcon />
+              <FileIcon  style={svgStyle}/>
               <figcaption 
               className="figure-caption text-end mt-3 fw-light"
               style={profileStyling}>
