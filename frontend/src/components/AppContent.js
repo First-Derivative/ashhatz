@@ -8,12 +8,12 @@ function AppContent({title, children}) {
 
       <div className="row mt-5 ">
         <div className="col-12 text-start px-3">
-            <div className="h2 mx-auto ms-4"> {title} </div>
+            <div className="h2 mx-auto ms-2 ms-sm-4"> {title} </div>
         </div>
       </div>
 
       <div className="row mt-3" id="AppContent">
-        <div className="col-12 text-start px-3">
+        <div className="col-12 text-start px-0 px-sm-3">
           {children}
         </div>
       </div>
