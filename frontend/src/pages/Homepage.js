@@ -23,8 +23,6 @@ function Homepage() {
         setError([
           err.message
         ])
-        console.log("got error")
-        console.log(err)
       }
     )
   }
@@ -39,6 +37,7 @@ function Homepage() {
         <AppContent title={'Portfolio'}>
           { error.length > 0 && <ErrorAlert styling={"col-10 col-sm-5 my-3 mx-auto text-center"} message={error} />}
           <PortfolioContent
+          projects={projects}
           />
         </AppContent>
 
