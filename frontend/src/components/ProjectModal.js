@@ -3,6 +3,22 @@ import ReactDOM from 'react-dom'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
 
+function ModalEntry({title, value}) {
+  const darkmode = useDarkmode()
+
+  const darkModeStyling = {
+    color: darkmode ? darkTheme.text : lightTheme.text
+  }
+
+  return (
+    <div className="d-flex my-3">
+      <div className="p" style={darkModeStyling}>
+        <span className="fw-light">{title}</span>: <span className="fw-bold">{value}</span>
+      </div>
+    </div>
+  )
+}
+
 function ProjectModal({open, openHandler, project}) {
 
   const darkmode = useDarkmode()
@@ -38,13 +54,54 @@ function ProjectModal({open, openHandler, project}) {
     transform: 'translate(-50%, -50%)',
     backgroundColor: darkmode ? darkTheme.body : lightTheme.body ,
     zIndex: '2000',
-    width: '37.206rem'
   }
 
   return ReactDOM.createPortal(
     <div style={overlayStyle}>
-      <div style={containerStyle}>
-        {project.name}
+      <div className="rounded project-container" id={`${project.id}`} style={containerStyle}>
+        
+        <div className="container p-3">
+          
+          <div className="row">
+
+            {/* Project Media */}
+            <div className="col-5">
+              media content
+            </div>
+            
+            {/* Project Content */}
+            <div className="col-7">
+              
+              <div className="row">
+                <div className="col-12">
+                  <ModalEntry title={"Name"} value={project.name} />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-12">
+                <ModalEntry title={"Summary"} value={project.summary} />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-12">
+                <ModalEntry title={"Tags"} value={"1,2,3"} />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-12">
+                <ModalEntry title={"Links"} value={"Link 1 "} />
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        
       </div>
     </div>
   , document.getElementById('project-portal'))

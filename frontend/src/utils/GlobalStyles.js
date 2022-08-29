@@ -88,14 +88,21 @@ function GlobalStyle({children}) {
     transition: all 200ms ease-in;
   }
 
-  .project-card {
-    width: 16rem;
+  // ===== Portfolio Styling =====
 
-  }
+  .project-card { width: 16rem; }
+
+  .project-container { 
+    width: 50rem;
+    aspect-ratio: 1.618 / 1;
+   }
 
   @media screen and (max-width: 768px) {
-
     .project-card {
+      width: 20rem;
+    }
+
+    .project-container { 
       width: 20rem;
     }
   }
