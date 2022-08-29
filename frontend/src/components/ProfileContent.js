@@ -53,6 +53,7 @@ function ProfileContent() {
             <button 
               className="btn fw-light mt-3 mt-sm-5 p-3 profile-button" 
               type="button" 
+              onClick={() => handleCVLink()}
               style={profileStyle}>
                 <FileIcon className="pe-2 align-self-center" id="profile-cv-icon" style={svgStyle}/>
                  Curriculum Vitae
