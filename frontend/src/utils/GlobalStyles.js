@@ -144,6 +144,15 @@ function GlobalStyle({children}) {
     filter: ${darkmode ? lightTheme.svg_filter : darkTheme.svg_filter};
   }
 
+  // ===== EmailModal Styling =====
+
+  .email-container {
+    width: 70rem;
+    aspect-ratio: 1.618 / 1;
+  }
+
+
+
   `
 
   return (

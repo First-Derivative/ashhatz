@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import profileImg from '../assets/profile.jpg'
 import { ReactComponent as FileIcon } from '../assets/file.svg'
 import { useDarkmode } from '../DarkmodeContext'
 import {darkTheme, lightTheme} from '../utils/theme'
+import EmailModal from './EmailModal'
 
 function ProfileContent() {
 
   const darkmode = useDarkmode()
+  const [openModal, setOpenModal] = useState(false)
 
   const profileStyle = {
     color: darkmode ? darkTheme.text : lightTheme.text
@@ -16,7 +18,6 @@ function ProfileContent() {
     height: '24px',
     width: '24px',
     position: 'relative'
-    // filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
   }
 
   const handleCVLink = () => {
@@ -26,6 +27,7 @@ function ProfileContent() {
 
   return (
     <>
+
     {/* Subtitle */}
     <div className="row">
       <div className="h5 mx-auto ms-4 fs-italic">
@@ -65,6 +67,7 @@ function ProfileContent() {
             <button 
             className="btn fw-light mt-3 mt-sm-5 p-3 profile-button" 
             type="button" 
+            onClick={() => setOpenModal(true)}
             style={profileStyle}> Lazy to Email ?</button>
           </div>
         </div>
@@ -87,6 +90,9 @@ function ProfileContent() {
       </div>
       
     </div>
+
+    {/* Profile Email Form Modal */}
+    <EmailModal open={openModal} openHandler={() => setOpenModal(false)}/>
     </>
   )
 }
