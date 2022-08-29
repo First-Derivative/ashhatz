@@ -15,6 +15,19 @@ function GlobalStyle({children}) {
   }
 
   // Overriding Bootstrap Styles
+
+  a {
+    color: ${ darkmode ? darkTheme.text : lightTheme.text};
+    text-decoration: none;
+    transition: all 300ms ease-in-out;
+  }
+
+  a:hover {
+    color: ${ darkmode ? darkTheme.text : lightTheme.text};
+    text-decoration: underline;
+    transition: all 300ms ease-in-out;
+
+  }
   
   .p {
     color: white;
@@ -89,7 +102,7 @@ function GlobalStyle({children}) {
   }
 
   // ===== Portfolio Styling =====
-
+  
   .project-card { width: 16rem; }
 
   .project-container { 
@@ -105,6 +118,22 @@ function GlobalStyle({children}) {
     .project-container { 
       width: 20rem;
     }
+  }
+
+  // ===== Portfolio Styling =====
+
+  #profile-text {
+    width: 90%;
+  }
+
+  #cv-icon {
+    transition: all 300ms ease-in;
+  }
+
+  #cv-icon:hover {
+    transform: scale(1.1);
+    background-color: #181818;
+    transition: all 300ms ease-in;
   }
 
   `
