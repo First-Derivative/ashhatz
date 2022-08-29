@@ -32,9 +32,14 @@
   column-gap: 1.5rem;
 }
 
+/* Mobile Media Query  */
 @media screen and (max-width: 768px) {
   .sidebar-icon-caption {
     visibility: visible !important;
+  }
+  
+  #sidebar-summary {
+    width: 55%;
   }
 }
 

@@ -55,7 +55,7 @@ function SideBar() {
               <small className="text-center" id="sidebar-email"> ashraff.hatz@gmail.com </small>
             </div>
 
-            <div className="p fw-light mx-5 mx-sm-0 mt-3" style={{marginBottom: '5rem'}}>
+            <div className="p fw-light mx-auto mx-sm-0 mt-3 " id="sidebar-summary">
               A Full Stack Engineer with a keen eye on the backend.
               
             </div>
