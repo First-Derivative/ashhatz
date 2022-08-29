@@ -22,25 +22,7 @@
   transition: all 200ms ease-in;
 }
 
-/* Desktop Media Query */
-@media screen and (min-width: 1024px){
-  .sidebar-icon {
-    height: 32px;
-    width: 32px;
-  }
-}
-/* Tablet Media Query */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .sidebar-icon {
-    height: 128px;
-    width: 128px;
-  }
-}
-
-/* Mobile Media Query */
-@media screen and (max-width: 767px) {
-  .sidebar-icon {
-    height: 32px;
-    width: 32px;
-  }
+.sidebar-icon {
+  height: 32px;
+  width: 32px;
 }
