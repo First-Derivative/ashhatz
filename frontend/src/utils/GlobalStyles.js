@@ -70,7 +70,7 @@ function GlobalStyle({children}) {
 
   .active {
     color: ${darkmode ? darkTheme.body : lightTheme.body};
-    background-color: ${darkmode ? darkTheme.text : lightTheme.text}
+    background-color: ${darkmode ? darkTheme.text : lightTheme.text};
   }
 
   #darkmode-text {
@@ -122,18 +122,53 @@ function GlobalStyle({children}) {
 
   // ===== Portfolio Styling =====
 
-  #profile-text {
-    width: 90%;
+  .profile-button {
+    color: ${ darkmode ? darkTheme.text : lightTheme.text};
+    background-color: ${ darkmode ? darkTheme.body : lightTheme.body};
+    border: 1px solid ${ darkmode ? darkTheme.text : lightTheme.text};
+    transition: all 150ms linear;
   }
-
-  #cv-icon {
-    transition: all 300ms ease-in;
-  }
-
-  #cv-icon:hover {
+  
+  .profile-button:hover {
     transform: scale(1.1);
-    background-color: #181818;
-    transition: all 300ms ease-in;
+    color: ${ darkmode ? lightTheme.text : darkTheme.text} !important;
+    background-color: ${ darkmode ? lightTheme.body : darkTheme.body};
+    transition: all 150ms linear;
+  }
+
+  #profile-cv-icon {
+    filter: ${darkmode ? darkTheme.svg_filter : lightTheme.svg_filter};
+  }
+
+  .profile-button:hover #profile-cv-icon {
+    filter: ${darkmode ? lightTheme.svg_filter : darkTheme.svg_filter};
+  }
+
+  // ===== EmailModal Styling =====
+
+  .email-container {
+    width: 42rem;
+    aspect-ratio: 1.6180339887 / 1;
+    font-weight: 300 !important;
+  }
+
+  .email-root-container {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 96%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .email-container {
+      width: 22rem;
+      aspect-ratio: 1.6180339887 / 1;
+    }
+    .email-root-container {
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
   }
 
   `
