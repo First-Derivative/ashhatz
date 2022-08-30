@@ -41,8 +41,10 @@ function ProfileContent() {
 
     {/* Subtitle */}
     <div className="row">
-      <div className="h5 mx-auto ms-4 fs-italic">
-        Who Am I ? -Ash Hatz obviously.
+      <div className="col">
+        <div className="h5 mx-auto ms-4 fs-italic">
+          Who Am I ? -Ash Hatz obviously.
+        </div>
       </div>
     </div>
 

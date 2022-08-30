@@ -45,7 +45,7 @@ function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: darkmode ? darkTheme.body : lightTheme.body ,
+    backgroundColor: darkmode ? darkTheme.body : lightTheme.body,
     zIndex: '2000',
   }
 
@@ -82,7 +82,6 @@ function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
   }
 
   const handleSubmit = (e) => {
-    console.log("got handlesubmit")
     e.preventDefault()
     resetErrorFields()
 
@@ -126,7 +125,6 @@ function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
   return reactDOM.createPortal(
     <div style={overlayStyle}>
       <div className="rounded email-container" style={containerStyle}>
-        <div className="email-root-container">
         <div className="container p-3">
 
         {/* Modal Accesibility */}
@@ -253,7 +251,6 @@ function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
         </div>
 
         </div>
-      </div>
       </div>
     </div>
   , document.getElementById("email-portal"))
