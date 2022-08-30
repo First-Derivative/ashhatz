@@ -42,7 +42,7 @@ function Homepage() {
           <PortfolioContent
           projects={projects}
           />
-          { loading && <div class="mx-auto ms-2 ms-sm-4">
+          { loading && <div className="mx-auto ms-2 ms-sm-4">
             Getting Data from backend Database...
           </div>}
         </AppContent>
