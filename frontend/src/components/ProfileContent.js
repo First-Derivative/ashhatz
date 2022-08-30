@@ -36,7 +36,7 @@ function ProfileContent() {
     </div>
 
     {/* Profile Content Container */}
-    <div class="row mt-3 mx-3">
+    <div className="row mt-3 mx-3">
       
       {/* Profile Content */}
       <div className="col-12 col-sm-8">
