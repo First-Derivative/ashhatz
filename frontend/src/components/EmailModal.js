@@ -123,8 +123,10 @@ function EmailModal({open, openHandler}) {
         </div>
 
         <div className="row justify-content-end">
-          <div className="col-2 col-sm-1 mt-4">
-            <SubmitIcon style={{...svgStyle, width: '32px', height: '32px'}}/>
+          <div className="col-2 col-sm-1 mt-4 pe-3">
+            <SubmitIcon 
+            className="target hover-icon"
+            style={{...svgStyle, width: '32px', height: '32px'}}/>
           </div>
         </div>
 
