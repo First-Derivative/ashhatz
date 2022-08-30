@@ -4,6 +4,7 @@ import { useDarkmode } from '../DarkmodeContext'
 import { darkTheme, lightTheme } from '../utils/theme'
 import {ReactComponent as RemoveIcon } from '../assets/remove.svg'
 import {ReactComponent as SubmitIcon } from '../assets/sign-in.svg'
+import axiosInstance from '../utils/axios.js'
 
 function EmailModal({open, openHandler}) {
 
@@ -57,7 +58,18 @@ function EmailModal({open, openHandler}) {
   const updateEmailForms = ({target}) => setEmailForm({
     ...emailForm,
     [target.name] : target.value
-});
+  });
+
+  const postEmail = () => {
+    axiosInstance.post("", emailForm).then(
+      (res) => {
+
+      }
+    ).catch( 
+      (err) => {
+
+    })
+  }
 
   return reactDOM.createPortal(
     <div style={overlayStyle}>
