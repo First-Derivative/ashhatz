@@ -64,7 +64,7 @@ function LoginButton() {
     <>
 
       { login && <div className="position-absolute" style={{ 'bottom': '5rem' }} >
-        <div class="alert alert-success" role="alert">
+        <div className="alert alert-success" role="alert">
           {isAuth ? 'Login Success!' : 'Sign Out Success'}
         </div> 
       </div> }
