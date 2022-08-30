@@ -48,7 +48,7 @@ function ProfileContent() {
         </div>
 
         {/* Profile Buttons */}
-        <div className="row">
+        <div className="row mb-3 mb-sm-0">
 
           {/* CV Button */}
           <div className="col-7 col-sm-6">
