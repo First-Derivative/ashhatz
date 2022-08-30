@@ -14,8 +14,10 @@ function EmailModal({open, openHandler}) {
     number: '',
     subject: '',
     content: ''
-
   })
+
+  const [feedback, setFeedback] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   // Handle Open & Closing of Modal
   useEffect( ()=> {
@@ -60,14 +62,18 @@ function EmailModal({open, openHandler}) {
     [target.name] : target.value
   });
 
-  const postEmail = () => {
-    axiosInstance.post("", emailForm).then(
+  const postEmail = async () => {
+    setFeedback(false)
+    setSuccess(false)
+    
+    await axiosInstance.post("", emailForm).then(
       (res) => {
-
+        setFeedback(true)
+        setSuccess(true)
       }
     ).catch( 
       (err) => {
-
+        setFeedback(true)
     })
   }
 
@@ -167,8 +173,23 @@ function EmailModal({open, openHandler}) {
           </div>
         </div>
 
-        <div className="row justify-content-end">
-          <div className="col-2 col-sm-1 mt-4 pe-3">
+        <div className="row justify-content-between mt-3 align-items-center">
+
+          <div className="col-4">
+            { feedback ? success ? (
+              <div class="alert alert-success" role="alert">
+                Message Sent
+              </div>
+            ) : (
+              (
+                <div class="alert alert-danger" role="alert">
+                  Message Failed
+                </div>
+              )
+            ) : null}
+          </div>
+
+          <div className="col-2 col-sm-1 pe-3">
             <SubmitIcon 
             className="target hover-icon"
             style={{...svgStyle, width: '32px', height: '32px'}}/>
