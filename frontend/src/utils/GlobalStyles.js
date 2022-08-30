@@ -148,8 +148,7 @@ function GlobalStyle({children}) {
 
   .email-container {
     width: 42rem;
-    height: 44rem;
-    // aspect-ratio: 1.6180339887 / 1;
+    aspect-ratio: 1.6180339887 / 1;
     font-weight: 300 !important;
   }
 
@@ -160,6 +159,17 @@ function GlobalStyle({children}) {
     width: 96%;
   }
 
+  @media screen and (max-width: 768px) {
+    .email-container {
+      width: 22rem;
+      aspect-ratio: 1.6180339887 / 1;
+    }
+    .email-root-container {
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
 
   `
 
