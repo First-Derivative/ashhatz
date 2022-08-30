@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import reactDOM from 'react-dom'
 import { useDarkmode } from '../DarkmodeContext'
 import { darkTheme, lightTheme } from '../utils/theme'
 import {ReactComponent as RemoveIcon } from '../assets/remove.svg'
 import {ReactComponent as SubmitIcon } from '../assets/sign-in.svg'
+import axiosInstance from '../utils/axios.js'
 
-function EmailModal({open, openHandler}) {
+function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
 
   const darkmode = useDarkmode()
+
+  const [feedback, setFeedback] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("Message Failed")
 
   // Handle Open & Closing of Modal
   useEffect( ()=> {
     if (!open) return
+
+    setSuccess(false)
+    setFeedback(false)
   
     function handleEscape(e) {
       if(e.key === 'Escape') openHandler()
@@ -47,6 +55,74 @@ function EmailModal({open, openHandler}) {
     filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter 
   }
 
+  function resetErrorFields () {
+    setFeedback(false)
+    setErrorMessage("Message Failed")
+    const fields = document.querySelectorAll("input, textarea")
+    fields.forEach( (field) => {
+      if(field.classList.contains("input-error")){
+        field.classList.toggle("input-error")
+      }
+    })
+  }
+
+  const postEmail = async () => {
+    setFeedback(false)
+    setSuccess(false)
+    
+    await axiosInstance.post("api/sendemail/", emailForm).then(
+      (res) => {
+        setFeedback(true)
+        setSuccess(true)
+      }
+    ).catch( 
+      (err) => {
+        setFeedback(true)
+    })
+  }
+
+  const handleSubmit = (e) => {
+    console.log("got handlesubmit")
+    e.preventDefault()
+    resetErrorFields()
+
+    let isValid = true;
+    let invalidFields = []
+
+    // validate fields
+    if( emailForm["email"] === ""){
+      isValid = false;
+      invalidFields.push("email")
+    }
+
+    if( emailForm["subject"] === ""){
+      isValid = false;
+      invalidFields.push("subject");
+    }
+
+    if( emailForm["content"] === ""){
+      isValid = false;
+      invalidFields.push("content");
+    }
+
+    if(isValid){
+      return postEmail()
+      
+    } else {
+      let msg = "Missing"
+      invalidFields.forEach( (field) => {
+        msg += ` ${field},`
+        const elem = document.getElementById(`input-${field}`)
+        elem.classList.add("input-error")
+      })
+      setFeedback(true)
+      setSuccess(false)
+      msg += " fields"
+      setErrorMessage(msg)
+    }
+
+  }
+
   return reactDOM.createPortal(
     <div style={overlayStyle}>
       <div className="rounded email-container" style={containerStyle}>
@@ -72,17 +148,32 @@ function EmailModal({open, openHandler}) {
 
           {/* user email */}
           <div className="col-12 col-sm-6">
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="input-email" placeholder="johnny@silverhand.com" required/>
-              <label for="input-email">Email address</label>
+            <div className="form-floating mb-3">
+              <input 
+              type="email" 
+              className="form-control" 
+              id="input-email" 
+              placeholder="johnny@silverhand.com"
+              name="email"
+              onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.email}
+              required/>
+              <label htmlFor="input-email">Email address</label>
             </div>
           </div>
 
           {/* user number */}
           <div className="col-12 col-sm-6">
-            <div class="form-floating mb-3">
-              <input type="tel" class="form-control" id="input-number" placeholder="+44 7659973412"/>
-              <label for="input-number">Number</label>
+            <div className="form-floating mb-3">
+              <input 
+              type="tel" 
+              className="form-control" 
+              id="input-number" 
+              name="number"
+              onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.number}
+              placeholder="+44 7659973412"/>
+              <label htmlFor="input-number">Number</label>
             </div>
           </div>
 
@@ -99,9 +190,16 @@ function EmailModal({open, openHandler}) {
 
 
           <div className="col-12">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="input-subject" placeholder="Arasaka Riot"/>
-              <label for="input-subject">Subject </label>
+            <div className="form-floating mb-3">
+              <input 
+              type="text" 
+              className="form-control" 
+              id="input-subject" 
+              name="subject"
+              onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.subject}
+              placeholder="Arasaka Riot"/>
+              <label htmlFor="input-subject">Subject </label>
             </div>
           </div>
         </div>
@@ -109,22 +207,48 @@ function EmailModal({open, openHandler}) {
         {/* user content */}
         <div className="row">
           <div className="col-12">
-          <div class="form-floating">
-            <textarea 
-            class="form-control" 
-            placeholder="Leave a comment here" 
-            id="input-content"
-            style={{height: '28vh'}}
-            >
-            </textarea>
-            <label for="input-content">Content</label>
-          </div>
+            <div className="form-floating">
+              <textarea 
+              className="form-control" 
+              placeholder="Leave a comment here" 
+              id="input-content"
+              name="content"
+              onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.content}
+              style={{height: '28vh'}}
+              >
+              </textarea>
+              <label htmlFor="input-content">Content</label>
+            </div>
           </div>
         </div>
 
-        <div className="row justify-content-end">
-          <div className="col-2 col-sm-1 mt-4">
-            <SubmitIcon style={{...svgStyle, width: '32px', height: '32px'}}/>
+        <div className="row justify-content-end mt-3 align-items-center">
+
+          
+            { feedback ? success ? (
+              <div className="col-4">
+                <div className="alert alert-success" role="alert">
+                  Message Sent
+                </div>
+              </div>
+            ) : (
+              (
+                <div className="col">
+                  <div className="alert alert-danger" role="alert">
+                    {errorMessage}
+                  </div>
+                </div>
+              )
+            ) : null}
+          
+
+          <div className="col-2 col-sm-1 pe-3">
+            <SubmitIcon 
+            className="target hover-icon"
+            style={{...svgStyle, width: '32px', height: '32px'}}
+            onClick={(e) => handleSubmit(e)}
+            />
           </div>
         </div>
 

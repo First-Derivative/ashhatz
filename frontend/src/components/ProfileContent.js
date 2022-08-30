@@ -9,6 +9,17 @@ function ProfileContent() {
 
   const darkmode = useDarkmode()
   const [openModal, setOpenModal] = useState(false)
+  const [emailForm, setEmailForm] = useState({
+    email: '',
+    number: '',
+    subject: '',
+    content: ''
+  })
+
+  const updateEmailForms = ({target}) => setEmailForm({
+    ...emailForm,
+    [target.name] : target.value
+  });
 
   const profileStyle = {
     color: darkmode ? darkTheme.text : lightTheme.text
@@ -36,7 +47,7 @@ function ProfileContent() {
     </div>
 
     {/* Profile Content Container */}
-    <div class="row mt-3 mx-3">
+    <div className="row mt-3 mx-3">
       
       {/* Profile Content */}
       <div className="col-12 col-sm-8">
@@ -92,7 +103,7 @@ function ProfileContent() {
     </div>
 
     {/* Profile Email Form Modal */}
-    <EmailModal open={openModal} openHandler={() => setOpenModal(false)}/>
+    <EmailModal emailForm={emailForm} updateEmailForms={(e) => updateEmailForms(e)} open={openModal} openHandler={() => setOpenModal(false)}/>
     </>
   )
 }

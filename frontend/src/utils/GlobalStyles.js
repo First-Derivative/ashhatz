@@ -73,6 +73,15 @@ function GlobalStyle({children}) {
     background-color: ${darkmode ? darkTheme.text : lightTheme.text};
   }
 
+  .hover-icon {
+    transition: all 200ms ease-in;
+  }
+
+  .hover-icon:hover {
+    transform: scale(1.1);
+    transition: all 200ms ease-in;
+  }
+
   #darkmode-text {
     opacity: 0;
     transition: opacity 300ms ease-in;
@@ -145,6 +154,10 @@ function GlobalStyle({children}) {
   }
 
   // ===== EmailModal Styling =====
+
+  .input-error {
+    border-color: #dc4245;
+  }
 
   .email-container {
     width: 42rem;

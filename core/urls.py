@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from utils.views import send_email
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('api/sendemail/', send_email, name="api-send-email"),
     path('users/', include('users.urls')),
     path('portfolio/', include('portfolio.urls'))
 ]
