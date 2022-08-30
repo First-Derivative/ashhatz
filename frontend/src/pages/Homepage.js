@@ -9,6 +9,7 @@ import ErrorAlert from '../components/ErrorAlert'
 function Homepage() {
 
   const [projects, setProjects] = useState([])
+  const [tags, setTags] = useState({})
   const [error, setError] = useState([])
   const [loading, setLoading] = useState(true)
   
@@ -30,9 +31,33 @@ function Homepage() {
     )
   }
 
+  const getTag = async (id) => {
+    
+    if(!tags.hasOwnProperty(id)) {
+      await axiosInstance.get(`portfolio/api/get/tag/${id}`).then( 
+        (res) => {
+          setTags( prevTags => ({...prevTags, [id] : res.data}))
+      }).catch( 
+        (err) => {
+          return 
+      })
+    } 
+  }
+
   useEffect( () => {
     getProjects()
   }, [])
+
+  useEffect( ()=> {
+    if(Object.keys(projects).length !== 0){
+      projects.forEach( (project) => {
+       for(let i = 0; i < project.tags.length ; i++) {
+        getTag(project.tags[i])
+       }
+        
+      })
+    }
+  }, [projects])
 
   return (
       <div className="row">
