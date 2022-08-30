@@ -49,7 +49,7 @@ function EmailModal({open, openHandler}) {
   return reactDOM.createPortal(
     <div style={overlayStyle}>
       <div className="rounded email-container" style={containerStyle}>
-        
+        <div className="email-root-container">
         <div className="container p-3">
 
         {/* Modal Accesibility */}
@@ -62,7 +62,67 @@ function EmailModal({open, openHandler}) {
           </div>
         </div>
 
+        {/* User Details */}
+        <div className="row">
+
+          <div className="col-12 mb-3">
+            <div className="h4 fst-light"> Your Details </div>
+          </div>
+
+          {/* user email */}
+          <div className="col-12 col-sm-6">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="input-email" placeholder="johnny@silverhand.com" required/>
+              <label for="input-email">Email address</label>
+            </div>
+          </div>
+
+          {/* user number */}
+          <div className="col-12 col-sm-6">
+            <div class="form-floating mb-3">
+              <input type="tel" class="form-control" id="input-number" placeholder="+44 7659973412"/>
+              <label for="input-number">Number</label>
+            </div>
+          </div>
+
         </div>
+
+        {/* User Letter */}
+
+        {/* user email */}
+        <div className="row">
+
+          <div className="col-12 my-3">
+            <div className="h4 fst-light"> Your Message </div>
+          </div>
+
+
+          <div className="col-12">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="input-subject" placeholder="Arasaka Riot"/>
+              <label for="input-subject">Subject </label>
+            </div>
+          </div>
+        </div>
+
+        {/* user content */}
+        <div className="row">
+          <div className="col-12">
+          <div class="form-floating">
+            <textarea 
+            class="form-control" 
+            placeholder="Leave a comment here" 
+            id="input-content"
+            style={{height: '28vh'}}
+            >
+            </textarea>
+            <label for="input-content">Content</label>
+          </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
       </div>
     </div>
   , document.getElementById("email-portal"))

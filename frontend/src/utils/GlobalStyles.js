@@ -147,10 +147,18 @@ function GlobalStyle({children}) {
   // ===== EmailModal Styling =====
 
   .email-container {
-    width: 70rem;
-    aspect-ratio: 1.618 / 1;
+    width: 42rem;
+    height: 44rem;
+    // aspect-ratio: 1.6180339887 / 1;
+    font-weight: 300 !important;
   }
 
+  .email-root-container {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 96%;
+  }
 
 
   `
