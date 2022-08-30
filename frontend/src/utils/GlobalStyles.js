@@ -155,6 +155,10 @@ function GlobalStyle({children}) {
 
   // ===== EmailModal Styling =====
 
+  .input-error {
+    border-color: #dc4245;
+  }
+
   .email-container {
     width: 42rem;
     aspect-ratio: 1.6180339887 / 1;
