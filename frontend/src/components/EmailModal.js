@@ -81,7 +81,7 @@ function EmailModal({open, openHandler}) {
     setFeedback(false)
     setSuccess(false)
     
-    await axiosInstance.post("", emailForm).then(
+    await axiosInstance.post("api/sendemail/", emailForm).then(
       (res) => {
         setFeedback(true)
         setSuccess(true)
