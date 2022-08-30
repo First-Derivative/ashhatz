@@ -40,9 +40,8 @@ def send_email(request):
       email.fail_silently = False
       email.send()
       return Response("Message sent", status=200)
-    except Exception as e:
-      print(e)
-      return Response("Message failed to send", status=400)
+    except BadHeaderError:
+      return Response("Invalid Header FOund", status=400)
 
   else:
     print(subject, content, contact_email, contact_number)
