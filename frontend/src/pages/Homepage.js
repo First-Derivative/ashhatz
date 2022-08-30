@@ -66,6 +66,7 @@ function Homepage() {
           { error.length > 0 && <ErrorAlert styling={"col-10 col-sm-5 my-3 mx-auto text-center"} message={error} />}
           <PortfolioContent
           projects={projects}
+          tags={tags}
           />
           { loading && <div className="mx-auto ms-2 ms-sm-4">
             Getting Data from backend Database...

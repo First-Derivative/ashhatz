@@ -1,7 +1,7 @@
 import React from 'react'
 import ProjectCard from './ProjectCard'
 
-function PortfolioContent({projects}) {
+function PortfolioContent({projects, tags}) {
 
   return (
     <>
@@ -14,6 +14,7 @@ function PortfolioContent({projects}) {
           <ProjectCard 
           key={index}
           project={project}
+          tags={tags}
           />
         ))}
     </div>
