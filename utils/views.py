@@ -13,10 +13,11 @@ def send_email(request):
   """
 
   # Get DATA from POST
-  subject = request.POST.get('subject', '')
-  content = request.POST.get('content', '')
-  contact_email = request.POST.get('email', '')
-  contact_number = request.POST.get('number', '')
+  data = request.data
+  subject = data["subject"]
+  content = data["content"]
+  contact_email = data["email"]
+  contact_number = data["number"]
 
   if( subject and content and contact_email):
 
@@ -44,4 +45,5 @@ def send_email(request):
       return Response("Message failed to send", status=400)
 
   else:
+    print(subject, content, contact_email, contact_number)
     return Response("Missing required fields", status=400)
