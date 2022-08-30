@@ -57,6 +57,15 @@ function EmailModal({open, openHandler}) {
     filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter 
   }
 
+  function resetErrorFields () {
+    const fields = document.querySelectorAll("input, textarea")
+    fields.forEach( (field) => {
+      if(field.classList.contains("input-error")){
+        field.classList.toggle("input-error")
+      }
+    })
+  }
+
   const updateEmailForms = ({target}) => setEmailForm({
     ...emailForm,
     [target.name] : target.value
@@ -75,6 +84,40 @@ function EmailModal({open, openHandler}) {
       (err) => {
         setFeedback(true)
     })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    resetErrorFields()
+
+    let isValid = true;
+    let invalidFields = []
+
+    // validate fields
+    if( emailForm["email"] === ""){
+      isValid = false;
+      invalidFields.push("email")
+    }
+
+    if( emailForm["subject"] === ""){
+      isValid = false;
+      invalidFields.push("subject");
+    }
+
+    if( emailForm["content"] === ""){
+      isValid = false;
+      invalidFields.push("content");
+    }
+
+    if(isValid){
+      return postEmail()
+      
+    } else {
+      invalidFields.forEach( (field) => {
+        field.classList.add("input-error")
+      })
+    }
+
   }
 
   return reactDOM.createPortal(
