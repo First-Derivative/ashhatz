@@ -87,6 +87,7 @@ function EmailModal({open, openHandler}) {
   }
 
   const handleSubmit = (e) => {
+    console.log("got handlesubmit")
     e.preventDefault()
     resetErrorFields()
 
@@ -114,7 +115,8 @@ function EmailModal({open, openHandler}) {
       
     } else {
       invalidFields.forEach( (field) => {
-        field.classList.add("input-error")
+        const elem = document.getElementById(`input-${field}`)
+        elem.classList.add("input-error")
       })
     }
 
@@ -220,12 +222,12 @@ function EmailModal({open, openHandler}) {
 
           <div className="col-4">
             { feedback ? success ? (
-              <div class="alert alert-success" role="alert">
+              <div className="alert alert-success" role="alert">
                 Message Sent
               </div>
             ) : (
               (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   Message Failed
                 </div>
               )
@@ -235,7 +237,9 @@ function EmailModal({open, openHandler}) {
           <div className="col-2 col-sm-1 pe-3">
             <SubmitIcon 
             className="target hover-icon"
-            style={{...svgStyle, width: '32px', height: '32px'}}/>
+            style={{...svgStyle, width: '32px', height: '32px'}}
+            onClick={(e) => handleSubmit(e)}
+            />
           </div>
         </div>
 
