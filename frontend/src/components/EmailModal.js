@@ -6,15 +6,9 @@ import {ReactComponent as RemoveIcon } from '../assets/remove.svg'
 import {ReactComponent as SubmitIcon } from '../assets/sign-in.svg'
 import axiosInstance from '../utils/axios.js'
 
-function EmailModal({open, openHandler}) {
+function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
 
   const darkmode = useDarkmode()
-  const [emailForm, setEmailForm] = useState({
-    email: '',
-    number: '',
-    subject: '',
-    content: ''
-  })
 
   const [feedback, setFeedback] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -71,11 +65,6 @@ function EmailModal({open, openHandler}) {
       }
     })
   }
-
-  const updateEmailForms = ({target}) => setEmailForm({
-    ...emailForm,
-    [target.name] : target.value
-  });
 
   const postEmail = async () => {
     setFeedback(false)
@@ -167,6 +156,7 @@ function EmailModal({open, openHandler}) {
               placeholder="johnny@silverhand.com"
               name="email"
               onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.email}
               required/>
               <label htmlFor="input-email">Email address</label>
             </div>
@@ -181,6 +171,7 @@ function EmailModal({open, openHandler}) {
               id="input-number" 
               name="number"
               onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.number}
               placeholder="+44 7659973412"/>
               <label htmlFor="input-number">Number</label>
             </div>
@@ -206,6 +197,7 @@ function EmailModal({open, openHandler}) {
               id="input-subject" 
               name="subject"
               onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.subject}
               placeholder="Arasaka Riot"/>
               <label htmlFor="input-subject">Subject </label>
             </div>
@@ -222,6 +214,7 @@ function EmailModal({open, openHandler}) {
               id="input-content"
               name="content"
               onChange={(e) => updateEmailForms(e)}
+              defaultValue={emailForm.content}
               style={{height: '28vh'}}
               >
               </textarea>
