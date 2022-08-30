@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import reactDOM from 'react-dom'
 import { useDarkmode } from '../DarkmodeContext'
 import { darkTheme, lightTheme } from '../utils/theme'
@@ -8,6 +8,13 @@ import {ReactComponent as SubmitIcon } from '../assets/sign-in.svg'
 function EmailModal({open, openHandler}) {
 
   const darkmode = useDarkmode()
+  const [emailForm, setEmailForm] = useState({
+    email: '',
+    number: '',
+    subject: '',
+    content: ''
+
+  })
 
   // Handle Open & Closing of Modal
   useEffect( ()=> {
@@ -47,6 +54,11 @@ function EmailModal({open, openHandler}) {
     filter : darkmode ? darkTheme.svg_filter : lightTheme.svg_filter 
   }
 
+  const updateEmailForms = ({target}) => setEmailForm({
+    ...emailForm,
+    [target.name] : target.value
+});
+
   return reactDOM.createPortal(
     <div style={overlayStyle}>
       <div className="rounded email-container" style={containerStyle}>
@@ -72,17 +84,30 @@ function EmailModal({open, openHandler}) {
 
           {/* user email */}
           <div className="col-12 col-sm-6">
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="input-email" placeholder="johnny@silverhand.com" required/>
-              <label for="input-email">Email address</label>
+            <div className="form-floating mb-3">
+              <input 
+              type="email" 
+              className="form-control" 
+              id="input-email" 
+              placeholder="johnny@silverhand.com"
+              name="email"
+              onChange={(e) => updateEmailForms(e)}
+              required/>
+              <label htmlFor="input-email">Email address</label>
             </div>
           </div>
 
           {/* user number */}
           <div className="col-12 col-sm-6">
-            <div class="form-floating mb-3">
-              <input type="tel" class="form-control" id="input-number" placeholder="+44 7659973412"/>
-              <label for="input-number">Number</label>
+            <div className="form-floating mb-3">
+              <input 
+              type="tel" 
+              className="form-control" 
+              id="input-number" 
+              name="number"
+              onChange={(e) => updateEmailForms(e)}
+              placeholder="+44 7659973412"/>
+              <label htmlFor="input-number">Number</label>
             </div>
           </div>
 
@@ -99,9 +124,15 @@ function EmailModal({open, openHandler}) {
 
 
           <div className="col-12">
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="input-subject" placeholder="Arasaka Riot"/>
-              <label for="input-subject">Subject </label>
+            <div className="form-floating mb-3">
+              <input 
+              type="text" 
+              className="form-control" 
+              id="input-subject" 
+              name="subject"
+              onChange={(e) => updateEmailForms(e)}
+              placeholder="Arasaka Riot"/>
+              <label htmlFor="input-subject">Subject </label>
             </div>
           </div>
         </div>
@@ -109,16 +140,18 @@ function EmailModal({open, openHandler}) {
         {/* user content */}
         <div className="row">
           <div className="col-12">
-          <div class="form-floating">
-            <textarea 
-            class="form-control" 
-            placeholder="Leave a comment here" 
-            id="input-content"
-            style={{height: '28vh'}}
-            >
-            </textarea>
-            <label for="input-content">Content</label>
-          </div>
+            <div className="form-floating">
+              <textarea 
+              className="form-control" 
+              placeholder="Leave a comment here" 
+              id="input-content"
+              name="content"
+              onChange={(e) => updateEmailForms(e)}
+              style={{height: '28vh'}}
+              >
+              </textarea>
+              <label htmlFor="input-content">Content</label>
+            </div>
           </div>
         </div>
 
