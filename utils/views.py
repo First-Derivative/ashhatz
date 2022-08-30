@@ -5,15 +5,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 
-
-# send_mail(
-#     'Subject here',
-#     'Here is the message.',
-#     'from@example.com',
-#     ['to@example.com'],
-#     fail_silently=False,
-# )
-
 @api_view(['POST'])
 @permission_classes((AllowAny, ))
 def send_email(request):
@@ -35,14 +26,15 @@ def send_email(request):
       email_context["contact_number"] = contact_number
 
     # Instansiate Email Obejct 
-    template = render_to_string('contact/contact_email.html', email_context)
+    template = render_to_string('utils/email_template.html', email_context)
     email = EmailMessage(
       "Sales Enquiry",
       template,
       settings.EMAIL_HOST_USER,
-      [settings.EMAIL_RECIPIENT],
+      [settings.EMAIL_HOST_USER],
     )
-
+    
+    # Send Email 
     try: 
       email.fail_silently = False
       email.send()
