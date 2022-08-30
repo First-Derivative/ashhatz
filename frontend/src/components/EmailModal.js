@@ -18,10 +18,14 @@ function EmailModal({open, openHandler}) {
 
   const [feedback, setFeedback] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("Message Failed")
 
   // Handle Open & Closing of Modal
   useEffect( ()=> {
     if (!open) return
+
+    setSuccess(false)
+    setFeedback(false)
   
     function handleEscape(e) {
       if(e.key === 'Escape') openHandler()
@@ -58,6 +62,8 @@ function EmailModal({open, openHandler}) {
   }
 
   function resetErrorFields () {
+    setFeedback(false)
+    setErrorMessage("Message Failed")
     const fields = document.querySelectorAll("input, textarea")
     fields.forEach( (field) => {
       if(field.classList.contains("input-error")){
@@ -114,10 +120,16 @@ function EmailModal({open, openHandler}) {
       return postEmail()
       
     } else {
+      let msg = "Missing"
       invalidFields.forEach( (field) => {
+        msg += ` ${field},`
         const elem = document.getElementById(`input-${field}`)
         elem.classList.add("input-error")
       })
+      setFeedback(true)
+      setSuccess(false)
+      msg += " fields"
+      setErrorMessage(msg)
     }
 
   }
@@ -218,21 +230,25 @@ function EmailModal({open, openHandler}) {
           </div>
         </div>
 
-        <div className="row justify-content-between mt-3 align-items-center">
+        <div className="row justify-content-end mt-3 align-items-center">
 
-          <div className="col-4">
+          
             { feedback ? success ? (
-              <div className="alert alert-success" role="alert">
-                Message Sent
+              <div className="col-4">
+                <div className="alert alert-success" role="alert">
+                  Message Sent
+                </div>
               </div>
             ) : (
               (
-                <div className="alert alert-danger" role="alert">
-                  Message Failed
+                <div className="col">
+                  <div className="alert alert-danger" role="alert">
+                    {errorMessage}
+                  </div>
                 </div>
               )
             ) : null}
-          </div>
+          
 
           <div className="col-2 col-sm-1 pe-3">
             <SubmitIcon 
