@@ -34,7 +34,11 @@ function ModalTag({tag}) {
     border: darkmode ? `1px solid ${lightTheme.body}` : `1px solid ${darkTheme.body}`,
     backgroundColor: darkmode ? darkTheme.body : lightTheme.body
   }
-  const tagHoverStyling = {...tagStyling, "backgroundColor" : tag.css_theme} 
+  const tagHoverStyling = {
+    backgroundColor : tag.css_body, 
+    color : tag.css_text,
+    border : `1px solid ${tag.css_body}`
+  } 
 
   return (
     <span 
