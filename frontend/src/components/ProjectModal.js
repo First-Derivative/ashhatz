@@ -34,7 +34,7 @@ function ModalTag({tag}) {
   if(tag === undefined) return null
 
   return (
-    <span className="badge rounded-pill px-3 mx-2 fw-light text-end" style={tagStyling}>{tag.name}</span>
+    <span className="badge rounded-pill px-3 mx-2 mb-1 fw-light text-end" style={tagStyling}>{tag.name}</span>
   )
 }
 
@@ -45,8 +45,8 @@ function ModalLink({link}) {
     color: darkmode ? darkTheme.text : lightTheme.text,
   }
   const iconStyling = {
-    width: '24px',
-    height: '24px',
+    width: '20px',
+    height: '20px',
     filter: darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
   }
 
@@ -59,9 +59,9 @@ function ModalLink({link}) {
   }
 
   return (
-    <div className="d-flex flex-row mt-2 target"
+    <div className="d-flex flex-row mt-3 target project-link-container"
     onClick={() => handleURL()}>
-      <LinkIcon style={iconStyling} />
+      <LinkIcon style={iconStyling} id="project-link-icon"/>
       <div className="p ps-2" style={linkStyling}>{link.name}</div>
     </div>
   )
@@ -167,7 +167,7 @@ function ProjectModal({open, openHandler, project, tags, links}) {
 
               <div className="row mt-3">
                 <div className="col-12">
-                  <div className="col-12 fw-bold mb-2">Links: </div>
+                  <div className="col-12 fw-bold mb-3">Links: </div>
                   {
                     Object.entries(links).length > 0 && (
                       Object.entries(project.links).map( (id, index) => {
