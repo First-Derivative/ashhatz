@@ -28,6 +28,9 @@ function ModalTag({tag}) {
     backgroundColor: darkmode ? darkTheme.body : darkTheme.body
   }
 
+  // Edge Case: stop render of ModalTag incase of undefined tags
+  if(tag === undefined) return null
+
   return (
     <span className="badge rounded-pill px-3 mx-2 fw-light text-end" style={tagStyling}>{tag.name}</span>
   )
