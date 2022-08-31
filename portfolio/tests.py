@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Project, ProjectTag, ProjectLink
+from django.core.exceptions import ValidationError
 
 class PortfolioModelTests(TestCase):
   
@@ -61,4 +62,14 @@ class PortfolioModelTests(TestCase):
 
   def test_portfolio_errors(self):
     ''' Testing validation methods and criteria for saving new instances'''
-    pass
+
+    # Check ProjecTag Validators 
+
+    with self.assertRaises(ValidationError): #check css_theme invalid hex code
+      p = ProjectTag(name="temp-tag", media="", css_theme="#1234")
+      p.full_clean()
+    
+    with self.assertRaises(ValidationError): #check css_theme invalid hex code
+      p = ProjectTag(name="temp-tag", media="", css_theme="#klsjdf")
+      p.full_clean()
+      
