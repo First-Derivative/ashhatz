@@ -65,11 +65,15 @@ class PortfolioModelTests(TestCase):
 
     # Check ProjecTag Validators 
 
-    with self.assertRaises(ValidationError): #check css_theme invalid hex code
-      p = ProjectTag(name="temp-tag", media="", css_theme="#1234")
+    with self.assertRaises(ValidationError): #check css_body invalid hex code
+      p = ProjectTag(name="temp-tag", media="", css_body="#1234", css_text="#FFF")
       p.full_clean()
     
-    with self.assertRaises(ValidationError): #check css_theme invalid hex code
-      p = ProjectTag(name="temp-tag", media="", css_theme="#klsjdf")
+    with self.assertRaises(ValidationError): #check css_body invalid hex code
+      p = ProjectTag(name="temp-tag", media="", css_body="#klsjdf", css_text="000")
+      p.full_clean()
+      
+    with self.assertRaises(ValidationError): #check css_body invalid hex code
+      p = ProjectTag(name="temp-tag", media="", css_body="#FFFFFF", css_text="FFF")
       p.full_clean()
       
