@@ -119,6 +119,15 @@ function GlobalStyle({children}) {
     aspect-ratio: 1.618 / 1;
    }
 
+   #project-link-icon {
+    transition: all 200ms ease-in
+   }
+
+   .project-link-container:hover #project-link-icon {
+    transform: scale(1.1);
+    transition: all 200ms ease-in
+   }
+
   @media screen and (max-width: 768px) {
     .project-card {
       width: 20rem;
@@ -129,7 +138,7 @@ function GlobalStyle({children}) {
     }
   }
 
-  // ===== Portfolio Styling =====
+  // ===== Profile Styling =====
 
   .profile-button {
     color: ${ darkmode ? darkTheme.text : lightTheme.text};
