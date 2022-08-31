@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
 import { ReactComponent as RemoveIcon } from '../assets/remove.svg'
+import { ReactComponent as LinkIcon } from '../assets/link.svg'
 
 function ModalEntry({title, value}) {
   const darkmode = useDarkmode()
@@ -38,10 +39,23 @@ function ModalTag({tag}) {
 
 function ModalLinks({link}) {
   const darkmode = useDarkmode()
-  const linkStyling = {}
+  
+  const linkStyling = {
+    color: darkmode ? darkTheme.text : lightTheme.text,
+  }
+  const iconStyling = {
+    width: '24px',
+    height: '24px',
+    filter: darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
+  }
+
+  if(link === undefined) return null
 
   return (
-    <div className=""></div>
+    <div className="d-flex flex-row">
+      <LinkIcon style={iconStyling} />
+      <div className="p" style={linkStyling}>{link.name}</div>
+    </div>
   )
 }
 
@@ -145,7 +159,16 @@ function ProjectModal({open, openHandler, project, tags, links}) {
 
               <div className="row mt-3">
                 <div className="col-12">
-                  <span className="fw-bold">Links</span>: <br/>
+                  <div className="col-12 fw-bold mb-2">Links: </div>
+                  {
+                    Object.entries(links).length > 0 && (
+                      Object.entries(project.links).map( (id, index) => {
+                        return (
+                          <ModalLinks key={index} link={links[id[1]]}/>
+                        )
+                      })
+                    )
+                  }
                 </div>
               </div>
 
