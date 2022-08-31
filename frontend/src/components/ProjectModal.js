@@ -25,8 +25,9 @@ function ModalEntry({title, value}) {
 function ModalTag({tag}) {
   const darkmode = useDarkmode()
   const tagStyling = {
-    color: darkmode ? lightTheme.text : darkTheme.text,
-    backgroundColor: darkmode ? darkTheme.body : darkTheme.body
+    color: darkmode ? darkTheme.text : lightTheme.text,
+    backgroundColor: darkmode ? darkTheme.body : lightTheme.body,
+    border: darkmode ? '1px solid white' : 'none'
   }
 
   // Edge Case: stop render of ModalTag incase of undefined tags
