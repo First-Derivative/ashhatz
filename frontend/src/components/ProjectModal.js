@@ -33,7 +33,7 @@ function ModalTag({tag}) {
   )
 }
 
-function ProjectModal({open, openHandler, project, tags}) {
+function ProjectModal({open, openHandler, project, tags, links}) {
   const darkmode = useDarkmode()
   // Handle Open & Closing of Modal
   useEffect( () => {

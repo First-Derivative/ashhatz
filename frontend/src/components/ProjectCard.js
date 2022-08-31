@@ -3,7 +3,7 @@ import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
 import ProjectModal from './ProjectModal'
 
-function ProjectCard({project, tags}) {
+function ProjectCard({project, tags, links}) {
   
   const darkmode = useDarkmode()
   const [modalOpen, setModalOpen] = useState(false)
@@ -46,6 +46,7 @@ function ProjectCard({project, tags}) {
       openHandler={ () => setModalOpen(false)}
       project={project}
       tags={tags}
+      links={links}
       />
 
     </div>
