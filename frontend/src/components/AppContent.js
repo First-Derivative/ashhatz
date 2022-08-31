@@ -21,9 +21,7 @@ function AppContent({title, children}) {
       </div>
 
       <div className="row mt-3" id="AppContent">
-        <div className="col-12 text-start px-0 px-sm-3">
-          {children}
-        </div>
+        {children}
       </div>
 
     </div>
