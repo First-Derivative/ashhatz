@@ -29,9 +29,7 @@ function ModalTag({tag}) {
   }
 
   return (
-    <div className="p">
-      <span className="badge rounded-pill px-3 fw-light text-end" style={tagStyling}>{tag.name}</span>
-    </div>
+    <span className="badge rounded-pill px-3 mx-2 fw-light text-end" style={tagStyling}>{tag.name}</span>
   )
 }
 
@@ -122,7 +120,7 @@ function ProjectModal({open, openHandler, project, tags}) {
 
               <div className="row">
                 <div className="col-12">
-                  <div className="d-flex my-3">
+                  <span className="fw-bold">Tags</span>: <br/>
                     { Object.entries(tags).length > 0 && (
                       Object.entries(project.tags).map( (id, index) => {
                         return (
@@ -130,7 +128,6 @@ function ProjectModal({open, openHandler, project, tags}) {
                         )
                       }))
                     }
-                  </div>
                 </div>
               </div>
 
