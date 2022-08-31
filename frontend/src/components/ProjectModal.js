@@ -52,9 +52,9 @@ function ModalLinks({link}) {
   if(link === undefined) return null
 
   return (
-    <div className="d-flex flex-row">
+    <div className="d-flex flex-row mt-2">
       <LinkIcon style={iconStyling} />
-      <div className="p" style={linkStyling}>{link.name}</div>
+      <div className="p ps-2" style={linkStyling}>{link.name}</div>
     </div>
   )
 }
