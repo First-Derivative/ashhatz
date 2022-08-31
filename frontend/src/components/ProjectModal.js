@@ -62,7 +62,7 @@ function ModalLink({link}) {
     <div className="d-flex flex-row mt-3 target project-link-container"
     onClick={() => handleURL()}>
       <LinkIcon style={iconStyling} id="project-link-icon"/>
-      <div className="p ps-2" style={linkStyling}>{link.name}</div>
+      <div className="p ps-2 align-self-center" style={linkStyling}>{link.name}</div>
     </div>
   )
 }

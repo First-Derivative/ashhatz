@@ -124,7 +124,7 @@ function GlobalStyle({children}) {
    }
 
    .project-link-container:hover #project-link-icon {
-    transform: scale(1.05);
+    transform: scale(1.1);
     transition: all 200ms ease-in
    }
 
