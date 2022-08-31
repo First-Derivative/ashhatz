@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
@@ -24,17 +24,26 @@ function ModalEntry({title, value}) {
 
 function ModalTag({tag}) {
   const darkmode = useDarkmode()
-  const tagStyling = {
-    color: darkmode ? darkTheme.text : lightTheme.text,
-    backgroundColor: darkmode ? darkTheme.body : lightTheme.body,
-    border: darkmode ? '1px solid white' : 'none'
-  }
+  const [hover, setHover] = useState(false)
 
   // Edge Case: stop render of ModalTag incase of undefined tags
   if(tag === undefined) return null
 
+  const tagStyling = {
+    color: darkmode ? darkTheme.text : lightTheme.text,
+    border: darkmode ? `1px solid ${lightTheme.body}` : `1px solid ${darkTheme.body}`,
+    backgroundColor: darkmode ? darkTheme.body : lightTheme.body
+  }
+  const tagHoverStyling = {...tagStyling, "backgroundColor" : tag.css_theme} 
+
   return (
-    <span className="badge rounded-pill px-3 mx-2 mb-1 fw-light text-end" style={tagStyling}>{tag.name}</span>
+    <span 
+    className="badge rounded-pill px-3 mx-2 mb-1 fw-light text-end" 
+    style={hover ? tagHoverStyling : tagStyling}
+    onMouseEnter={() => setHover(true)}
+    onMouseLeave={() => setHover(false)}>
+      {tag.name}
+    </span>
   )
 }
 
