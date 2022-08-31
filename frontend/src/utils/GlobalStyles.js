@@ -92,6 +92,21 @@ function GlobalStyle({children}) {
     transition: opacity 300ms ease-in;
   }
 
+  // ===== AppContent Styling =====
+
+  #appcontent-container {
+    max-height: 100vh;
+    overflow: scroll;
+
+  }
+
+  @media screen and (max-width: 768px) {
+    #appcontent-container {
+      max-height: none;
+      overflow: initial;
+    }
+  }
+
   // ===== Login Styling =====
 
   @media (max-width: 500px) {
@@ -112,10 +127,8 @@ function GlobalStyle({children}) {
 
   // ===== Portfolio Styling =====
   
-  .project-card { width: 16rem; }
-
   .project-container { 
-    width: 50rem;
+    width: 54rem;
     aspect-ratio: 1.618 / 1;
    }
 
@@ -129,10 +142,6 @@ function GlobalStyle({children}) {
    }
 
   @media screen and (max-width: 768px) {
-    .project-card {
-      width: 20rem;
-    }
-
     .project-container { 
       width: 20rem;
     }

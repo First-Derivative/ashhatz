@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 
 function AppContent({title, children}) {
   return (
-    <div className="col-12 col-sm-9 p-4 p-sm-5">
+    <div className="col-12 col-sm-9 p-4 p-sm-5" id="appcontent-container">
       <Navbar />
 
       <div className="row mt-5 ">
@@ -21,9 +21,7 @@ function AppContent({title, children}) {
       </div>
 
       <div className="row mt-3" id="AppContent">
-        <div className="col-12 text-start px-0 px-sm-3">
-          {children}
-        </div>
+        {children}
       </div>
 
     </div>
