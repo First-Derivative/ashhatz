@@ -16,21 +16,13 @@ function ProjectCard({project, tags, links}) {
     color: darkmode ? lightTheme.text : darkTheme.text
   }
 
-  const handleModalOpen = () => {
-    if(Object.entries(tags).length === 0) {
-      setModalOpen(false)
-    } else {
-      setModalOpen(true)
-    }
-  }
-
   return (
     <div className="col-12 col-sm-4 mb-3 mb-sm-0">
       
       <div 
         className="card project-card target"
         style={cardStyles}
-        onClick={ () => handleModalOpen() }
+        onClick={ () => setModalOpen(true) }
         >
         <img src="https://images.pexels.com/photos/4693135/pexels-photo-4693135.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="card-img-top" alt="ProjectCardImage"/>
           <div className="card-body">
