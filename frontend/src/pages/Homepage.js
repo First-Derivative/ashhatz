@@ -95,6 +95,7 @@ function Homepage() {
           projects={projects}
           tags={tags}
           links={links}
+          loading={loading}
           />
           { loading && <div className="mx-auto ms-2 ms-sm-4">
             Getting Data from backend Database...
