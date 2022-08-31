@@ -21,10 +21,22 @@ function ModalEntry({title, value}) {
   )
 }
 
-function ProjectModal({open, openHandler, project}) {
-
+function ModalTag({tag}) {
   const darkmode = useDarkmode()
-  
+  const tagStyling = {
+    color: darkmode ? lightTheme.text : darkTheme.text,
+    backgroundColor: darkmode ? darkTheme.body : darkTheme.body
+  }
+
+  return (
+    <div className="p">
+      <span className="badge rounded-pill px-3 fw-light text-end" style={tagStyling}>{tag.name}</span>
+    </div>
+  )
+}
+
+function ProjectModal({open, openHandler, project, tags}) {
+  const darkmode = useDarkmode()
   // Handle Open & Closing of Modal
   useEffect( () => {
     if (!open) return
@@ -37,7 +49,9 @@ function ProjectModal({open, openHandler, project}) {
 
   }, [open])
 
-  if (!open) return null // overrides render of elements if !open
+  // overrides render of Modal 
+  if (!open) return null 
+  if(!Object.entries(tags).length > 0) return null
 
   const overlayStyle = {
     position: 'fixed',
@@ -108,7 +122,15 @@ function ProjectModal({open, openHandler, project}) {
 
               <div className="row">
                 <div className="col-12">
-                <ModalEntry title={"Tags"} value={"1,2,3"} />
+                  <div className="d-flex my-3">
+                    { Object.entries(tags).length > 0 && (
+                      Object.entries(project.tags).map( (id, index) => {
+                        return (
+                            <ModalTag key={index} tag={tags[id[1]]}/>
+                        )
+                      }))
+                    }
+                  </div>
                 </div>
               </div>
 

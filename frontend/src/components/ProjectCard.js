@@ -3,7 +3,9 @@ import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
 import ProjectModal from './ProjectModal'
 
-function ProjectCard({project}) {
+function ProjectCard({project, tags}) {
+  console.log("project card")
+  console.log(typeof(tags), tags)
   
   const darkmode = useDarkmode()
   const [modalOpen, setModalOpen] = useState(false)
@@ -16,13 +18,21 @@ function ProjectCard({project}) {
     color: darkmode ? lightTheme.text : darkTheme.text
   }
 
+  const handleModalOpen = () => {
+    if(Object.entries(tags).length === 0) {
+      setModalOpen(false)
+    } else {
+      setModalOpen(true)
+    }
+  }
+
   return (
     <div className="col-12 col-sm-4 mb-3 mb-sm-0">
       
       <div 
         className="card project-card target"
         style={cardStyles}
-        onClick={ () => setModalOpen(true) }
+        onClick={ () => handleModalOpen() }
         >
         <img src="https://images.pexels.com/photos/4693135/pexels-photo-4693135.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="card-img-top" alt="ProjectCardImage"/>
           <div className="card-body">
@@ -37,6 +47,7 @@ function ProjectCard({project}) {
       open={modalOpen}
       openHandler={ () => setModalOpen(false)}
       project={project}
+      tags={tags}
       />
 
     </div>
