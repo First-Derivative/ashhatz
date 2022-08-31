@@ -1,4 +1,5 @@
 from django.db import models
+from .validators import ProjectTag_css_theme_validator
 
 class Project(models.Model):
 
@@ -27,6 +28,7 @@ class ProjectTag(models.Model):
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
   media = models.CharField(max_length=100, null=True, blank=True)
+  css_theme = models.CharField(max_length=7, default="#000", null=False, blank=False, validators=[ProjectTag_css_theme_validator])
 
   def __str__(self):
     return self.name
