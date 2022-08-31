@@ -4,8 +4,6 @@ import { lightTheme, darkTheme } from '../utils/theme'
 import ProjectModal from './ProjectModal'
 
 function ProjectCard({project, tags}) {
-  console.log("project card")
-  console.log(typeof(tags), tags)
   
   const darkmode = useDarkmode()
   const [modalOpen, setModalOpen] = useState(false)
