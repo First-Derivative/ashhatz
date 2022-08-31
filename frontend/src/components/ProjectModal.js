@@ -129,10 +129,10 @@ function ProjectModal({open, openHandler, project, tags, links}) {
           <div className="row">
 
             {/* Project Media */}
-            <div className="col-12 col-sm-5">
+            <div className="col-12 col-sm-5 my-auto">
               <div className="row">
                 <div className="col-12">
-                  <img src="https://picsum.photos/300/300" alt="Media Content" className="img-fluid" />
+                  <img src="https://picsum.photos/300/300" alt="Media Content" className="img-fluid d-block mx-auto" />
                 </div>
               </div>
             </div>

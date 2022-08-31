@@ -112,10 +112,8 @@ function GlobalStyle({children}) {
 
   // ===== Portfolio Styling =====
   
-  .project-card { width: 16rem; }
-
   .project-container { 
-    width: 50rem;
+    width: 54rem;
     aspect-ratio: 1.618 / 1;
    }
 
@@ -129,10 +127,6 @@ function GlobalStyle({children}) {
    }
 
   @media screen and (max-width: 768px) {
-    .project-card {
-      width: 20rem;
-    }
-
     .project-container { 
       width: 20rem;
     }
