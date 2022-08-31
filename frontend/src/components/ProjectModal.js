@@ -37,7 +37,7 @@ function ModalTag({tag}) {
   )
 }
 
-function ModalLinks({link}) {
+function ModalLink({link}) {
   const darkmode = useDarkmode()
   
   const linkStyling = {
@@ -49,10 +49,17 @@ function ModalLinks({link}) {
     filter: darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
   }
 
+  // Edge Case: stop render of ModalLink incase of undefined tags
   if(link === undefined) return null
 
+  const handleURL = () => {
+    const url = link.url
+    window.open("http://" + url)
+  }
+
   return (
-    <div className="d-flex flex-row mt-2">
+    <div className="d-flex flex-row mt-2 target"
+    onClick={() => handleURL()}>
       <LinkIcon style={iconStyling} />
       <div className="p ps-2" style={linkStyling}>{link.name}</div>
     </div>
@@ -164,7 +171,7 @@ function ProjectModal({open, openHandler, project, tags, links}) {
                     Object.entries(links).length > 0 && (
                       Object.entries(project.links).map( (id, index) => {
                         return (
-                          <ModalLinks key={index} link={links[id[1]]}/>
+                          <ModalLink key={index} link={links[id[1]]}/>
                         )
                       })
                     )

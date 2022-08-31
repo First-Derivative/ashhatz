@@ -50,7 +50,7 @@ class GetProjectLink(APIView):
   def get(self, request, id, format=None):
     try:
       project = ProjectLink.objects.get(id=id)
-      serialized = ProjectTagSerializer(project, many=False)
+      serialized = ProjectLinkSerializer(project, many=False)
       return Response(serialized.data, status=200)
     except:
       error = ErrorResponse('Cant find project link with id {id}'.format(id=id))
