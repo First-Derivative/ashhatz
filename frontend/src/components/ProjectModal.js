@@ -36,6 +36,15 @@ function ModalTag({tag}) {
   )
 }
 
+function ModalLinks({link}) {
+  const darkmode = useDarkmode()
+  const linkStyling = {}
+
+  return (
+    <div className=""></div>
+  )
+}
+
 function ProjectModal({open, openHandler, project, tags, links}) {
   const darkmode = useDarkmode()
   // Handle Open & Closing of Modal
@@ -123,7 +132,7 @@ function ProjectModal({open, openHandler, project, tags, links}) {
 
               <div className="row">
                 <div className="col-12">
-                  <span className="fw-bold">Tags</span>: <br/>
+                  <div className="col-12 fw-bold mb-2">Tags: </div>
                     { Object.entries(tags).length > 0 && (
                       Object.entries(project.tags).map( (id, index) => {
                         return (
@@ -134,9 +143,9 @@ function ProjectModal({open, openHandler, project, tags, links}) {
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row mt-3">
                 <div className="col-12">
-                <ModalEntry title={"Links"} value={"Link 1 "} />
+                  <span className="fw-bold">Links</span>: <br/>
                 </div>
               </div>
 
