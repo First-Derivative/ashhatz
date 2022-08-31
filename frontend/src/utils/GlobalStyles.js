@@ -92,6 +92,21 @@ function GlobalStyle({children}) {
     transition: opacity 300ms ease-in;
   }
 
+  // ===== AppContent Styling =====
+
+  #appcontent-container {
+    max-height: 100vh;
+    overflow: scroll;
+
+  }
+
+  @media screen and (max-width: 768px) {
+    #appcontent-container {
+      max-height: none;
+      overflow: initial;
+    }
+  }
+
   // ===== Login Styling =====
 
   @media (max-width: 500px) {
