@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
 import { ReactComponent as RemoveIcon } from '../assets/remove.svg'
+import { ReactComponent as LinkIcon } from '../assets/link.svg'
 
 function ModalEntry({title, value}) {
   const darkmode = useDarkmode()
@@ -21,10 +22,52 @@ function ModalEntry({title, value}) {
   )
 }
 
-function ProjectModal({open, openHandler, project}) {
+function ModalTag({tag}) {
+  const darkmode = useDarkmode()
+  const tagStyling = {
+    color: darkmode ? lightTheme.text : darkTheme.text,
+    backgroundColor: darkmode ? darkTheme.body : darkTheme.body
+  }
 
+  // Edge Case: stop render of ModalTag incase of undefined tags
+  if(tag === undefined) return null
+
+  return (
+    <span className="badge rounded-pill px-3 mx-2 fw-light text-end" style={tagStyling}>{tag.name}</span>
+  )
+}
+
+function ModalLink({link}) {
   const darkmode = useDarkmode()
   
+  const linkStyling = {
+    color: darkmode ? darkTheme.text : lightTheme.text,
+  }
+  const iconStyling = {
+    width: '24px',
+    height: '24px',
+    filter: darkmode ? darkTheme.svg_filter : lightTheme.svg_filter
+  }
+
+  // Edge Case: stop render of ModalLink incase of undefined tags
+  if(link === undefined) return null
+
+  const handleURL = () => {
+    const url = link.url
+    window.open("http://" + url)
+  }
+
+  return (
+    <div className="d-flex flex-row mt-2 target"
+    onClick={() => handleURL()}>
+      <LinkIcon style={iconStyling} />
+      <div className="p ps-2" style={linkStyling}>{link.name}</div>
+    </div>
+  )
+}
+
+function ProjectModal({open, openHandler, project, tags, links}) {
+  const darkmode = useDarkmode()
   // Handle Open & Closing of Modal
   useEffect( () => {
     if (!open) return
@@ -37,7 +80,9 @@ function ProjectModal({open, openHandler, project}) {
 
   }, [open])
 
-  if (!open) return null // overrides render of elements if !open
+  // overrides render of Modal 
+  if (!open) return null 
+  if(!Object.entries(tags).length > 0) return null
 
   const overlayStyle = {
     position: 'fixed',
@@ -108,13 +153,29 @@ function ProjectModal({open, openHandler, project}) {
 
               <div className="row">
                 <div className="col-12">
-                <ModalEntry title={"Tags"} value={"1,2,3"} />
+                  <div className="col-12 fw-bold mb-2">Tags: </div>
+                    { Object.entries(tags).length > 0 && (
+                      Object.entries(project.tags).map( (id, index) => {
+                        return (
+                            <ModalTag key={index} tag={tags[id[1]]}/>
+                        )
+                      }))
+                    }
                 </div>
               </div>
 
-              <div className="row">
+              <div className="row mt-3">
                 <div className="col-12">
-                <ModalEntry title={"Links"} value={"Link 1 "} />
+                  <div className="col-12 fw-bold mb-2">Links: </div>
+                  {
+                    Object.entries(links).length > 0 && (
+                      Object.entries(project.links).map( (id, index) => {
+                        return (
+                          <ModalLink key={index} link={links[id[1]]}/>
+                        )
+                      })
+                    )
+                  }
                 </div>
               </div>
 
