@@ -1,7 +1,10 @@
-import React, { useState} from 'react'
+import React from 'react'
 import { useDarkmodeUpdate, useDarkmode } from '../DarkmodeContext';
 import { ReactComponent as ToggleOn } from '../assets/toggle-on.svg';
 import { ReactComponent as ToggleOff } from '../assets/toggle-off.svg'
+import { ReactComponent as DarkModeIcon } from '../assets/moon.svg'
+import { ReactComponent as SunModeIcon } from '../assets/sun.svg'
+
 
 function DarkmodeSwitch() {
   const darkmode = useDarkmode();
@@ -11,6 +14,11 @@ function DarkmodeSwitch() {
     width: '32px',
     height: '32px',
     cursor: 'pointer'
+  }
+
+  const textIconStyle = { ...iconStyle ,
+    width: '24px',
+    height: '24px',
   }
 
   return (
@@ -26,7 +34,8 @@ function DarkmodeSwitch() {
       className={`p my-auto ms-3`}
       id="darkmode-text"
       >
-        { darkmode ? '- Dark mode' : '- Light mode'}
+        { darkmode ? <DarkModeIcon className="ms-2" style={textIconStyle}/> : <SunModeIcon className="ms-2" style={textIconStyle}/> }
+        { darkmode ? 'Dark mode' : 'Light mode'}
       </div>
     </div>
   )
