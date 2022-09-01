@@ -34,7 +34,7 @@ function DarkmodeSwitch() {
       className={`p my-auto ms-3`}
       id="darkmode-text"
       >
-        { darkmode ? <DarkModeIcon className="ms-2" style={textIconStyle}/> : <SunModeIcon className="ms-2" style={textIconStyle}/> }
+        { darkmode ? <DarkModeIcon className="me-2" style={textIconStyle}/> : <SunModeIcon className="me-2" style={textIconStyle}/> }
         { darkmode ? 'Dark mode' : 'Light mode'}
       </div>
     </div>
