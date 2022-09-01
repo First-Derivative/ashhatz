@@ -3,6 +3,9 @@ from .validators import ProjectTag_css_theme_validator
 
 class Project(models.Model):
 
+  class Meta:
+    ordering = ('name',)
+
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50, default="New Project")
   summary = models.CharField(max_length=500, null=True, default="summary")
@@ -24,6 +27,7 @@ class ProjectTag(models.Model):
   class Meta: 
     verbose_name = "Project Tags"
     verbose_name_plural = "Project Tags"
+    ordering = ('name',)
 
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
@@ -37,6 +41,8 @@ class ProjectTag(models.Model):
     return self.name
 
 class ProjectLink(models.Model):
+  ordering = ('id')
+  
   class Meta: 
     verbose_name = "Project Link"
     verbose_name_plural = "Project Links"
