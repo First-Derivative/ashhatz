@@ -144,6 +144,8 @@ function GlobalStyle({children}) {
   @media screen and (max-width: 768px) {
     .project-container { 
       width: 20rem;
+      height: 90vh;
+      overflow: scroll;
     }
   }
 
