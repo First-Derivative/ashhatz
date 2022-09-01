@@ -16,7 +16,7 @@ function DarkmodeSwitch() {
     cursor: 'pointer'
   }
 
-  const textIconStyle = { ...iconStyle ,
+  const textIconStyle = {
     width: '24px',
     height: '24px',
   }
