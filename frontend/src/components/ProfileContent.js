@@ -32,7 +32,7 @@ function ProfileContent() {
   }
 
   const handleCVLink = () => {
-    const url = "https://drive.google.com/file/d/1mF6Zke-Bn_pKfAYe2NM31Jkms0e71nYO/view?usp=sharing"
+    const url = "https://drive.google.com/file/d/1I8SEeBq2TgB9E0c8zo7d8FwH8Flod3rP/view?usp=sharing"
     window.open(url + "_blank")
   }
 
