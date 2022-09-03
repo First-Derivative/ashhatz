@@ -1,9 +1,16 @@
 from django.conf import settings
+from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.core.mail import BadHeaderError, EmailMessage
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+
+# Redirects /portfolio to React HashRouter appropriate URL
+def ProfileRedirect(request):
+  response = HttpResponse(status=302)
+  response["Location"] = "/#/profile"
+  return response
 
 @api_view(['POST'])
 @permission_classes((AllowAny, ))
