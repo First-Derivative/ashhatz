@@ -167,7 +167,7 @@ function ProjectModal({open, openHandler, project, tags, links}) {
 
               <div className="row">
                 <div className="col-12">
-                  <div className="col-12 fw-bold mb-2">Tags: </div>
+                  <div className="col-12 fw-bold mb-2">Tech Stack: </div>
                     { Object.entries(tags).length > 0 && (
                       Object.entries(project.tags).map( (id, index) => {
                         return (
