@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
-import AppContent from '../components/AppContent'
+import SideBar from '../components/general/SideBar'
+import AppContent from '../components/general/AppContent'
 import PortfolioContent from '../components/portfolio/PortfolioContent'
 import axiosInstance from '../utils/axios'
 import { useState, useEffect } from 'react'

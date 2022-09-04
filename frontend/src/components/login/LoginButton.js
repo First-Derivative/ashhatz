@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { ReactComponent as LockLoginIcon } from '../assets/lock.svg'
-import { ReactComponent as UnlockLoginIcon } from '../assets/unlock.svg'
-import { useAuth, useAuthUpdate } from '../AuthContext'
-import { useDarkmode } from '../DarkmodeContext'
-import { darkTheme, lightTheme } from '../utils/theme'
-import axiosInstance from '../utils/axios'
+import { ReactComponent as LockLoginIcon } from '../../assets/lock.svg'
+import { ReactComponent as UnlockLoginIcon } from '../../assets/unlock.svg'
+import { useAuth, useAuthUpdate } from '../../AuthContext'
+import { useDarkmode } from '../../DarkmodeContext'
+import { darkTheme, lightTheme } from '../../utils/theme'
+import axiosInstance from '../../utils/axios'
 import LoginModal from './LoginModal'
 
 function LoginButton() {

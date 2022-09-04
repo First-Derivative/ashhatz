@@ -1,12 +1,12 @@
 import React from 'react'
 import DarkmodeSwitch from './DarkmodeSwitch'
-import LoginButton from './LoginButton'
+import LoginButton from '../login/LoginButton'
 import './SideBar.css'
-import space_small from '../assets/space.png'
-import { ReactComponent as EmailIcon } from '../assets/email.svg'
-import { ReactComponent as GithubIcon } from '../assets/github.svg'
-import { ReactComponent as InstagramIcon } from '../assets/instagram.svg'
-import { useAuth } from '../AuthContext'
+import space_small from '../../assets/space.png'
+import { ReactComponent as EmailIcon } from '../../assets/email.svg'
+import { ReactComponent as GithubIcon } from '../../assets/github.svg'
+import { ReactComponent as InstagramIcon } from '../../assets/instagram.svg'
+import { useAuth } from '../../AuthContext'
 
 function SideBar() {
 
