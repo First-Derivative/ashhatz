@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import ErrorAlert from './ErrorAlert';
-import axiosInstance from '../utils/axios';
-import { getCookie } from '../utils/utils'
+import axiosInstance from '../../utils/axios';
+import { getCookie } from '../../utils/utils'
 
 function CSRFToken() {
 

@@ -6,9 +6,9 @@ import { ReactComponent as UnlockIcon } from '../assets/unlock.svg'
 import { ReactComponent as CloseIcon } from '../assets/remove.svg'
 import { useDarkmode } from '../DarkmodeContext'
 import { lightTheme, darkTheme } from '../utils/theme'
-import CSRFToken from './CSRFToken'
+import CSRFToken from './general/CSRFToken'
 import axiosInstance from '../utils/axios'
-import ErrorAlert from './ErrorAlert'
+import ErrorAlert from './general/ErrorAlert'
 
 function LoginModal({open, openHandler, updateLoginHandler}) {
   

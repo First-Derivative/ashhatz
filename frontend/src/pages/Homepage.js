@@ -4,7 +4,7 @@ import AppContent from '../components/AppContent'
 import PortfolioContent from '../components/portfolio/PortfolioContent'
 import axiosInstance from '../utils/axios'
 import { useState, useEffect } from 'react'
-import ErrorAlert from '../components/ErrorAlert'
+import ErrorAlert from '../components/general/ErrorAlert'
 
 function Homepage() {
 
