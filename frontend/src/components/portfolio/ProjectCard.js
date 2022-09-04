@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useDarkmode } from '../DarkmodeContext'
-import { lightTheme, darkTheme } from '../utils/theme'
+import { useDarkmode } from '../../DarkmodeContext'
+import { lightTheme, darkTheme } from '../../utils/theme'
 import ProjectModal from './ProjectModal'
 
 function ProjectCard({project, tags, links}) {

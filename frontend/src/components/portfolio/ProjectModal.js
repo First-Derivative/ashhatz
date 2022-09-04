@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useDarkmode } from '../DarkmodeContext'
-import { lightTheme, darkTheme } from '../utils/theme'
-import { ReactComponent as RemoveIcon } from '../assets/remove.svg'
+import { useDarkmode } from '../../DarkmodeContext'
+import { lightTheme, darkTheme } from '../../utils/theme'
+import { ReactComponent as RemoveIcon } from '../../assets/remove.svg'
 
-import ProjectModalEntry from './project/ProjectModalEntry'
-import ProjectModalTag from './project/ProjectModalTag'
-import ProjectModalLink from './project/ProjectModalLink'
+import ProjectModalEntry from './ProjectModalEntry'
+import ProjectModalTag from './ProjectModalTag'
+import ProjectModalLink from './ProjectModalLink'
 
 function ProjectModal({open, openHandler, project, tags, links}) {
   const darkmode = useDarkmode()
