@@ -7,6 +7,7 @@ import { ReactComponent as RemoveIcon } from '../../assets/remove.svg'
 import ProjectModalEntry from './ProjectModalEntry'
 import ProjectModalTag from './ProjectModalTag'
 import ProjectModalLink from './ProjectModalLink'
+import ProjectModalMedia from './ProjectModalMedia'
 
 function ProjectModal({open, openHandler, project, tags, links}) {
   const darkmode = useDarkmode()
@@ -73,7 +74,7 @@ function ProjectModal({open, openHandler, project, tags, links}) {
             <div className="col-12 col-sm-5 my-auto">
               <div className="row">
                 <div className="col-12">
-                  <img src="https://picsum.photos/300/300" alt="Media Content" className="img-fluid d-block mx-auto rounded" />
+                  <ProjectModalMedia/>
                 </div>
               </div>
             </div>
