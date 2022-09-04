@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import reactDOM from 'react-dom'
-import { useDarkmode } from '../DarkmodeContext'
-import { darkTheme, lightTheme } from '../utils/theme'
-import {ReactComponent as RemoveIcon } from '../assets/remove.svg'
-import {ReactComponent as SubmitIcon } from '../assets/sign-in.svg'
-import axiosInstance from '../utils/axios.js'
+import { useDarkmode } from '../../DarkmodeContext'
+import { darkTheme, lightTheme } from '../../utils/theme'
+import {ReactComponent as RemoveIcon } from '../../assets/remove.svg'
+import {ReactComponent as SubmitIcon } from '../../assets/sign-in.svg'
+import axiosInstance from '../../utils/axios.js'
 
-function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
+function ProfileEmailModal({open, openHandler, emailForm, updateEmailForms}) {
 
   const darkmode = useDarkmode()
 
@@ -256,4 +256,4 @@ function EmailModal({open, openHandler, emailForm, updateEmailForms}) {
   , document.getElementById("email-portal"))
 }
 
-export default EmailModal
+export default ProfileEmailModal

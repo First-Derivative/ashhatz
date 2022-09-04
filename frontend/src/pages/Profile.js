@@ -1,7 +1,7 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
-import AppContent from '../components/AppContent'
-import ProfileContent from '../components/ProfileContent'
+import SideBar from '../components/general/SideBar'
+import AppContent from '../components/general/AppContent'
+import ProfileContent from '../components/profile/ProfileContent'
 
 function Profile() {
   return (

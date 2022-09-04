@@ -2,9 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from django.http import HttpResponse
 from .models import * 
 from .serializers import *
 from utils.ErrorResponse import ErrorResponse
+
+# Redirects /portfolio to React HashRouter appropriate URL
+def PortfolioRedirect(request):
+  print("got portfolio redirect")
+  response = HttpResponse(status=302)
+  response['Location'] = '/'
+  return response
 
 # Custom API to handle GET request
 class GetProject(APIView):

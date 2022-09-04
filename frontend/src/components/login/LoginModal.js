@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { useAuthUpdate } from '../AuthContext'
-import { ReactComponent as UserIcon } from '../assets/user-circle.svg'
-import { ReactComponent as UnlockIcon } from '../assets/unlock.svg'
-import { ReactComponent as CloseIcon } from '../assets/remove.svg'
-import { useDarkmode } from '../DarkmodeContext'
-import { lightTheme, darkTheme } from '../utils/theme'
-import CSRFToken from './CSRFToken'
-import axiosInstance from '../utils/axios'
-import ErrorAlert from './ErrorAlert'
+import { useAuthUpdate } from '../../AuthContext'
+import { ReactComponent as UserIcon } from '../../assets/user-circle.svg'
+import { ReactComponent as UnlockIcon } from '../../assets/unlock.svg'
+import { ReactComponent as CloseIcon } from '../../assets/remove.svg'
+import { useDarkmode } from '../../DarkmodeContext'
+import { lightTheme, darkTheme } from '../../utils/theme'
+import CSRFToken from '../general/CSRFToken'
+import axiosInstance from '../../utils/axios'
+import ErrorAlert from '../general/ErrorAlert'
 
 function LoginModal({open, openHandler, updateLoginHandler}) {
   

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useDarkmodeUpdate, useDarkmode } from '../DarkmodeContext';
-import { ReactComponent as ToggleOn } from '../assets/toggle-on.svg';
-import { ReactComponent as ToggleOff } from '../assets/toggle-off.svg'
-import { ReactComponent as DarkModeIcon } from '../assets/moon.svg'
-import { ReactComponent as SunModeIcon } from '../assets/sun.svg'
+import { useDarkmodeUpdate, useDarkmode } from '../../DarkmodeContext';
+import { ReactComponent as ToggleOn } from '../../assets/toggle-on.svg';
+import { ReactComponent as ToggleOff } from '../../assets/toggle-off.svg'
+import { ReactComponent as DarkModeIcon } from '../../assets/moon.svg'
+import { ReactComponent as SunModeIcon } from '../../assets/sun.svg'
 
 
 function DarkmodeSwitch() {

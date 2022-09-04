@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import profileImg from '../assets/profile.jpg'
-import { ReactComponent as FileIcon } from '../assets/file.svg'
-import { useDarkmode } from '../DarkmodeContext'
-import {darkTheme, lightTheme} from '../utils/theme'
-import EmailModal from './EmailModal'
+import profileImg from '../../assets/profile.jpg'
+import { ReactComponent as FileIcon } from '../../assets/file.svg'
+import { useDarkmode } from '../../DarkmodeContext'
+import {darkTheme, lightTheme} from '../../utils/theme'
+import ProfileEmailModal from './ProfileEmailModal'
 
 function ProfileContent() {
 
@@ -105,7 +105,7 @@ function ProfileContent() {
       </div>
 
       {/* Profile Email Form Modal */}
-      <EmailModal emailForm={emailForm} updateEmailForms={(e) => updateEmailForms(e)} open={openModal} openHandler={() => setOpenModal(false)}/>
+      <ProfileEmailModal emailForm={emailForm} updateEmailForms={(e) => updateEmailForms(e)} open={openModal} openHandler={() => setOpenModal(false)}/>
       
     </div>
   )
