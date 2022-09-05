@@ -1,9 +1,9 @@
 import React from 'react'
 
 // Static Temp Media
-import temp2 from '../../assets/temp/temp_2.jpeg'
-import temp3 from '../../assets/temp/temp_3.jpeg'
-import temp4 from '../../assets/temp/temp_4.jpeg'
+import temp2 from '../../assets/temp/temp_2.png'
+import temp3 from '../../assets/temp/temp_3.png'
+import temp4 from '../../assets/temp/temp_4.png'
 import { useDarkmode } from '../../DarkmodeContext'
 import { darkTheme, lightTheme } from '../../utils/theme'
 
@@ -17,7 +17,7 @@ function ProjectModalMedia({media}) {
   }
   let img = {
     "src" : null,
-    "caption": "img comig with AWS S3 image slider feature"
+    "caption": "img pending AWS S3 image slider release"
   };
 
   switch(String(id)){
@@ -27,9 +27,11 @@ function ProjectModalMedia({media}) {
       break;
     case "3":
       img.src = temp3;
+      img.caption = "DLK HUB Login screen"
       break;
-    case "4":
+      case "4":
       img.src = temp4;
+      img.caption = "DLK MS shipping data search feature"
       break;
     default:
       img.src = "https://picsum.photos/300/300"
