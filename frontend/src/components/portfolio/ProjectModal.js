@@ -74,7 +74,7 @@ function ProjectModal({open, openHandler, project, tags, links}) {
             <div className="col-12 col-sm-5 my-auto">
               <div className="row">
                 <div className="col-12">
-                  <ProjectModalMedia/>
+                  <ProjectModalMedia media={project.id}/>
                 </div>
               </div>
             </div>
