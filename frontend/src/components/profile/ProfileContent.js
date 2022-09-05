@@ -22,7 +22,8 @@ function ProfileContent() {
   });
 
   const profileStyle = {
-    color: darkmode ? darkTheme.text : lightTheme.text
+    color: darkmode ? darkTheme.text : lightTheme.text,
+    fontSize: '95%'
   }
 
   const svgStyle = {
@@ -37,7 +38,7 @@ function ProfileContent() {
   }
 
   return (
-    <div className="col-12 text-start px-0 px-sm-3">
+    <div className="col-12 text-start ps-0 ps-sm-3">
 
       {/* Subtitle */}
       <div className="row">
@@ -55,18 +56,27 @@ function ProfileContent() {
         <div className="col-12 col-sm-8">
           
           <div className="row">
-            <div className="p fw-light" id="profile-text" style={profileStyle}>
-                To surpass others is fucking tough, if you only do as you are told you don’t have it in you to succeed. The graphic designer’s first fucking consideration is always the size and shape of the format, whether for the printed page or for digital display. You need to sit down and sketch more fucking ideas because stalking your ex on facebook isn’t going to get you anywhere. Can we all just agree as the greater design community to stop.
+            <div className="p fw-light mb-2" id="profile-text" style={profileStyle}>
+              I'm a 22 year old developer from Singapore living in the grand metropolitan city of London. School was a prescription that I took gladly and earned a 1st Class BSc in Computer Science from Queen Mary University of London.
+              Currently I'm immersing myself in what can only be described as <span className="fw-bold">"the-zone"</span>, this is when you're coding consistently and constantly thinking about the next feature, the next solution, the infrastructure, and any other thought that involves lines of instructions.
+              Colloquially my peers and I call this being <span className="fw-bold">"wired-in"</span>. 
+            </div>
+            <div className="p fw-light mb-2" style={profileStyle}>
+              This season is wired-in working on Django/Python projects that involve a heavy backend. There is something satisfying in creating models, views, urls, and especially creating API endpoints. 
+              In terms of expansion, I really would love to work on projects which include a vast API infrastructure which I can dive into. 
+            </div>
+            <div className="p fw-light" style={profileStyle}>
+              Though not all time can be spent on a computer. The stoic in me wants to appreaciate the simple things like sunshine, parks, and exercise. Yet when the weather is poor then the computer remains an ultimate safe harbour. For I am quite the gamer.
             </div>
           </div>
 
           {/* Profile Buttons */}
-          <div className="row mb-3 mb-sm-0">
+          <div className="row mb-3 mb-sm-0 mt-3 mt-sm-5">
 
             {/* CV Button */}
             <div className="col-7 col-sm-6">
               <button 
-                className="btn fw-light mt-3 mt-sm-5 p-3 profile-button" 
+                className="btn fw-light p-3 profile-button" 
                 type="button" 
                 onClick={() => handleCVLink()}
                 style={profileStyle}>
@@ -78,7 +88,7 @@ function ProfileContent() {
             {/* Email Button */}
             <div className="col">
               <button 
-              className="btn fw-light mt-3 mt-sm-5 p-3 profile-button" 
+              className="btn fw-light p-3 profile-button" 
               type="button" 
               onClick={() => setOpenModal(true)}
               style={profileStyle}> Lazy to Email ?</button>
