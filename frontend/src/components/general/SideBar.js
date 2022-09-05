@@ -56,8 +56,7 @@ function SideBar() {
             </div>
 
             <div className="p fw-light mx-auto mx-sm-0 mt-3 " id="sidebar-summary">
-              A Full Stack Engineer with a keen eye on the backend.
-              
+              A developer with a keyboard, a degree, and an unhealthy obsession with staying wired in.
             </div>
 
             <div className="d-flex justify-content-center mt-5" id="sidebar-icon-container">
