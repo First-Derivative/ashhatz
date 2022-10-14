@@ -33,7 +33,7 @@ function ProfileContent() {
   }
 
   const handleCVLink = () => {
-    const url = "https://drive.google.com/file/d/1I8SEeBq2TgB9E0c8zo7d8FwH8Flod3rP/view?usp=sharing"
+    const url = "https://drive.google.com/file/d/1UsdgpxOcqXwGn13nYr4N94jRtTJ1lGPw/view?usp=sharing"
     window.open(url + "_blank")
   }
 
