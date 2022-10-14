@@ -96,7 +96,7 @@ function GlobalStyle({children}) {
 
   #appcontent-container {
     max-height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
 
   }
 
@@ -143,7 +143,7 @@ function GlobalStyle({children}) {
 
   @media screen and (max-width: 768px) {
     .project-container { 
-      width: 20rem;
+      width: 22rem;
       height: 90vh;
       overflow: scroll;
     }
