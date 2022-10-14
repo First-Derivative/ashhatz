@@ -65,9 +65,6 @@ function ProfileContent() {
               This season is wired-in working on Django/Python projects that involve a heavy backend. There is something satisfying in creating models, views, urls, and especially creating API endpoints. 
               In terms of expansion, I really would love to work on projects which include a vast API infrastructure which I can dive into. 
             </div>
-            {/* <div className="p fw-light" style={profileStyle}>
-              Though not all time can be spent on a computer. The stoic in me wants to appreaciate the simple things like sunshine, parks, and exercise. Yet when the weather is poor then the computer remains an ultimate safe harbour.
-            </div> */}
           </div>
 
           {/* Profile Buttons */}
