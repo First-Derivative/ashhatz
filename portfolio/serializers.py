@@ -18,3 +18,8 @@ class ProjectLinkSerializer(serializers.ModelSerializer):
   class Meta:
     model = ProjectLink
     fields = '__all__'
+
+class ProjectMediaSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = ProjectMedia
+    fields = '__all__'
