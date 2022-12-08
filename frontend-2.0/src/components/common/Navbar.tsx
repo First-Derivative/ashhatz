@@ -62,16 +62,16 @@ function Navbar() {
   return (
     <Container fluid={true} className="custom-nav sticky-top p-5">
       <Row className="w-100 h-100">
-        <Col lg={6}>
-          <ul className="d-flex flex-row gap-5 justify-content-start">
+        <Col lg={6} className="px-0">
+          <ul className="d-flex flex-row ps-0 gap-5 justify-content-start">
             {links.map((link, index) => {
               return <NavLink link={link} key={index} />
             })}
           </ul>
         </Col>
 
-        <Col lg={6}>
-          <ul className="d-flex flex-row gap-4 justify-content-end">
+        <Col lg={6} className="px-0">
+          <ul className="d-flex flex-row ps-0 gap-4 justify-content-end">
 
             <li className="navlink-icon">
               <EmailIcon
