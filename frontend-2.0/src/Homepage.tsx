@@ -9,7 +9,7 @@ function Homepage() {
   return (
     <>
       <Navbar />
-      <Container className="container">
+      <Container fluid={true} className="section p-5">
         <Row>
           <Col>
             <div className="h1 text-center">

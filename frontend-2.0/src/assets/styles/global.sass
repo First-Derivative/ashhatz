@@ -1,23 +1,71 @@
 @import "theme"
 
+// Global Classes, Overrides
+
 body
   background-color: #0a0a0a
   color: #fff
 
-ul
-  li
-    list-style-type: none
+.ptr
+  cursor: pointer
 
-li
-  a
-    color: inherit
-    text-decoration: none
+.section
+  height: 100vh !important
+
+// Nav
 
 .custom-nav
-  color: #0a0a0a
-  background-color: #fff
-  height: 10vh
+  color: rgba(255, 255, 255, 0.75)
+  background: rgb(10,10,10)
+  background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,1) 80%, rgba(255,255,255,0) 100%)
 
-.container
-  width: 100vw
-  height: 100vh
+  ul
+    li
+      list-style-type: none
+
+  li
+    a
+      color: inherit
+      text-decoration: none
+      &:hover
+        color: rgba(255, 255, 255, 1.0)
+        transition: all 300ms ease-in-out
+
+  .navlink-icon
+    display: flex
+    cursor: pointer
+    flex-direction: column
+    align-items: center
+
+    &:hover small
+      opacity: 1.0
+      width: fit-content
+
+    small
+      position: absolute
+      padding-top: 1.75rem
+      color: #fff
+      opacity: 0
+      transition: all ease-in 300ms
+
+// SVG Filtering
+$svg-filters-names: ( "white": invert(100%) sepia(96%) saturate(17%) hue-rotate(293deg) brightness(104%) contrast(106%), "black": invert(0%) sepia(2%) saturate(4%) hue-rotate(179deg) brightness(94%) contrast(92%))
+
+@each $selector, $value in $svg-filters-names
+  .svg-#{$selector}
+    filter: $value !important
+
+// Scrollbar
+
+body::-webkit-scrollbar
+  width: 10px
+  height: 0px
+
+body::-webkit-scrollbar-track
+  background: #0a0a0a
+  height: 0px
+
+body::-webkit-scrollbar-thumb
+  background-color: #FFF
+  border-radius: 20px
+  height: 0px
