@@ -26,7 +26,7 @@ function NavLink({ link }: { link: Link }) {
   let a_tag = React.createElement("a", options, link.text)
 
   return (
-    <li id={`${link.text}-link`}>
+    <li className="navlink" id={`${link.text}-link`}>
       {a_tag}
     </li>
   )

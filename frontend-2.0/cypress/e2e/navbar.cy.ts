@@ -1,7 +1,14 @@
+/*
+  Should handle more complex e2e tests such ass:
+  Opening emailModal:
+    Enter input values,
+    submit the form,
+    check HTTP requests/responses
+*/
 const base = Cypress.config().baseUrl
 
 describe("Navbar links <a> test", () => {
-  it("passes", () => {
+  it("links all point to corret ref", () => {
     // visiting react frontend server; need to change to django server to consider admin data
     cy.visit(base)
 
@@ -24,13 +31,13 @@ describe("Navbar links <a> test", () => {
 })
 
 describe("Navbar icons <small> test", () => {
-  it("passes", () => {
+  it("nav icons all trigger their <small> hover", () => {
 
     cy.visit(base)
 
     // Test Profile Link
-    cy.get(".navlink-icon").each(($link) => {
-      cy.get($link).trigger("mouseover")
+    cy.get(".navlink-icon").each((link) => {
+      cy.get(link).trigger("mouseover")
       // cy.get($link).children("small").should('be.visible')
     })
 
