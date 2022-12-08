@@ -7,9 +7,13 @@ import Col from "react-bootstrap/Col"
 
 import space_small from "./assets/images/space.png"
 import astronaut from "./assets/images/astronaut_1.png"
-import cv_preview from "./assets/images/cv_preview-1.jpg"
+import cv from "./assets/images/cv.png"
+import { ReactComponent as NewTab } from "./assets/svgs/new_tab.svg"
 
 function Homepage() {
+
+  const cv_src = process.env.REACT_APP_CV_LINK
+
   return (
     <>
       <Navbar />
@@ -23,7 +27,7 @@ function Homepage() {
       </div>
 
       <Container fluid={true} className="section p-5">
-        <Row className="justify-content-around">
+        <Row className="justify-content-around ">
 
           {/* Main Content */}
           <Col lg={6}>
@@ -48,8 +52,20 @@ function Homepage() {
           </Col>
 
           <Col className="text-center">
-            <div>
-              <img src={cv_preview} alt="CV Preview" className="rounded" width="407px" height="598px" />
+            <div className="cv-wrapper w-fit-content mx-auto">
+              <figure className="figure">
+                <a href={cv_src} target="_blank" rel="noopener noreferrer">
+                  <img src={cv} className="figure-img img-fluid rounded cv-pdf" alt="CV Preview" />
+                  <figcaption className="figure-caption">curriculum vitae</figcaption>
+                </a>
+              </figure>
+              <div className="cv-overlay">
+                <NewTab
+                />
+                <p>
+                  Open in new tab
+                </p>
+              </div>
             </div>
           </Col>
         </Row>
