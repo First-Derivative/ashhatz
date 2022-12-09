@@ -17,7 +17,7 @@ class GetCSRFToken(APIView):
   permission_classes = [AllowAny]
 
   def get(self, request, format=None):
-    return Response({'success': 'CSRF Token set'})
+    return Response({'success': 'CSRF Token set'}, status=200)
 
 class CheckAuth(APIView):
   permission_classes = [AllowAny]
@@ -54,7 +54,7 @@ class LoginView(APIView):
         serialized = UserSerializer(user)
         return Response(serialized.data, status=200)
       else:
-        error = ErrorResponse('Credentials Incorrect', 401)
+        error = ErrorResponse('Incorrect Credentials', 401)
         return Response(error.message,  status=error.status)
     except:
       error = ErrorResponse('Server authentication error', 400)

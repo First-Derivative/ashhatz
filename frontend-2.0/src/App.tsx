@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router-dom";
+import AuthChannel from "./contexts/AuthContext";
 
-import Homepage from "./Homepage";
 import "./assets/styles/global.sass"
+import Homepage from "./Homepage";
 import icon_link from "./assets/icon/favicon.ico";
 import mobile_icon_link from "./assets/icon/logo192.png";
 
@@ -26,17 +27,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <AuthChannel> */}
-      {/* <DarkmodeChannel> */}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route
-          path="*"
-          element={<Navigate to="/" replace />}
-        />
-      </Routes>
-      {/* </DarkmodeChannel> */}
-      {/* </AuthChannel> */}
+      <AuthChannel>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+          />
+        </Routes>
+      </AuthChannel>
     </BrowserRouter>
   );
 }

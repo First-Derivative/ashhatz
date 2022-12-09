@@ -1,5 +1,6 @@
 import React from "react"
 import Navbar from "./components/common/Navbar"
+import { useAuth } from "./contexts/AuthContext"
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -13,7 +14,7 @@ import { ReactComponent as NewTab } from "./assets/svgs/new_tab.svg"
 function Homepage() {
 
   const cv_src = process.env.REACT_APP_CV_LINK
-
+  const auth = useAuth()
   return (
     <>
       <Navbar />
@@ -31,10 +32,10 @@ function Homepage() {
           {/* Main Content */}
           <Col lg={6}>
             <div className="d-flex mx-auto" id="home-profile-wrapper">
-              <div className="row-cols-1" id="z-30">
+              <div className="row-cols-1" id="home-profile-container">
 
                 <Col>
-                  <div className="h1" style={{ fontSize: "60px" }}> Ashraff Hatz</div>
+                  <div className="h1" id="profile-name" style={{ fontSize: "60px" }}>{auth.isAuth ? `Imperator ${auth.name}` : `Ashraff Hatz`}</div>
                 </Col>
                 <Col>
                   <div className="h2"> Software Engineer </div>

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import Login from "../login/Login"
+import { useAuth, useAuthUpdate } from "../../contexts/AuthContext"
+import axiosInstance from "../../utils/axios"
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -36,7 +38,8 @@ function NavLink({ link }: { link: Link }) {
 function Navbar() {
 
   // State & Data
-  const [adminHover, setAdminHover] = useState(false)
+  const auth = useAuth()
+  const [handleSignIn, handleSignOut] = useAuthUpdate()
   const [openLogin, setOpenLogin] = useState(false)
   const links: Array<Link> = [
     {
@@ -60,13 +63,21 @@ function Navbar() {
     height: "24px"
   }
 
-  const handleOpenLogin = () => {
+  const openHandler = () => {
     setOpenLogin(prev => !prev)
+  }
+
+  const handleLogout = () => {
+    axiosInstance.post("users/auth/logout").then((res) => {
+      handleSignOut()
+      openHandler()
+    }).catch((err) => {
+    })
   }
 
   return (
     <>
-      <Login open={openLogin} openHandler={handleOpenLogin} />
+      <Login open={openLogin} openHandler={openHandler} />
       <Container fluid={true} className="nav-container sticky-top p-5 h-10vh">
         <Row className="w-100 mx-auto h-100">
           <Col lg={6} className="px-0">
@@ -99,26 +110,32 @@ function Navbar() {
                 </li>
               </a>
 
-              <li
-                className="navlink-icon" id="navlink-icon-admin"
-                onMouseEnter={e => setAdminHover((prev) => !prev)}
-                onMouseLeave={e => setAdminHover((prev) => !prev)}
-                onClick={e => setOpenLogin((prev) => !prev)}
-              >
-                {adminHover ?
+              {auth.isAuth ? (
+                <li
+                  className="navlink-icon" id="navlink-icon-admin"
+                  onClick={e => handleLogout()}
+                >
                   <UnlockIcon
                     tabIndex={0}
                     className="svg-white"
                     style={iconStyling}
                   />
-                  :
-                  <LockIcon
-                    tabIndex={0}
-                    className="svg-white"
-                    style={iconStyling}
-                  />}
-                <small> admin </small>
-              </li>
+                  <small>sign out</small>
+                </li>)
+                :
+                (
+                  <li
+                    className="navlink-icon" id="navlink-icon-admin"
+                    onClick={e => openHandler()}
+                  >
+                    <LockIcon
+                      tabIndex={0}
+                      className="svg-white"
+                      style={iconStyling}
+
+                    />
+                    <small>admin</small>
+                  </li>)}
             </ul>
           </Col>
         </Row>

@@ -7,10 +7,10 @@ describe("Navbar component test", () => {
     cy.mount(<Navbar />)
 
     // Check correct number of <ul>
-    cy.get("ul").should('have.length', 2)
+    cy.get("ul").should("have.length", 2)
 
     // Check correct number of <li>
-    cy.get("li").should('have.length', 6)
+    cy.get("li").should("have.length", 6)
 
     // Check correct navlink text
     const links = ["profile", "portfolio", "github"]

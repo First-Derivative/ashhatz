@@ -11,7 +11,7 @@ function CSRFToken() {
 
   useEffect(() => {
 
-    axiosInstance.get("employee/auth/getcsrf").then((res) => {
+    axiosInstance.get("/users/getcsrf/").then((res) => {
       if (res) {
         setToken(getCookie("csrftoken"))
       }
@@ -23,7 +23,7 @@ function CSRFToken() {
 
   return (
     <>
-      {error ? (<ErrorAlert styling={"col-6 mx-auto my-auto"} message={"Could not get CSRF Token"} />)
+      {error ? (<ErrorAlert styling={"col-12 mx-auto my-auto"} message={"could not get CSRF token"} />)
         : (<input type="hidden" name="csrfmiddlewaretoken" value={token} />)}
     </>
   )
