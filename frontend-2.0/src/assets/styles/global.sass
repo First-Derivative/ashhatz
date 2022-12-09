@@ -9,11 +9,15 @@ body
 .ptr
   cursor: pointer
 
-.section
-  height: 100vh !important
-
 .text-faded
   opacity: 0.75
+
+.z-10
+  z-index: 10
+
+a
+  color: inherit
+  text-decoration: none
 
 // SVG Filtering
 $svg-filters-names: ( "white": invert(100%) sepia(96%) saturate(17%) hue-rotate(293deg) brightness(104%) contrast(106%), "black": invert(0%) sepia(2%) saturate(4%) hue-rotate(179deg) brightness(94%) contrast(92%))
@@ -39,7 +43,7 @@ body::-webkit-scrollbar-thumb
 
 // Nav
 
-.custom-nav
+.nav-container
   color: rgba(255, 255, 255, 0.75)
   background: rgb(10,10,10)
   background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,1) 80%, rgba(255,255,255,0) 100%)
@@ -73,55 +77,94 @@ body::-webkit-scrollbar-thumb
       opacity: 0
       transition: all ease-in 300ms
 
-// Home Page
+// Login Portal
 
-#id-wrapper
-  width: 24rem
+#modal-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0,0,0, 0.76)
+  z-index: 1066
 
-#space-ship-wrapper
-  z-index: -20
-  position: absolute
-  top: 75%
-  left: 10%
-  transform: translateY(-50%)
-
-#astronaut-wrapper
-  z-index: -10
-  position: absolute
-  top: 25%
+#login-container
+  color: #0a0a0a
+  background-color: #fff
+  position: fixed
+  top: 50%
   left: 50%
   transform: translate(-50%, -50%)
+  z-index: 1067
+  // width: 325px 13" macbook air
+  width: 400px
+  aspect-ratio: 1/1
 
-.cv-wrapper
-  position: relative
-  cursor: pointer
+  input
+    // max-height: 40px
+    // padding: 4px
 
-  &:hover .cv-pdf
-    filter: blur(1px)
+  #btn-login
+    color: white
+    background: #0A0A0A
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    border-radius: 10px
+    // width: 80px
+    // height: 32px
+    // padding: 0px
 
-  &:hover .cv-overlay
-    opacity: 1.0
+// Home Page
 
-  &:hover .cv-overlay p
-    opacity: 1.0
+#home-container
+  background-color: #000
 
-  .cv-pdf
-    filter: none
+  #space-ship-wrapper
+    z-index: 5
+    position: absolute
+    top: 75%
+    left: 10%
+    transform: translateY(-50%)
 
-  .cv-overlay
-    color: black
+  #astronaut-wrapper
+    z-index: 6
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-    z-index: 20
-    opacity: 0.25
-    transition: all 150ms ease-in
 
-  .cv-overlay p
-    opacity: 0
-    transition: all 150ms ease-in
+  #home-profile-wrapper
+    width: 24rem
+    z-index: 10
 
-  figcaption
-    color: white
-    text-decoration: none
+  #cv-wrapper
+    position: relative
+    cursor: pointer
+
+    &:hover .cv-pdf
+      filter: blur(1px)
+
+    &:hover .cv-overlay
+      opacity: 1.0
+
+    &:hover .cv-overlay p
+      opacity: 1.0
+
+    .figure
+
+      figcaption
+        color: white
+        text-decoration: none
+
+    .cv-overlay
+      color: black
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      z-index: 10
+      opacity: 0.25
+      transition: all 150ms ease-in
+
+      p
+        opacity: 0
+        transition: all 150ms ease-in

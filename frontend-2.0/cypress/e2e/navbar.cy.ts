@@ -27,8 +27,23 @@ describe("Navbar links <a> test", () => {
       $link.attr("target", "_self")
 
     }).click().url().should("eq", "")
+    cy.visit(base)
+
+    // Test Email Icon
+    cy.get("#navlink-icon-email").click()
+
+    // Test Instagram Icon
+    cy.get("#navlink-icon-instagram").then(($link) => {
+      expect($link).to.have.attr("target", "_blank")
+      // update attr to open in same tab
+      $link.attr("target", "_self")
+
+    }).click().url().should("eq", "")
+
+
   })
 })
+
 
 describe("Navbar icons <small> test", () => {
   it("nav icons all trigger their <small> hover", () => {

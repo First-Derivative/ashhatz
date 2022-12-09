@@ -18,21 +18,20 @@ function Homepage() {
     <>
       <Navbar />
 
-      <div id="space-ship-wrapper">
-        <img src={space_small} alt="The Final Frontier" className="img-fluid" />
-      </div>
+      <Container fluid={true} className="p-5 h-90vh" id="home-container">
+        <div id="space-ship-wrapper">
+          <img src={space_small} alt="The Final Frontier" className="img-fluid" />
+        </div>
 
-      <div id="astronaut-wrapper">
-        <img src={astronaut} alt="The Thinking Man" className="img-fluid" />
-      </div>
-
-      <Container fluid={true} className="section p-5">
-        <Row className="justify-content-around ">
+        <div id="astronaut-wrapper">
+          <img src={astronaut} alt="The Thinking Man" className="img-fluid" />
+        </div>
+        <Row className="justify-content-around h-100">
 
           {/* Main Content */}
           <Col lg={6}>
-            <div className="d-flex mx-auto" id="id-wrapper">
-              <div className="row-cols-1">
+            <div className="d-flex mx-auto" id="home-profile-wrapper">
+              <div className="row-cols-1" id="z-30">
 
                 <Col>
                   <div className="h1" style={{ fontSize: "60px" }}> Ashraff Hatz</div>
@@ -41,7 +40,9 @@ function Homepage() {
                   <div className="h2"> Software Engineer </div>
                 </Col>
                 <Col>
-                  <div className="h5 fw-light"> ashraff.hatz@gmail.com</div>
+                  <a href="mailto:ashraff.hatz@gmail.com">
+                    <div className="h5 fw-light"> ashraff.hatz@gmail.com</div>
+                  </a>
                 </Col>
                 <Col>
                   <div className="p text-faded"> An engineer with a keyboard, a degree, and an unhealthy obsession with staying wired in.
@@ -51,8 +52,8 @@ function Homepage() {
             </div>
           </Col>
 
-          <Col className="text-center">
-            <div className="cv-wrapper w-fit-content mx-auto">
+          <Col lg={6} className="text-center z-10">
+            <div className="w-fit-content mx-auto" id="cv-wrapper">
               <figure className="figure">
                 <a href={cv_src} target="_blank" rel="noopener noreferrer">
                   <img src={cv} className="figure-img img-fluid rounded cv-pdf" alt="CV Preview" />
@@ -60,11 +61,8 @@ function Homepage() {
                 </a>
               </figure>
               <div className="cv-overlay">
-                <NewTab
-                />
-                <p>
-                  Open in new tab
-                </p>
+                <NewTab />
+                <p>Open in new tab</p>
               </div>
             </div>
           </Col>

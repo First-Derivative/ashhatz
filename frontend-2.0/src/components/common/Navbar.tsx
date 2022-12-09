@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Login from "../login/Login"
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -34,8 +35,9 @@ function NavLink({ link }: { link: Link }) {
 
 function Navbar() {
 
+  // State & Data
   const [adminHover, setAdminHover] = useState(false)
-
+  const [openLogin, setOpenLogin] = useState(false)
   const links: Array<Link> = [
     {
       "url": "#profile",
@@ -53,64 +55,75 @@ function Navbar() {
       "new_tag": true
     }
   ]
-
   const iconStyling = {
     width: "24px",
     height: "24px"
   }
 
+  const handleOpenLogin = () => {
+    setOpenLogin(prev => !prev)
+  }
+
   return (
-    <Container fluid={true} className="custom-nav sticky-top p-5">
-      <Row className="w-100 h-100">
-        <Col lg={6} className="px-0">
-          <ul className="d-flex flex-row ps-0 gap-5 justify-content-start">
-            {links.map((link, index) => {
-              return <NavLink link={link} key={index} />
-            })}
-          </ul>
-        </Col>
+    <>
+      <Login open={openLogin} openHandler={handleOpenLogin} />
+      <Container fluid={true} className="nav-container sticky-top p-5 h-10vh">
+        <Row className="w-100 mx-auto h-100">
+          <Col lg={6} className="px-0">
+            <ul className="d-flex flex-row gap-5 ps-0 justify-content-start">
+              {links.map((link, index) => {
+                return <NavLink link={link} key={index} />
+              })}
+            </ul>
+          </Col>
 
-        <Col lg={6} className="px-0">
-          <ul className="d-flex flex-row ps-0 gap-4 justify-content-end">
+          <Col lg={6} className="px-0">
+            <ul className="d-flex flex-row gap-4 justify-content-end">
 
-            <li className="navlink-icon">
-              <EmailIcon
-                className="svg-white ptr"
-                style={{ ...iconStyling, marginTop: "4px" }}
-              />
-              <small> email me </small>
-            </li>
-
-            <a href="https://www.instagram.com/ashhhatz/" target="_blank" rel="noopener noreferrer">
-              <li className="navlink-icon">
-                <InstagramIcon
-                  className="svg-white"
-                  style={{ ...iconStyling, marginTop: "3px" }}
+              <li className="navlink-icon" id="navlink-icon-email">
+                <EmailIcon
+                  tabIndex={0}
+                  className="svg-white ptr"
+                  style={{ ...iconStyling, marginTop: "4px" }}
                 />
-                <small> @ashhhatz </small>
+                <small> email me </small>
               </li>
-            </a>
 
-            <li className="navlink-icon"
-              onMouseEnter={(e) => setAdminHover((prev) => !prev)}
-              onMouseLeave={(e) => setAdminHover((prev) => !prev)}
-            >
-              {adminHover ?
-                <UnlockIcon
-                  className="svg-white"
-                  style={iconStyling}
-                />
-                :
-                <LockIcon
-                  className="svg-white"
-                  style={iconStyling}
-                />}
-              <small> admin </small>
-            </li>
-          </ul>
-        </Col>
-      </Row>
-    </Container>
+              <a href="https://www.instagram.com/ashhhatz/" target="_blank" rel="noopener noreferrer" id="navlink-icon-instagram">
+                <li className="navlink-icon">
+                  <InstagramIcon
+                    className="svg-white"
+                    style={{ ...iconStyling, marginTop: "3px" }}
+                  />
+                  <small> @ashhhatz </small>
+                </li>
+              </a>
+
+              <li
+                className="navlink-icon" id="navlink-icon-admin"
+                onMouseEnter={e => setAdminHover((prev) => !prev)}
+                onMouseLeave={e => setAdminHover((prev) => !prev)}
+                onClick={e => setOpenLogin((prev) => !prev)}
+              >
+                {adminHover ?
+                  <UnlockIcon
+                    tabIndex={0}
+                    className="svg-white"
+                    style={iconStyling}
+                  />
+                  :
+                  <LockIcon
+                    tabIndex={0}
+                    className="svg-white"
+                    style={iconStyling}
+                  />}
+                <small> admin </small>
+              </li>
+            </ul>
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 
