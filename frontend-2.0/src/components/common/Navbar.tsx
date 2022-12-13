@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Login from "../login/Login"
 import { useAuth, useAuthUpdate } from "../../contexts/AuthContext"
+import { useNotifUpdate } from "../../contexts/NotificationContext"
 import axiosInstance from "../../utils/axios"
 
 import Container from "react-bootstrap/Container"
@@ -39,6 +40,7 @@ function Navbar() {
 
   // State & Data
   const auth = useAuth()
+  const [addNotif, popNotif] = useNotifUpdate()
   const [handleSignIn, handleSignOut] = useAuthUpdate()
   const [openLogin, setOpenLogin] = useState(false)
   const links: Array<Link> = [
@@ -70,7 +72,7 @@ function Navbar() {
   const handleLogout = () => {
     axiosInstance.post("users/auth/logout").then((res) => {
       handleSignOut()
-      openHandler()
+      addNotif({ "message": "sign out success" })
     }).catch((err) => {
     })
   }

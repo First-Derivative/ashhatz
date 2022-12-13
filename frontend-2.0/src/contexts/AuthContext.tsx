@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, ReactElement } from "react"
 import axiosInstance from "../utils/axios"
 
 
-export interface AuthContextInterface {
+export interface AuthInterface {
   isAuth: boolean,
   name: string,
   email: string
@@ -18,12 +18,12 @@ export function useAuthUpdate() {
 
 const authDefault = { "isAuth": false, "name": "", "email": "" }
 
-const AuthContext = React.createContext<AuthContextInterface>(authDefault);
+const AuthContext = React.createContext<AuthInterface>(authDefault);
 const AuthUpdateContext = React.createContext<any | null>(null);
 
 function AuthChannel({ children }: { children: ReactElement }) {
 
-  const [auth, setAuth] = useState<AuthContextInterface>(authDefault)
+  const [auth, setAuth] = useState<AuthInterface>(authDefault)
 
   const checkAuth = () => {
     axiosInstance.get("users/checkAuth").then((res) => {
@@ -33,7 +33,7 @@ function AuthChannel({ children }: { children: ReactElement }) {
     })
   }
 
-  function handleSignIn(data: AuthContextInterface): void {
+  function handleSignIn(data: AuthInterface): void {
     setAuth({ ...data, "isAuth": true })
   }
 

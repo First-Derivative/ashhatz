@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ReactDOM from "react-dom"
 import { useAuth, useAuthUpdate } from "../../contexts/AuthContext"
+import { useNotifUpdate } from "../../contexts/NotificationContext"
 import axiosInstance from "../../utils/axios"
 
 import CSRFToken from "../common/CSRFToken"
@@ -19,6 +20,7 @@ function Login({ open, openHandler }: { open: boolean, openHandler: Function }) 
   const portal = document.getElementById("login-portal")
   const default_jsx_null = <></>
   const auth = useAuth()
+  const [addNotif, popNotif] = useNotifUpdate()
   const [handleSignIn, handleSignOut] = useAuthUpdate()
   const [errorBar, setErrorBar] = useState<Array<Error>>([])
   const [formData, setFormData] = useState({
@@ -38,7 +40,7 @@ function Login({ open, openHandler }: { open: boolean, openHandler: Function }) 
   }, [open])
 
   // Login (modal) render handler
-  if (!open || auth.isAuth) return (default_jsx_null)
+  if (!open) return (default_jsx_null)
 
   // Update errorBar intuitively 
   function updateErrorBar(text: string): void {
@@ -78,6 +80,8 @@ function Login({ open, openHandler }: { open: boolean, openHandler: Function }) 
 
       axiosInstance.post("users/auth/login", formData).then((res) => {
         handleSignIn(res.data)
+        addNotif({ "message": "sign in success" })
+        openHandler()
       }).catch((err) => {
         updateErrorBar(err.response.data.error)
       })

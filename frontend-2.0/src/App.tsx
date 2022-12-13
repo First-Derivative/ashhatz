@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AuthChannel from "./contexts/AuthContext";
+import NotificationChannel from "./contexts/NotificationContext";
 
 import "./assets/styles/global.sass"
 import Homepage from "./Homepage";
@@ -28,13 +29,15 @@ function App() {
   return (
     <BrowserRouter>
       <AuthChannel>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route
-            path="*"
-            element={<Navigate to="/" replace />}
-          />
-        </Routes>
+        <NotificationChannel>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route
+              path="*"
+              element={<Navigate to="/" replace />}
+            />
+          </Routes>
+        </NotificationChannel>
       </AuthChannel>
     </BrowserRouter>
   );
