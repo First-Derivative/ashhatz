@@ -33,6 +33,12 @@ a
   &:hover
     color: inherit
 
+.figure
+
+  figcaption
+    color: white
+    text-decoration: none
+
 // SVG Filtering
 $svg-filters-names: ( "white": invert(100%) sepia(96%) saturate(17%) hue-rotate(293deg) brightness(104%) contrast(106%), "black": invert(0%) sepia(2%) saturate(4%) hue-rotate(179deg) brightness(94%) contrast(92%))
 
@@ -54,6 +60,14 @@ body::-webkit-scrollbar-thumb
   background-color: #FFF
   border-radius: 20px
   height: 0px
+
+@media (min-width: 290px) and (max-width: 540px)
+  body
+    scrollbar-width: none
+    -ms-overflow-style: none
+
+  body::-webkit-scrollbar
+    display: none
 
 // Notification Bar
 
@@ -82,6 +96,10 @@ body::-webkit-scrollbar-thumb
   color: rgba(255, 255, 255, 0.75)
   background: rgb(10,10,10)
   background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,1) 80%, rgba(255,255,255,0) 100%)
+  height: 10vh
+
+  #nav-wrapper
+    height: 100%
 
   ul
     li
@@ -111,6 +129,14 @@ body::-webkit-scrollbar-thumb
       color: #fff
       opacity: 0
       transition: all ease-in 300ms
+
+@media (min-width: 290px) and (max-width: 540px)
+
+  .nav-container
+    height: max(10vh, 140px)
+
+  #nav-wrapper
+    height: auto !important
 
 // Login Portal
 
@@ -170,6 +196,24 @@ body::-webkit-scrollbar-thumb
     #home-profile-container
       z-index: 10
 
+      #profile-name
+        font-size: 60px
+
+  @media (min-width: 290px) and (max-width: 540px)
+    #home-profile-wrapper
+      width: 100vw
+
+      #home-profile-container
+        #profile-name
+          font-size: 48px
+
+      #home-profile-container > div.col
+        width: fit-content
+        max-width: 80vw
+
+      #home-profile-container > div.col > *, #home-profile-container > div.col > * > *
+        font-size: 80%
+
   #cv-wrapper
     position: relative
     cursor: pointer
@@ -182,12 +226,6 @@ body::-webkit-scrollbar-thumb
 
     &:hover .cv-overlay p
       opacity: 1.0
-
-    .figure
-
-      figcaption
-        color: white
-        text-decoration: none
 
     .cv-overlay
       color: black

@@ -1,5 +1,6 @@
 import React from "react"
 import Navbar from "./components/common/Navbar"
+import Profile from "./Profile"
 import { useAuth } from "./contexts/AuthContext"
 
 import Container from "react-bootstrap/Container"
@@ -15,11 +16,19 @@ function Homepage() {
 
   const cv_src = process.env.REACT_APP_CV_LINK
   const auth = useAuth()
+
+  const gap_styling = {
+    height: "10vh",
+    width: "100vw"
+  }
+
   return (
     <>
+      {/* Navbar */}
       <Navbar />
 
-      <Container fluid={true} className="p-5 h-90vh" id="home-container">
+      {/* Hero Page (Landing Page) */}
+      <Container fluid={true} className="py-xs-0 px-xs-5 p-sm-5 h-90vh" id="home-container">
         <div id="space-ship-wrapper">
           <img src={space_small} alt="The Final Frontier" className="img-fluid" />
         </div>
@@ -27,15 +36,15 @@ function Homepage() {
         <div id="astronaut-wrapper">
           <img src={astronaut} alt="The Thinking Man" className="img-fluid" />
         </div>
-        <Row className="justify-content-around h-100">
+        <Row className="justify-content-around h-100 gap-xs-4 gap-sm-0">
 
           {/* Main Content */}
-          <Col lg={6}>
+          <Col xs={12} md={6} lg={6}>
             <div className="d-flex mx-auto" id="home-profile-wrapper">
-              <div className="row-cols-1" id="home-profile-container">
+              <div className="row-cols-1 gap-xs-5" id="home-profile-container">
 
                 <Col>
-                  <div className="h1" id="profile-name" style={{ fontSize: "60px" }}>{auth.isAuth ? `Imperator ${auth.name}` : `Ashraff Hatz`}</div>
+                  <div className="h1" id="profile-name" >{auth.isAuth ? `Imperator ${auth.name}` : `Ashraff Hatz`}</div>
                 </Col>
                 <Col>
                   <div className="h2"> Software Engineer </div>
@@ -53,7 +62,7 @@ function Homepage() {
             </div>
           </Col>
 
-          <Col lg={6} className="text-center z-10">
+          <Col xs={12} md={6} lg={6} className="text-center z-10">
             <div className="w-fit-content mx-auto" id="cv-wrapper">
               <figure className="figure">
                 <a href={cv_src} target="_blank" rel="noopener noreferrer">
@@ -69,6 +78,12 @@ function Homepage() {
           </Col>
         </Row>
       </Container>
+
+      <div style={gap_styling} className="d-none d-sm-flex"></div>
+
+      {/* Profile */}
+
+      <Profile />
     </>
   )
 }

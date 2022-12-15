@@ -80,27 +80,29 @@ function Navbar() {
   return (
     <>
       <Login open={openLogin} openHandler={openHandler} />
-      <Container fluid={true} className="nav-container sticky-top p-5 h-10vh">
-        <Row className="w-100 mx-auto h-100">
-          <Col lg={6} className="px-0">
-            <ul className="d-flex flex-row gap-5 ps-0 justify-content-start">
+      <Container fluid={true} className="nav-container sticky-top p-xs-3 p-sm-5">
+        <Row className="w-100 mx-auto" id="nav-wrapper">
+          <Col xs={12} lg={6} className="px-0">
+            <ul className="d-flex flex-row gap-5 ps-0 justify-content-xs-center justify-content-sm-start">
               {links.map((link, index) => {
                 return <NavLink link={link} key={index} />
               })}
             </ul>
           </Col>
 
-          <Col lg={6} className="px-0">
-            <ul className="d-flex flex-row gap-4 justify-content-end">
+          <Col xs={12} lg={6} className="px-0">
+            <ul className="d-flex flex-row gap-4 p-xs-0 justify-content-xs-center justify-content-sm-end">
 
-              <li className="navlink-icon" id="navlink-icon-email">
-                <EmailIcon
-                  tabIndex={0}
-                  className="svg-white ptr"
-                  style={{ ...iconStyling, marginTop: "4px" }}
-                />
-                <small> email me </small>
-              </li>
+              <a href="mailto:ashraff.hatz@gmail.com">
+                <li className="navlink-icon" id="navlink-icon-email">
+                  <EmailIcon
+                    tabIndex={0}
+                    className="svg-white ptr"
+                    style={{ ...iconStyling, marginTop: "4px" }}
+                  />
+                  <small> email me </small>
+                </li>
+              </a>
 
               <a href="https://www.instagram.com/ashhhatz/" target="_blank" rel="noopener noreferrer" id="navlink-icon-instagram">
                 <li className="navlink-icon">
