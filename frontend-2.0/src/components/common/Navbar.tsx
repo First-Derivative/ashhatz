@@ -45,12 +45,12 @@ function Navbar() {
   const [openLogin, setOpenLogin] = useState(false)
   const links: Array<Link> = [
     {
-      "url": "#profile",
+      "url": "#profile-container",
       "text": "profile",
       "new_tag": false
     },
     {
-      "url": "#portfolio",
+      "url": "#portfolio-container",
       "text": "portfolio",
       "new_tag": false
     },

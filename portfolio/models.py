@@ -4,7 +4,7 @@ from .validators import ProjectTag_css_theme_validator
 class Project(models.Model):
 
   class Meta:
-    ordering = ('name',)
+    ordering = ('created',)
 
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50, default="New Project")
@@ -12,6 +12,7 @@ class Project(models.Model):
 
   # Relationships
   tags = models.ManyToManyField('ProjectTag')
+  # link = models.CharField(max_length=50m, default="https://www.ashhatz.com")
   links = models.ManyToManyField('ProjectLink')
   media = models.ManyToManyField('ProjectMedia')
 
@@ -33,7 +34,7 @@ class ProjectTag(models.Model):
   name = models.CharField(max_length=50)
   media = models.CharField(max_length=100, null=True, blank=True)
   
-  css_body = models.CharField(max_length=7, default="#000", null=False, blank=False, validators=[ProjectTag_css_theme_validator])
+  css_body = models.CharField(max_length=7, default="#0a0a0a", null=False, blank=False, validators=[ProjectTag_css_theme_validator])
   css_text = models.CharField(max_length=7, default="#FFF", null=False, blank=False, validators=[ProjectTag_css_theme_validator])
   
 
@@ -50,7 +51,7 @@ class ProjectLink(models.Model):
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
   url = models.CharField(max_length=50)
-  media = models.CharField(max_length=100, blank=True)
+  media = models.CharField(max_length=100, blank=True) # consider commenting out for fresh migration
 
   def __str__(self):
     return "{}:{}".format(self.name, self.url)

@@ -1,6 +1,7 @@
 import React from "react"
 import Navbar from "./components/common/Navbar"
 import Profile from "./Profile"
+import Portfolio from "./Portfolio"
 import { useAuth } from "./contexts/AuthContext"
 
 import Container from "react-bootstrap/Container"
@@ -36,7 +37,7 @@ function Homepage() {
         <div id="astronaut-wrapper">
           <img src={astronaut} alt="The Thinking Man" className="img-fluid" />
         </div>
-        <Row className="justify-content-around h-100 gap-xs-4 gap-sm-0">
+        <Row className="justify-content-around h-100 gap-xs-4 gap-md-0">
 
           {/* Main Content */}
           <Col xs={12} md={6} lg={6}>
@@ -84,6 +85,10 @@ function Homepage() {
       {/* Profile */}
 
       <Profile />
+
+      {/* Portfolio */}
+
+      <Portfolio />
     </>
   )
 }
