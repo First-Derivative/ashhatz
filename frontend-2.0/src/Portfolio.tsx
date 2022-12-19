@@ -1,22 +1,59 @@
-import React, { useState } from "react"
-import Project, { ProjectInterface } from "./components/portfolio/Project"
+import React, { useEffect, useState } from "react"
+import Project, { ProjectInterface, ProjectTagInterface } from "./components/portfolio/Project"
+import ErrorAlert from "./components/common/ErrorAlert"
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
+import axiosInstance from "./utils/axios"
+
+export interface TagsInterface {
+  [id: number]: ProjectTagInterface
+}
 
 function Portfolio() {
-  const tag_temp = { "id": 0, "name": "js", "css_body": "#0a0a0a", "css_text": "#FFF" }
-  const temp = {
-    "id": 0,
-    "name": "Kaedim 3D",
-    "summary": "Celebrate your fucking failures. Then you'll prove to yourself that you can survive anything.Design as if your fucking life depended on it.Practice won't get you anywhere if you mindlessly fucking practice the same thing. Change only occurs when you work deliberately with purpose toward a goal. The graphic",
-    "link": "https://www.kaedim3d.com",
-    "tags": [tag_temp, tag_temp, tag_temp, tag_temp, tag_temp]
+
+  const [projects, setProjects] = useState<Array<ProjectInterface>>([])
+  const [tags, setTags] = useState<TagsInterface>({})
+  const [error, setError] = useState<string>("")
+
+  const getProjects = async () => {
+    setError("")
+    await axiosInstance.get(`portfolio/api/get/projects/`).then(res => {
+      setProjects(res.data)
+      // setLoading(false)
+    }
+    ).catch(err => {
+      setError(err.message)
+      // setLoading(false)
+    })
   }
-  const init = [temp, temp, temp, temp]
-  const [projects, setProjects] = useState<Array<ProjectInterface>>(init)
+
+  const getTag = async (id: number) => {
+    if (!tags.hasOwnProperty(id)) {
+      await axiosInstance.get(`portfolio/api/get/tag/${id}`).then(res => {
+        setTags(prev => ({ ...prev, [id]: res.data }))
+      }).catch(err => {
+        setError(err.message)
+      })
+    }
+  }
+
+  useEffect(() => {
+    getProjects()
+  }, [])
+
+  useEffect(() => {
+    if (projects.length !== 0) {
+      projects.forEach(project => {
+        project.tags.forEach(tag => {
+          getTag(tag)
+        })
+
+      })
+    }
+  }, [projects])
 
   return (
     <Container fluid={true} className="p-5" id="portfolio-container">
@@ -30,12 +67,15 @@ function Portfolio() {
       <Row>
         <Col xs={12} className="p-0">
           <Row className="gap-5 row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
+
+            {error !== "" && <ErrorAlert message={error} styling={"my-3 mx-auto text-center"} />}
             {
               projects.map((project, index) => {
                 return (
                   <Project
                     key={index}
                     project={project}
+                    tags={tags}
                   />
                 )
               })

@@ -4,7 +4,7 @@ from .validators import ProjectTag_css_theme_validator
 class Project(models.Model):
 
   class Meta:
-    ordering = ("created",)
+    ordering = ("-created",)
 
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50, default="New Project")
@@ -27,7 +27,7 @@ class ProjectTag(models.Model):
   class Meta: 
     verbose_name = "Project Tags"
     verbose_name_plural = verbose_name
-    ordering = ("name",)
+    ordering = ("id",)
 
   id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50, unique=True)

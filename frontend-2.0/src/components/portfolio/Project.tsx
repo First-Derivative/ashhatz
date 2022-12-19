@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { TagsInterface } from "../../Portfolio"
 import ProjectTag from "./ProjectTag"
 
 import { Col, Row, Container } from "react-bootstrap"
@@ -6,14 +7,14 @@ import { Col, Row, Container } from "react-bootstrap"
 import temp from "../../assets/images/kaedim_temp.png"
 import { ReactComponent as LinkIcon } from "../../assets/svgs/link.svg"
 
+
 export interface ProjectInterface {
   id: number,
   name: string,
   summary: string,
   link: string
-  tags: ProjectTagInterface[]
+  tags: number[]
 }
-
 export interface ProjectTagInterface {
   id: number,
   name: string,
@@ -21,7 +22,7 @@ export interface ProjectTagInterface {
   css_text: string
 }
 
-function Project({ project }: { project: ProjectInterface }) {
+function Project({ project, tags }: { project: ProjectInterface, tags: TagsInterface }) {
 
   const handleClick = () => {
     window.open(project.link)
@@ -55,11 +56,13 @@ function Project({ project }: { project: ProjectInterface }) {
                 </div>
               </Col>
               <Col className="">
-                {project.tags.map((tag, index) => {
-                  return (
-                    <ProjectTag key={index} tag={tag} />
-                  )
-                })}
+                {
+                  project.tags.map((tag_id, index) => {
+                    return (
+                      <ProjectTag key={index} tag={tags[tag_id]} />
+                    )
+                  })
+                }
               </Col>
             </Row>
             )}
