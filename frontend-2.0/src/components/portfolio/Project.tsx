@@ -4,7 +4,9 @@ import ProjectTag from "./ProjectTag"
 
 import { Col, Row, Container } from "react-bootstrap"
 
-import temp from "../../assets/images/kaedim_temp.png"
+import kaedim_temp from "../../assets/images/kaedim_temp.png"
+import dlk_temp from "../../assets/images/dlk_temp.png"
+import dlk_ms_temp from "../../assets/images/dlk_ms_temp.png"
 import { ReactComponent as LinkIcon } from "../../assets/svgs/link.svg"
 
 
@@ -30,10 +32,27 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
 
   const [hover, setHover] = useState(false)
 
+  const evalImage = () => {
+    switch (project.id) {
+      case 2:
+        return dlk_ms_temp
+        break
+      case 3:
+        return dlk_temp
+        break
+      case 4:
+        return kaedim_temp
+        break
+      default:
+        return "https://images.pexels.com/photos/4693135/pexels-photo-4693135.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+
+    }
+  }
+
   return (
     <Col>
       <div className="project-card d-flex flex-column ptr" onClick={e => handleClick()} onMouseEnter={e => setHover(true)} onMouseLeave={e => setHover(false)}>
-        <img className="project-img" src={temp} alt={`${project.name} web application`} />
+        <img className="project-img" src={evalImage()} alt={`${project.name} web application`} />
         <Container className="project-card-infodeck p-3">
           <Row className="mb-3">
             <Col xs={10}>
@@ -58,9 +77,11 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
               <Col className="">
                 {
                   project.tags.map((tag_id, index) => {
-                    return (
-                      <ProjectTag key={index} tag={tags[tag_id]} />
-                    )
+                    if (tags.hasOwnProperty(tag_id)) {
+                      return (
+                        <ProjectTag key={index} tag={tags[tag_id]} />
+                      )
+                    }
                   })
                 }
               </Col>

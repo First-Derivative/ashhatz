@@ -17,6 +17,7 @@ function ProjectTag({ tag }: { tag: ProjectTagInterface }) {
     border: `1px solid ${tag.css_body}`
   }
 
+  if (!tag) return null
   return (
     <span
       className="badge rounded-pill px-3 mx-2 mb-1 fw-bold text-end"
