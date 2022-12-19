@@ -10,6 +10,7 @@ modelmedia/
 # */migrations/*
 # migrations/*
 # db.sqlite3
+frontend/
 
 # Special Files #
 *_key.json
