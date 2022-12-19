@@ -100,6 +100,8 @@ describe("Login component test", () => {
     cy.get("#btn-login").click().then(() => {
       cy.get("#profile-name").should("have.text", "Imperator Testing Dummy")
     })
+
+    cy.get("#admin-link").should("be.visible")
   })
 })
 

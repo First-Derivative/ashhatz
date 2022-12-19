@@ -50,22 +50,3 @@ class GetProjectTags(ListAPIView):
   permission_classes = [AllowAny]
   queryset = ProjectTag.objects.all()
   serializer_class = ProjectTagSerializer
-
-class GetProjectLink(APIView):
-
-  permission_classes = [AllowAny]
-
-  def get(self, request, id, format=None):
-    try:
-      project = ProjectLink.objects.get(id=id)
-      serialized = ProjectLinkSerializer(project, many=False)
-      return Response(serialized.data, status=200)
-    except:
-      error = ErrorResponse('Cant find project link with id {id}'.format(id=id))
-      return Response(error.message, status=error.status)
-
-
-class GetProjectLinks(ListAPIView):
-  permission_classes = [AllowAny]
-  queryset = ProjectLink.objects.all()
-  serializer_class = ProjectLinkSerializer

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Login from "../login/Login"
 import { useAuth, useAuthUpdate } from "../../contexts/AuthContext"
 import { useNotifUpdate } from "../../contexts/NotificationContext"
@@ -43,7 +43,7 @@ function Navbar() {
   const [addNotif, popNotif] = useNotifUpdate()
   const [handleSignIn, handleSignOut] = useAuthUpdate()
   const [openLogin, setOpenLogin] = useState(false)
-  const links: Array<Link> = [
+  const [links, setLinks] = useState<Array<Link>>([
     {
       "url": "#profile-container",
       "text": "profile",
@@ -59,7 +59,7 @@ function Navbar() {
       "text": "github",
       "new_tag": true
     }
-  ]
+  ])
   const iconStyling = {
     width: "24px",
     height: "24px"
@@ -76,6 +76,21 @@ function Navbar() {
     }).catch((err) => {
     })
   }
+
+  useEffect(() => {
+    console.log("auth useEffect")
+    if (auth.isAuth) {
+      console.log("pushing admin link")
+      setLinks(prev => [...prev, {
+        "url": "/admin",
+        "text": "admin",
+        "new_tag": true
+      }])
+    }
+    else {
+      setLinks(prev => prev.filter(link => link.text !== "admin"))
+    }
+  }, [auth])
 
   return (
     <>

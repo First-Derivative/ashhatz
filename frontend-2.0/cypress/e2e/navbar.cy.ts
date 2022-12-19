@@ -14,11 +14,11 @@ describe("Navbar links <a> test", () => {
 
     // Test Profile Link
     cy.get("#profile-link").click()
-    cy.url().should("eq", `${base + "/#profile"}`)
+    cy.url().should("eq", `${base + "/#profile-container"}`)
 
     // Test Portfolio Link
     cy.get("#portfolio-link").click()
-    cy.url().should("eq", `${base + "/#portfolio"}`)
+    cy.url().should("eq", `${base + "/#portfolio-container"}`)
 
     // Test Portfolio Link
     cy.get("#github-link > a").should("be.visible").then(($link) => {
