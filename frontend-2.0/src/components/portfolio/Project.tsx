@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState, useEffect } from "react"
 import { TagsInterface } from "../../Portfolio"
 import ProjectTag from "./ProjectTag"
 
@@ -23,14 +23,45 @@ export interface ProjectTagInterface {
   css_body: string,
   css_text: string
 }
+interface Size {
+  width: number | undefined;
+  height: number | undefined;
+}
 
 function Project({ project, tags }: { project: ProjectInterface, tags: TagsInterface }) {
 
-  const handleClick = () => {
-    window.open(project.link)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [infoDeck, setInfoDeck] = useState<boolean>(false)
+  const [windowSize, setWindowSize] = useState<Size>({
+    width: undefined,
+    height: undefined,
+  })
+
+  const handleClick = () => { window.open(project.link) }
+  const updateMobile = () => {
+    if (windowSize.width !== undefined) {
+      if (windowSize.width <= 740) {
+        setIsMobile(true)
+        return
+      }
+      setIsMobile(false)
+    }
   }
 
-  const [hover, setHover] = useState(false)
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, [])
 
   const evalImage = () => {
     switch (project.id) {
@@ -49,26 +80,36 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
     }
   }
 
+  useEffect(() => {
+    updateMobile()
+  }, [windowSize])
+
   return (
     <Col>
-      <div className="project-card d-flex flex-column ptr" onClick={e => handleClick()} onMouseEnter={e => setHover(true)} onMouseLeave={e => setHover(false)}>
+      <div className={`project-card d-flex flex-column ${isMobile ? "" : "ptr"}`} onClick={e => {
+        if (!isMobile) {
+          handleClick()
+        } else {
+          setInfoDeck(prev => !prev)
+        }
+      }} onMouseEnter={e => setInfoDeck(true)} onMouseLeave={e => setInfoDeck(false)}>
         <img className="project-img" src={evalImage()} alt={`${project.name} web application`} />
-        <Container className="project-card-infodeck p-3">
+        <Container className={`project-card-infodeck p-3 ${infoDeck ? "project-card-infodeck-raised" : ""}`}>
           <Row className="mb-3">
             <Col xs={10}>
-              <div className="h2 mb-0">
+              <div className="h3 mb-0">
                 {project.name}
               </div>
             </Col>
             <Col>
               <div className="my-auto mx-auto">
-                <LinkIcon width={32} height={32} />
+                <LinkIcon width={32} height={32} onClick={e => handleClick()} />
               </div>
             </Col>
           </Row>
 
-          {hover &&
-            (<Row className="gap-3">
+          {infoDeck &&
+            (<Row className="gap-3 justify-content-between h-80">
               <Col xs={12}>
                 <div className="p small">
                   {project.summary}
@@ -82,6 +123,7 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
                         <ProjectTag key={index} tag={tags[tag_id]} />
                       )
                     }
+                    return null
                   })
                 }
               </Col>
