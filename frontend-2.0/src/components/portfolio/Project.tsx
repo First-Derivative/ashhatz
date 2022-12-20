@@ -94,20 +94,3 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
 }
 
 export default Project
-
-// <div className="project-card-infodeck d-flex p-3">
-// <Row className="p-0">
-//   <Col sm={hover ? 9 : 10} className="h2 mb-0 p-0">
-//     {project.name}
-//   </Col>
-//   <Col sm={hover ? 3 : 2} className="p-0">
-//     <LinkIcon width={32} height={32} />
-//   </Col>
-
-//   {hover && <Col sm={12} className="project-card-infodeck-content">
-//     <div className="p small">
-//       {project.summary}
-//     </div>
-//   </Col>}
-// </Row>
-// </div>

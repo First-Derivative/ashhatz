@@ -66,20 +66,19 @@ function Portfolio() {
       </Row>
       <Row>
         <Col xs={12} className="p-0">
+          {error !== "" && <ErrorAlert message={error} styling={"col-3 mb-3 mx-auto text-center"} />}
           <Row className="gap-5 row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
-
-            {error !== "" && <ErrorAlert message={error} styling={"my-3 mx-auto text-center"} />}
-            {
-              projects.map((project, index) => {
-                return (
-                  <Project
-                    key={index}
-                    project={project}
-                    tags={tags}
-                  />
-                )
-              })
-            }
+          {
+            projects.map((project, index) => {
+              return (
+                <Project
+                  key={index}
+                  project={project}
+                  tags={tags}
+                />
+              )
+            })
+          }
           </Row>
         </Col>
       </Row>
