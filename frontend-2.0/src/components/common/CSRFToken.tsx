@@ -9,6 +9,10 @@ function CSRFToken() {
   const [token, setToken] = useState<string>("");
   const [error, setError] = useState<boolean>(false)
 
+  const closeErrors = () => {
+    setError(false)
+  }
+
   useEffect(() => {
 
     axiosInstance.get("/users/getcsrf/").then((res) => {
@@ -23,7 +27,7 @@ function CSRFToken() {
 
   return (
     <>
-      {error ? (<ErrorAlert styling={"col-12 mx-auto my-auto"} message={"could not get CSRF token"} />)
+      {error ? (<ErrorAlert styling={"col-12 mx-auto my-auto"} message={"could not get CSRF token"} handler={closeErrors} />)
         : (<input type="hidden" name="csrfmiddlewaretoken" value={token} />)}
     </>
   )
