@@ -94,13 +94,13 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
           if (infoDeck) setInfoDeck(false)
         }
       }} onMouseEnter={e => setInfoDeck(true)} onMouseLeave={e => setInfoDeck(false)}>
-        <img className="project-img" src={evalImage()} alt={`${project.name} web application`} />
+        <img className={`project-img ${infoDeck ? "project-img-raised" : ""}`} src={evalImage()} alt={`${project.name} web application`} />
         <Container className={`project-card-infodeck p-3 ${infoDeck ? "project-card-infodeck-raised" : ""}`}>
           <Row className="mb-3">
             <Col xs={10}>
               <div className="h3 mb-0 fw-normal">
                 {project.name}
-                {infoDeck ? (<ExpandDownIcon width={32} height={32} />) : (<ExpandUpIcon width={32} height={32} />)}
+                {infoDeck ? (<ExpandDownIcon width={24} height={24} />) : (<ExpandUpIcon width={24} height={24} />)}
               </div>
             </Col>
             <Col>
