@@ -26,7 +26,7 @@ function Profile() {
             </figure>
           </div>
         </Col>
-        <Col xs={12} md={8} lg={4} xl={4} className="p-xs-0 px-md-5 mt-n1" id="profile-brief">
+        <Col xs={12} sm={8} md={8} lg={7} xl={4} className="p-xs-0 px-md-5 mt-n1" id="profile-brief">
           <div className="h1">
             The Brief
           </div>
