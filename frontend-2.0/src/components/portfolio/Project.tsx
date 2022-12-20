@@ -8,6 +8,8 @@ import kaedim_temp from "../../assets/images/kaedim_temp.png"
 import dlk_temp from "../../assets/images/dlk_temp.png"
 import dlk_ms_temp from "../../assets/images/dlk_ms_temp.png"
 import { ReactComponent as LinkIcon } from "../../assets/svgs/link.svg"
+import { ReactComponent as ExpandUpIcon } from "../../assets/svgs/expand_up.svg"
+import { ReactComponent as ExpandDownIcon } from "../../assets/svgs/expand_down.svg"
 
 
 export interface ProjectInterface {
@@ -87,18 +89,18 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
   return (
     <Col>
       <div className={`project-card d-flex flex-column ${isMobile ? "" : "ptr"}`} onClick={e => {
-        if (!isMobile) {
-          handleClick()
-        } else {
-          setInfoDeck(prev => !prev)
+        if (!isMobile) handleClick()
+        else {
+          if (infoDeck) setInfoDeck(false)
         }
       }} onMouseEnter={e => setInfoDeck(true)} onMouseLeave={e => setInfoDeck(false)}>
         <img className="project-img" src={evalImage()} alt={`${project.name} web application`} />
         <Container className={`project-card-infodeck p-3 ${infoDeck ? "project-card-infodeck-raised" : ""}`}>
           <Row className="mb-3">
             <Col xs={10}>
-              <div className="h3 mb-0">
+              <div className="h3 mb-0 fw-normal">
                 {project.name}
+                {infoDeck ? (<ExpandDownIcon width={32} height={32} />) : (<ExpandUpIcon width={32} height={32} />)}
               </div>
             </Col>
             <Col>
