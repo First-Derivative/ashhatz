@@ -13,4 +13,9 @@ const axiosInstance = axios.create({
   },
 })
 
+export function cancelled(err: any): boolean {
+  if (axios.isCancel(err)) return true
+  return false
+}
+
 export default axiosInstance;
