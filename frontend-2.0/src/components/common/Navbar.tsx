@@ -78,9 +78,7 @@ function Navbar() {
   }
 
   useEffect(() => {
-    console.log("auth useEffect")
     if (auth.isAuth) {
-      console.log("pushing admin link")
       setLinks(prev => [...prev, {
         "url": "/admin",
         "text": "admin",
