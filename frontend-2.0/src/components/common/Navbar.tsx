@@ -95,6 +95,8 @@ function Navbar() {
       <Login open={openLogin} openHandler={openHandler} />
       <Container fluid={true} className="nav-container sticky-top p-xs-3 p-sm-5">
         <Row className="w-100 mx-auto" id="nav-wrapper">
+
+          {/* Navbar Links */}
           <Col xs={12} sm={6} md={6} lg={6} xl={6} className="px-0">
             <ul className="d-flex flex-row gap-5 ps-0 justify-content-xs-center justify-content-sm-start">
               {links.map((link, index) => {
@@ -103,8 +105,9 @@ function Navbar() {
             </ul>
           </Col>
 
+          {/* Navbar Icon Links */}
           <Col xs={12} sm={6} md={6} lg={6} xl={6} className="px-0">
-            <ul className="d-flex flex-row gap-4 p-xs-0 justify-content-xs-center justify-content-sm-end">
+            <ul className="d-flex flex-row gap-4 p-xs-0 justify-content-xs-center justify-content-sm-end mb-xs-0">
 
               <a href="mailto:ashraff.hatz@gmail.com">
                 <li className="navlink-icon" id="navlink-icon-email">
