@@ -105,7 +105,7 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
             </Col>
             <Col>
               <div className="my-auto mx-auto">
-                <LinkIcon width={32} height={32} onClick={e => handleClick()} />
+                <LinkIcon width={isMobile ? 24 : 32} height={isMobile ? 24 : 32} onClick={e => handleClick()} />
               </div>
             </Col>
           </Row>
