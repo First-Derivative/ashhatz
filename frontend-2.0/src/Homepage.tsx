@@ -23,7 +23,8 @@ function Homepage() {
 
   const gap_styling = {
     height: "10vh",
-    width: "100%"
+    width: "100%",
+    backgroundColor: "#000"
   }
 
   return (
@@ -83,7 +84,7 @@ function Homepage() {
         </Row>
       </Container>
 
-      <div style={gap_styling} className="d-none d-sm-flex" id="profile"></div>
+      <div style={gap_styling} className="d-flex" id="profile"></div>
 
       {/* Profile */}
 
