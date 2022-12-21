@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { TagsInterface } from "../../Portfolio"
 import ProjectTag from "./ProjectTag"
 import useMobile from "../../utils/useMobile"
@@ -62,6 +62,20 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
     }
   }
 
+  const renderProjectTagWrapper = (): React.ReactElement => {
+    const wrapper = <div className="project-tags-wrapper">
+      {project.tags.map((tag_id, index) => {
+        if (tags.hasOwnProperty(tag_id)) {
+          return (
+            <ProjectTag key={index} tag={tags[tag_id]} />
+          )
+        }
+        return null
+      })}
+    </div>
+    return wrapper
+  }
+
   return (
     <Col>
       <div
@@ -93,17 +107,12 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
                   {project.summary}
                 </div>
               </Col>
-              <Col className="">
-                {
-                  project.tags.map((tag_id, index) => {
-                    if (tags.hasOwnProperty(tag_id)) {
-                      return (
-                        <ProjectTag key={index} tag={tags[tag_id]} />
-                      )
-                    }
-                    return null
-                  })
-                }
+              <Col>
+                <div className="fw-normal h5 text-start">Technologies used:</div>
+                <div className="project-tags-container animate-marquee">
+                  {renderProjectTagWrapper()}
+                  {renderProjectTagWrapper()}
+                </div>
               </Col>
             </Row>
             )}
