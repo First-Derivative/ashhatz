@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Project, { ProjectInterface, ProjectTagInterface } from "./components/portfolio/Project"
 import ErrorAlert from "./components/common/ErrorAlert"
 

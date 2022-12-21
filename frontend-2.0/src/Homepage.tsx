@@ -3,6 +3,7 @@ import Navbar from "./components/common/Navbar"
 import Profile from "./Profile"
 import Portfolio from "./Portfolio"
 import { useAuth } from "./contexts/AuthContext"
+import useMobile from "./utils/useMobile"
 
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -15,6 +16,8 @@ import { ReactComponent as NewTab } from "./assets/svgs/new_tab.svg"
 
 function Homepage() {
 
+  const isMobile = useMobile()
+
   const cv_src = process.env.REACT_APP_CV_LINK
   const auth = useAuth()
 
@@ -26,7 +29,7 @@ function Homepage() {
   return (
     <>
       {/* Navbar */}
-      <Navbar />
+      <Navbar isMobile={isMobile} />
 
       {/* Hero Page (Landing Page) */}
       <Container fluid={true} className="py-xs-0 px-xs-5 p-sm-5 h-90vh" id="home-container">

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { TagsInterface } from "../../Portfolio"
 import ProjectTag from "./ProjectTag"
+import useMobile from "../../utils/useMobile"
 
 import { Col, Row, Container } from "react-bootstrap"
 
@@ -25,45 +26,24 @@ export interface ProjectTagInterface {
   css_body: string,
   css_text: string
 }
-interface Size {
-  width: number | undefined;
-  height: number | undefined;
-}
 
 function Project({ project, tags }: { project: ProjectInterface, tags: TagsInterface }) {
 
-  const [isMobile, setIsMobile] = useState<boolean>(false)
   const [infoDeck, setInfoDeck] = useState<boolean>(false)
-  const [windowSize, setWindowSize] = useState<Size>({
-    width: undefined,
-    height: undefined,
-  })
+  const isMobile = useMobile(820)
 
-  const handleClick = () => { window.open(project.link) }
-  const updateMobile = () => {
-    if (windowSize.width !== undefined) {
-      if (windowSize.width <= 740) {
-        setIsMobile(true)
-        return
-      }
-      setIsMobile(false)
+  const handleClick = (): void => {
+    if (isMobile) {
+      setInfoDeck(prev => !prev)
+      return
     }
+    handleLink()
   }
 
-  useEffect(() => {
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    }
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, [])
+  const handleLink = (): void => {
+    setInfoDeck(false)
+    window.open(project.link)
+  }
 
   const evalImage = () => {
     switch (project.id) {
@@ -82,18 +62,28 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
     }
   }
 
-  useEffect(() => {
-    updateMobile()
-  }, [windowSize])
+  const renderProjectTagWrapper = (): React.ReactElement => {
+    const wrapper = <div className="project-tags-wrapper">
+      {project.tags.map((tag_id, index) => {
+        if (tags.hasOwnProperty(tag_id)) {
+          return (
+            <ProjectTag key={index} tag={tags[tag_id]} />
+          )
+        }
+        return null
+      })}
+    </div>
+    return wrapper
+  }
 
   return (
     <Col>
-      <div className={`project-card d-flex flex-column ${isMobile ? "" : "ptr"}`} onClick={e => {
-        if (!isMobile) handleClick()
-        else {
-          if (infoDeck) setInfoDeck(false)
-        }
-      }} onMouseEnter={e => setInfoDeck(true)} onMouseLeave={e => setInfoDeck(false)}>
+      <div
+        className="project-card d-flex flex-column ptr"
+        onClick={e => handleClick()}
+        onMouseEnter={e => { if (!isMobile) setInfoDeck(true) }}
+        onMouseLeave={e => { if (!isMobile) setInfoDeck(false) }}
+      >
         <img className={`project-img ${infoDeck ? "project-img-raised" : ""}`} src={evalImage()} alt={`${project.name} web application`} />
         <Container className={`project-card-infodeck p-3 ${infoDeck ? "project-card-infodeck-raised" : ""}`}>
           <Row className="mb-3">
@@ -105,7 +95,7 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
             </Col>
             <Col>
               <div className="my-auto mx-auto">
-                <LinkIcon width={isMobile ? 24 : 32} height={isMobile ? 24 : 32} onClick={e => handleClick()} />
+                <LinkIcon width={isMobile ? 24 : 32} height={isMobile ? 24 : 32} onClick={e => handleLink()} />
               </div>
             </Col>
           </Row>
@@ -117,24 +107,21 @@ function Project({ project, tags }: { project: ProjectInterface, tags: TagsInter
                   {project.summary}
                 </div>
               </Col>
-              <Col className="">
-                {
-                  project.tags.map((tag_id, index) => {
-                    if (tags.hasOwnProperty(tag_id)) {
-                      return (
-                        <ProjectTag key={index} tag={tags[tag_id]} />
-                      )
-                    }
-                    return null
-                  })
-                }
+              <Col>
+                <div className="fw-normal h5 text-start">Technologies used:</div>
+                <div className="project-tags-container animate-marquee">
+                  {renderProjectTagWrapper()}
+                  {renderProjectTagWrapper()}
+                </div>
               </Col>
             </Row>
             )}
         </Container>
       </div>
-    </Col>
+    </Col >
   )
 }
 
 export default Project
+
+// onMouseEnter={e => { if (!isMobile) setInfoDeck(true); console.log("setInfoDeck from mouseEvent") }} onMouseLeave={e => { if (!isMobile) setInfoDeck(false); console.log("setInfoDeck from mouseEvent") }}

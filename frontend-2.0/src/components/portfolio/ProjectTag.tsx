@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { ProjectTagInterface } from "./Project"
+
+import { Col } from "react-bootstrap"
 
 function ProjectTag({ tag }: { tag: ProjectTagInterface }) {
 
@@ -19,13 +21,15 @@ function ProjectTag({ tag }: { tag: ProjectTagInterface }) {
 
   if (!tag) return null
   return (
+    // <Col>
     <span
-      className="badge rounded-pill px-3 mx-2 mb-1 fw-bold text-end"
+      className="project-tag badge rounded-pill px-3 mx-2 mb-1 fw-bold text-end"
       style={hover ? tagHoverStyling : tagStyling}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       {tag.name}
     </span>
+    // </Col>
   )
 }
 

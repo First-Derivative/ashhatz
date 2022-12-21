@@ -3,7 +3,9 @@ import React, { useEffect } from "react"
 function ErrorAlert({ message, styling, handler }: { message: string, styling: string, handler: Function }) {
 
   useEffect(() => {
+    console.log(`error occured: ${message}`)
     setTimeout(() => {
+      console.log(`error closed: ${message}`)
       handler()
     }, 2500)
   }, [])
