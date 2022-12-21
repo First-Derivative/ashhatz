@@ -47,7 +47,7 @@ function Navbar({ isMobile }: { isMobile: boolean }) {
   const [dropDown, setDropDown] = useState<boolean>(false)
   const [links, setLinks] = useState<Array<Link>>([
     {
-      "url": "#profile-container",
+      "url": "#profile",
       "text": "profile",
       "new_tag": false
     },

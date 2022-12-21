@@ -83,7 +83,7 @@ function Homepage() {
         </Row>
       </Container>
 
-      <div style={gap_styling} className="d-none d-sm-flex"></div>
+      <div style={gap_styling} className="d-none d-sm-flex" id="profile"></div>
 
       {/* Profile */}
 

@@ -14,7 +14,7 @@ describe("Navbar links <a> test", () => {
 
     // Test Profile Link
     cy.get("#profile-link").click()
-    cy.url().should("eq", `${base + "/#profile-container"}`)
+    cy.url().should("eq", `${base + "/#profile"}`)
 
     // Test Portfolio Link
     cy.get("#portfolio-link").click()
