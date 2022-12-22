@@ -60,6 +60,7 @@ function Portfolio() {
 
   return (
     <Container fluid={true} className="p-5" id="portfolio-container">
+      {/* Title */}
       <Row className="mb-5">
         <Col>
           <div className="h1">
@@ -67,9 +68,20 @@ function Portfolio() {
           </div>
         </Col>
       </Row>
+      {/* Projects */}
       <Row>
         <Col xs={12} className="p-0">
-          {error !== "" && <ErrorAlert message={error} styling={"col-3 mb-3 mx-auto text-center"} handler={closeErrors} />}
+          {/* Default render when no projects */}
+          {projects.length === 0 && (
+            <Row>
+              <Col className="mb-5">
+                <div className="h5 text-white text-center">
+                  Getting projects from backend...
+                </div>
+              </Col>
+            </Row>
+          )}
+          {/* Render when projects */}
           <Row className="gap-5 row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center">
             {
               projects.map((project, index) => {
@@ -82,10 +94,12 @@ function Portfolio() {
                 )
               })
             }
+            {/* Error Message */}
+            {error !== "" && <ErrorAlert message={error} styling={"col-3 mb-3 mx-auto text-center"} handler={closeErrors} />}
           </Row>
         </Col>
-      </Row>
-    </Container>
+      </Row >
+    </Container >
   )
 }
 

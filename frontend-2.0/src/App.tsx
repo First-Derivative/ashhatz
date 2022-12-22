@@ -8,6 +8,7 @@ import "./assets/styles/global.sass"
 import Homepage from "./Homepage";
 import icon_link from "./assets/icon/favicon.ico";
 import mobile_icon_link from "./assets/icon/logo192.png";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 function App() {
 
@@ -27,19 +28,22 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <AuthChannel>
-        <NotificationChannel>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route
-              path="*"
-              element={<Navigate to="/" replace />}
-            />
-          </Routes>
-        </NotificationChannel>
-      </AuthChannel>
-    </BrowserRouter>
+    <ParallaxProvider>
+
+      <BrowserRouter>
+        <AuthChannel>
+          <NotificationChannel>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route
+                path="*"
+                element={<Navigate to="/" replace />}
+              />
+            </Routes>
+          </NotificationChannel>
+        </AuthChannel>
+      </BrowserRouter>
+    </ParallaxProvider>
   );
 }
 
