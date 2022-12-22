@@ -6,8 +6,9 @@ export default function useMobile(threshold: number = 540): boolean {
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
   const updateMobile = () => {
-    if (size.width !== undefined) {
-      if (size.width <= threshold) {
+    const { width } = size
+    if (width !== undefined) {
+      if (width <= threshold) {
         setIsMobile(true)
         return
       }

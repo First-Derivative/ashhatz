@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { ProjectTagInterface } from "./Project"
 
-import { Col } from "react-bootstrap"
-
 function ProjectTag({ tag }: { tag: ProjectTagInterface }) {
 
   const [hover, setHover] = useState(false)
