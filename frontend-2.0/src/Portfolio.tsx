@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
-import axiosInstance, { cancelled } from "./utils/axios"
+import axiosInstance from "./utils/axios"
 
 export interface TagsInterface {
   [id: number]: ProjectTagInterface
@@ -29,34 +29,22 @@ function Portfolio() {
       // setLoading(false)
     }
     ).catch(err => {
-      if (!cancelled(err)) setError(err.message)
+      setError(err.message)
     })
   }
 
-  const getTag = async (id: number) => {
-    if (!tags.hasOwnProperty(id)) {
-      await axiosInstance.get(`portfolio/api/get/tag/${id}`).then(res => {
-        setTags(prev => ({ ...prev, [id]: res.data }))
-      }).catch(err => {
-        if (!cancelled(err)) setError(err.message)
-      })
-    }
+  const getTags = async () => {
+    await axiosInstance.get("portfolio/api/get/tags/").then(res => {
+      setTags(res.data)
+    }).catch(err => {
+      setError(err.message)
+    })
   }
 
   useEffect(() => {
+    getTags()
     getProjects()
   }, [])
-
-  useEffect(() => {
-    if (projects.length !== 0) {
-      projects.forEach(project => {
-        project.tags.forEach(tag => {
-          getTag(tag)
-        })
-
-      })
-    }
-  }, [projects])
 
   return (
     <Container fluid={true} className="p-5" id="portfolio-container">
