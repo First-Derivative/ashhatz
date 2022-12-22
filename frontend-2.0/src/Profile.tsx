@@ -12,9 +12,9 @@ function Profile() {
   const breakpoint = useBreakpoint()
   const size = useWindowSize()
 
-  const evalEndScroll = ():number => {
-    const {width} = size
-    switch(breakpoint) {
+  const evalEndScroll = (): number => {
+    const { width } = size
+    switch (breakpoint) {
       case "xs":
         return 600
       case "sm":
@@ -24,12 +24,12 @@ function Profile() {
       case "lg":
         return 700
       case "xl":
-        if(width !== undefined && width <= 1600) return 800
+        if (width !== undefined && width <= 1600) return 800
         return 900
       default:
-          break
+        break
     }
-    return 1000 //consider changing on desktop
+    return 900
   }
 
   return (
