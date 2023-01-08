@@ -68,18 +68,18 @@ function Homepage() {
           </Col>
 
           <Col xs={12} md={6} lg={6} className="text-center z-10">
-            <div className="w-fit-content mx-auto" id="cv-wrapper">
-              <figure className="figure">
-                <a href={cv_src} target="_blank" rel="noopener noreferrer">
+            <a href={cv_src} target="_blank" rel="noopener noreferrer">
+              <div className="w-fit-content mx-auto" id="cv-wrapper">
+                <figure className="figure">
                   <img src={cv} className="figure-img img-fluid rounded cv-pdf" alt="CV Preview" />
                   <figcaption className="figure-caption">curriculum vitae</figcaption>
-                </a>
-              </figure>
-              <div className="cv-overlay">
-                <NewTab />
-                <p>Open in new tab</p>
+                </figure>
+                <div className="cv-overlay">
+                  <NewTab />
+                  <p>Open in new tab</p>
+                </div>
               </div>
-            </div>
+            </a>
           </Col>
         </Row>
       </Container>
